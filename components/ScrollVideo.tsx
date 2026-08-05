@@ -27,7 +27,6 @@ export default function ScrollVideo({
   const [progreso, setProgreso] = useState(0);
 
   useEffect(() => {
-    if (controls) return;
     const video = videoRef.current;
     if (!video) return;
 
@@ -44,7 +43,7 @@ export default function ScrollVideo({
 
     observer.observe(video);
     return () => observer.disconnect();
-  }, [autoPlayOnView, controls]);
+  }, [autoPlayOnView]);
 
   useEffect(() => {
     const video = videoRef.current;
