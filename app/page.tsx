@@ -44,7 +44,16 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#1a0505] text-[#f5e6d3]">
       {/* Hero */}
-      <section className="flex flex-col items-center gap-4 px-6 py-16 text-center">
+      <section className="relative flex flex-col items-center gap-4 overflow-hidden px-6 py-24 text-center">
+        <Image
+          src="https://picsum.photos/id/1043/1600/1200"
+          alt="Fondo ritual"
+          fill
+          priority
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-[#1a0505]/80" />
+        <div className="relative z-10 flex flex-col items-center gap-4">
         <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#c9a24b]">
           Curanderismo ancestral · Norte de Potosí
         </p>
@@ -73,6 +82,7 @@ export default function Home() {
           <li>✓ Fortalece la relación</li>
           <li>✓ Vuelve a sentir su cariño</li>
         </ul>
+        </div>
       </section>
 
       {/* Servicios */}
