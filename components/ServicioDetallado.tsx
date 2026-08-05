@@ -51,7 +51,7 @@ export default function ServicioDetallado({
             <Image src={imagen} alt={titulo} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
             <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/70" />
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-6 text-center">
-              <h3 className="text-4xl font-bold uppercase tracking-wide text-white drop-shadow-lg">
+              <h3 className="text-4xl font-bold uppercase tracking-wide text-white" style={{ textShadow: "0 4px 20px rgba(0,0,0,0.9), 0 2px 8px rgba(0,0,0,0.9)" }}>
                 {titulo}
               </h3>
               <div className="h-[2px] w-16 bg-[#c9a24b]" />
@@ -69,7 +69,7 @@ export default function ServicioDetallado({
 
           {/* Contenido */}
           <div className="flex flex-col items-center gap-4 px-6 pb-8 pt-6 text-center" style={{ backgroundColor: colorFondo }}>
-            <p className="leading-relaxed text-[#f5e6d3]/90">{descripcion}</p>
+            <p className="text-[15px] font-medium leading-relaxed text-[#f5e6d3]">{descripcion}</p>
 
             <span className="rounded-full border-2 border-red-500 bg-red-500/10 px-4 py-1 text-sm font-bold text-red-400">
               Resultados en {duracion}
