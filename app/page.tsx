@@ -211,6 +211,27 @@ export default function Home() {
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-32 bg-gradient-to-b from-transparent to-[#2b0d0d]" />
       </section>
 
+      {/* Video con sonido y controles */}
+      <section className="relative bg-[#2b0d0d] px-6 py-16 text-center">
+        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-[#2b0d0d] to-transparent" />
+        <h2 className="mb-2 text-3xl font-bold text-[#c9a24b]">
+          Conoce al Maestro Juan Santiago
+        </h2>
+        <p className="mb-8 text-[#f5e6d3]/70">
+          Toca play para ver y escuchar
+        </p>
+        <div className="mx-auto max-w-xl overflow-hidden rounded-2xl border border-[#c9a24b]/30 shadow-2xl">
+          <video
+            controls
+            playsInline
+            className="w-full"
+            poster="https://res.cloudinary.com/dkq95jus0/video/upload/so_0/hero-video-1.jpg"
+          >
+            <source src="https://res.cloudinary.com/dkq95jus0/video/upload/hero-video-1" type="video/mp4" />
+          </video>
+        </div>
+      </section>
+
       {/* Servicios (con video de fondo) */}
       <section id="servicios" className="relative overflow-hidden px-6 py-16">
         <video
