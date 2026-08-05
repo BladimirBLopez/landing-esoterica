@@ -3,42 +3,74 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import FaqAccordion from "@/components/FaqAccordion";
 
-const NUMERO = "59100000000"; // TODO: reemplazar con el número real
-const TELEFONO_VISIBLE = "(+591) 000 00000"; // TODO: reemplazar
+const NUMERO = "59175928656";
+const TELEFONO_VISIBLE = "(+591) 75928656";
 
 const servicios = [
   {
-    titulo: "Amarres de Amor",
-    descripcion: "¿Anhelas recuperar a tu ex o amarrar a esa persona especial? Con la sabiduría heredada del Tatabombori, mis amarres de amor garantizan resultados duraderos.",
-    imagen: "https://picsum.photos/id/1011/900/700",
+    titulo: "Amarre de Amor",
+    descripcion: "Une corazones, despierta el sentimiento y fortalece el vínculo. No fuerzo voluntades — despierto lo que ya existe.",
+    duracion: "7 a 21 días",
+    imagen: "PLACEHOLDER_IMAGEN",
     mensaje: "Hola Maestro Juan Santiago, me interesa un Amarre de Amor. ¿Podría darme más información?",
     cta: "Solicitar un Amarre",
   },
   {
-    titulo: "Limpias y Rituales de Protección",
-    descripcion: "Rituales ancestrales del Norte de Potosí para liberar energías negativas, proteger tu hogar y atraer armonía a tu vida.",
-    imagen: "https://picsum.photos/id/1015/900/700",
-    mensaje: "Hola Maestro, quiero saber más sobre las Limpias y Rituales de Protección.",
-    cta: "Consultar al Maestro",
+    titulo: "Unión de Parejas",
+    descripcion: "Consolida, sella y protege. Elimina distancias, orgullos y peleas. Un vínculo tan fuerte que nada ni nadie los separa.",
+    duracion: "7 a 21 días",
+    imagen: "PLACEHOLDER_IMAGEN",
+    mensaje: "Hola Maestro, me interesa el trabajo de Unión de Parejas.",
+    cta: "Consultar por Unión",
   },
   {
-    titulo: "Trabajos de Prosperidad",
-    descripcion: "Rituales heredados de generación en generación para abrir caminos, atraer prosperidad y mejorar tu situación económica.",
-    imagen: "https://picsum.photos/id/1016/900/700",
-    mensaje: "Hola Maestro, me interesa un Trabajo de Prosperidad.",
-    cta: "Solicitar información",
+    titulo: "Endulzamiento",
+    descripcion: "Ablanda corazones endurecidos. Cambia dureza, malas contestaciones y frialdad por dulzura, cariño y diálogo.",
+    duracion: "5 a 14 días",
+    imagen: "PLACEHOLDER_IMAGEN",
+    mensaje: "Hola Maestro, quiero saber más sobre el Endulzamiento.",
+    cta: "Consultar Endulzamiento",
+  },
+  {
+    titulo: "Retorno del Ser Amado",
+    descripcion: "Rompe orgullos, confusiones y bloqueos. Que regrese arrepentido/a, enamorado/a y para quedarse.",
+    duracion: "7 a 21 días",
+    imagen: "PLACEHOLDER_IMAGEN",
+    mensaje: "Hola Maestro, me interesa el Retorno del Ser Amado.",
+    cta: "Solicitar Retorno",
+  },
+  {
+    titulo: "Alejamiento de Terceros",
+    descripcion: "Aparta rivales, pretendientes, chismes y malas influencias. Bloquea intrusos y protege tu relación con una barrera espiritual.",
+    duracion: "5 a 14 días",
+    imagen: "PLACEHOLDER_IMAGEN",
+    mensaje: "Hola Maestro, me interesa el Alejamiento de Terceros.",
+    cta: "Consultar Alejamiento",
   },
 ];
 
 const faq = [
-  { pregunta: "¿Qué casos atiendes?", respuesta: "Recuperación de pareja, limpias, protección y trabajos de prosperidad." },
-  { pregunta: "¿La consulta es confidencial?", respuesta: "Sí. Tu caso y toda la información que compartes son confidenciales." },
-  { pregunta: "¿Atiendes a distancia?", respuesta: "Sí. Atiendo por WhatsApp a personas de todo el país." },
-  { pregunta: "¿De dónde viene tu conocimiento?", respuesta: "Soy heredero del Tatabombori, una tradición ancestral del Norte de Potosí transmitida por generaciones." },
+  {
+    pregunta: "¿Cómo empieza el trabajo?",
+    respuesta: "Primero se hace una consulta con las Sagradas Hojas de Coca y el Tarot para ver tu situación real: si hay amor verdadero, si hay bloqueos o terceros interfiriendo, y qué trabajo necesita exactamente tu caso.",
+  },
+  {
+    pregunta: "¿Qué necesito para la consulta?",
+    respuesta: "Nombres completos de ambos, fechas de nacimiento, y contarme tu situación actual.",
+  },
+  {
+    pregunta: "¿La consulta es confidencial?",
+    respuesta: "Sí, 100% confidencial. Trabajo serio, con fe y respeto.",
+  },
+  {
+    pregunta: "¿Cuánto tiempo toma ver resultados?",
+    respuesta: "Depende del trabajo: entre 5 y 21 días según el caso. En la consulta te explico el tiempo estimado para tu situación particular.",
+  },
+  {
+    pregunta: "¿Atienden a distancia?",
+    respuesta: "Sí, se atiende por WhatsApp a cualquier persona, sin importar dónde se encuentre.",
+  },
 ];
-
-const tagsColumna1 = ["Amarres de Amor", "Limpias Espirituales", "Rituales de Protección", "Curanderismo Ancestral"];
-const tagsColumna2 = ["Trabajos de Prosperidad", "Sabiduría del Tatabombori", "Norte de Potosí", "Magia Blanca"];
 
 export default function Home() {
   return (
@@ -47,49 +79,79 @@ export default function Home() {
       <section className="relative flex flex-col items-center gap-4 overflow-hidden px-6 py-24 text-center">
         <Image
           src="https://images.unsplash.com/photo-1516585427167-9f4af9627e6c?w=1600&q=80"
-          alt="Fondo ritual"
+          alt="Fondo místico"
           fill
           priority
           className="object-cover"
         />
         <div className="absolute inset-0 bg-[#1a0505]/80" />
         <div className="relative z-10 flex flex-col items-center gap-4">
-        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#c9a24b]">
-          Curanderismo ancestral · Norte de Potosí
-        </p>
-        <h1 className="text-7xl leading-tight text-[#c9a24b] drop-shadow-lg sm:text-8xl" style={{ fontFamily: "var(--font-script)" }}>
-          Maestro Juan Santiago
-        </h1>
-        <p className="text-lg text-[#f5e6d3]/90">Heredero del Tatabombori</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#c9a24b]">
+            Altar del Tata Bombori · Norte de Potosí
+          </p>
+          <h1 className="text-6xl leading-tight text-[#c9a24b] drop-shadow-lg sm:text-7xl" style={{ fontFamily: "var(--font-script)" }}>
+            Maestro Juan Santiago
+          </h1>
+          <p className="text-lg text-[#f5e6d3]/90">Heredero del Tatabombori</p>
 
-        <h2 className="mt-4 max-w-xl text-2xl font-bold sm:text-3xl">
-          ¿Quieres que tu ex regrese a tu lado sin rogarle?
+          <h2 className="mt-4 max-w-xl text-2xl font-bold sm:text-3xl">
+            ¿Sientes que tu amor se está escapando?
+          </h2>
+          <p className="max-w-md text-[#f5e6d3]/80">
+            No dejes que se pierda lo tuyo. Trabajo con respeto, fe y experiencia — no fuerzo voluntades, despierto lo que ya existe.
+          </p>
+
+          <WhatsAppButton
+            numero={NUMERO}
+            mensaje="Hola Maestro Juan Santiago, quiero recuperar a mi pareja."
+            texto="Quiero recuperar a mi pareja"
+            className="text-base px-8 py-4"
+          />
+          <p className="text-sm text-[#f5e6d3]/60">{TELEFONO_VISIBLE}</p>
+
+          <ul className="mt-4 flex flex-col gap-2 text-sm text-[#f5e6d3]/90">
+            <li>✓ Que piense solo en ti día y noche</li>
+            <li>✓ Que regrese arrepentido/a y con más amor que nunca</li>
+            <li>✓ Que se acabe la indiferencia y vuelva la pasión</li>
+          </ul>
+        </div>
+      </section>
+
+      {/* Sobre el Altar */}
+      <section className="bg-[#2b0d0d] px-6 py-16 text-center">
+        <h2 className="mb-4 text-3xl font-bold text-[#c9a24b]">
+          Bienvenido al Altar del Tata Bombori
         </h2>
-        <p className="max-w-md text-[#f5e6d3]/80">
-          Realizo amarres de amor, limpias y rituales de protección con la sabiduría ancestral heredada de generación en generación.
+        <p className="mx-auto max-w-2xl text-[#f5e6d3]/80">
+          Donde la sabiduría ancestral de las Sagradas Hojas de Coca y la verdad revelada por las Cartas del Tarot se unen para ver tu situación, orientarte y trabajar con justicia y fe verdadera.
         </p>
+        <div className="relative mx-auto mt-10 h-64 w-full max-w-2xl overflow-hidden rounded-2xl">
+          <Image src="PLACEHOLDER_IMAGEN_ALTAR" alt="Altar del Tata Bombori" fill className="object-cover" />
+        </div>
+      </section>
 
-        <WhatsAppButton
-          numero={NUMERO}
-          mensaje="Hola Maestro Juan Santiago, quiero recuperar a mi pareja."
-          texto="Quiero recuperar a mi pareja"
-          className="text-base px-8 py-4"
-        />
-        <p className="text-sm text-[#f5e6d3]/60">{TELEFONO_VISIBLE}</p>
-
-        <ul className="mt-4 flex flex-col gap-2 text-sm text-[#f5e6d3]/90">
-          <li>✓ Recupera la comunicación</li>
-          <li>✓ Fortalece la relación</li>
-          <li>✓ Vuelve a sentir su cariño</li>
-        </ul>
+      {/* Primero consultamos */}
+      <section className="px-6 py-16 text-center">
+        <h2 className="mb-2 text-3xl font-bold text-[#c9a24b]">Primero consultamos, después trabajamos</h2>
+        <p className="mx-auto mb-10 max-w-xl text-[#f5e6d3]/80">
+          No se hace nada sin saber qué dicen las señales. Primero leemos tu caso en las Sagradas Hojas de Coca y en el Tarot para ver:
+        </p>
+        <div className="mx-auto grid max-w-2xl gap-4 text-left sm:grid-cols-2">
+          <p>✅ Si hay amor verdadero o bloqueos</p>
+          <p>✅ Si terceros están interfiriendo</p>
+          <p>✅ Qué trabajos necesita exactamente tu caso</p>
+          <p>✅ Si es posible y cuánto tiempo tomará</p>
         </div>
       </section>
 
       {/* Servicios */}
-      <section id="servicios" className="px-6 py-16">
-        <h2 className="mb-12 text-center text-3xl font-bold text-[#c9a24b]">
-          Conoce mis servicios
+      <section id="servicios" className="bg-[#2b0d0d] px-6 py-16">
+        <h2 className="mb-2 text-center text-3xl font-bold text-[#c9a24b]">
+          Servicios del Altar del Tata Bombori
         </h2>
+        <p className="mb-12 text-center text-[#f5e6d3]/70">
+          Trabajo espiritual serio y personalizado
+        </p>
         <div className="mx-auto flex max-w-4xl flex-col gap-16">
           {servicios.map((s, i) => (
             <div
@@ -104,6 +166,7 @@ export default function Home() {
               <div className="flex flex-col gap-3 text-center sm:w-1/2 sm:text-left">
                 <h3 className="text-2xl font-bold text-[#c9a24b]">{s.titulo}</h3>
                 <p className="text-[#f5e6d3]/80">{s.descripcion}</p>
+                <p className="text-sm text-[#c9a24b]/80">⏳ {s.duracion}</p>
                 <div className="flex flex-col items-center gap-1 sm:items-start">
                   <WhatsAppButton numero={NUMERO} mensaje={s.mensaje} texto={s.cta} />
                   <span className="text-sm text-[#f5e6d3]/60">{TELEFONO_VISIBLE}</span>
@@ -114,74 +177,52 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Cómo iniciar */}
-      <section className="bg-[#2b0d0d] px-6 py-16 text-center">
-        <h2 className="mb-2 text-3xl font-bold text-[#c9a24b]">¿Cómo iniciar?</h2>
-        <p className="mb-10 text-[#f5e6d3]/70">Háblame por WhatsApp en 3 pasos</p>
-        <div className="mx-auto grid max-w-3xl gap-8 sm:grid-cols-3">
-          <div>
-            <div className="mb-2 text-3xl">1</div>
-            <p className="font-semibold">Cuéntame tu caso</p>
-          </div>
-          <div>
-            <div className="mb-2 text-3xl">2</div>
-            <p className="font-semibold">Analizo tu situación</p>
-          </div>
-          <div>
-            <div className="mb-2 text-3xl">3</div>
-            <p className="font-semibold">Recibe orientación personalizada</p>
-          </div>
+      {/* Requisitos */}
+      <section className="px-6 py-16 text-center">
+        <h2 className="mb-6 text-3xl font-bold text-[#c9a24b]">
+          Para tu consulta y trabajo solo necesito
+        </h2>
+        <div className="mx-auto flex max-w-md flex-col gap-3 text-left text-[#f5e6d3]/90">
+          <p>📋 Nombres completos de ambos</p>
+          <p>📋 Fechas de nacimiento</p>
+          <p>📋 Tu situación actual</p>
         </div>
-        <div className="mt-10 flex flex-col items-center gap-1">
-          <WhatsAppButton numero={NUMERO} mensaje="Hola Maestro, quiero hablar con usted." texto="Quiero hablar con el Maestro" className="text-base px-8 py-4" />
+        <p className="mx-auto mt-8 max-w-md text-sm text-[#f5e6d3]/70">
+          🔒 100% Confidencial. Trabajo serio, con fe y respeto.
+        </p>
+        <div className="mt-8 flex flex-col items-center gap-1">
+          <WhatsAppButton
+            numero={NUMERO}
+            mensaje="Hola Maestro, quiero empezar mi consulta."
+            texto="Empezar mi consulta hoy"
+            className="text-base px-8 py-4"
+          />
           <span className="text-sm text-[#f5e6d3]/60">{TELEFONO_VISIBLE}</span>
         </div>
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="px-6 py-16">
+      <section id="faq" className="bg-[#2b0d0d] px-6 py-16">
         <h2 className="mb-10 text-center text-3xl font-bold text-[#c9a24b]">
           Preguntas Frecuentes
         </h2>
         <FaqAccordion items={faq} />
       </section>
 
-      {/* Resultados / testimonios */}
-      <section className="bg-[#2b0d0d] px-6 py-16 text-center">
-        <h2 className="mb-2 text-3xl font-bold text-[#c9a24b]">
-          Resultados que hablan por sí solos
+      {/* CTA final */}
+      <section className="flex flex-col items-center gap-6 px-6 py-16 text-center">
+        <h2 className="text-3xl font-bold text-[#c9a24b]">
+          Empezamos por la consulta y vemos tu camino
         </h2>
-        <p className="mb-8 text-[#f5e6d3]/70">Más de [X] personas ya confiaron en mi trabajo</p>
-        <div className="mb-10 flex flex-col items-center gap-1">
-          <WhatsAppButton numero={NUMERO} mensaje="Hola Maestro, quiero recibir información." texto="Quiero recibir información" />
-          <span className="text-sm text-[#f5e6d3]/60">{TELEFONO_VISIBLE}</span>
-        </div>
-        <div className="mx-auto grid max-w-4xl gap-4 sm:grid-cols-3">
-          {[1, 2, 3].map((i) => (
-            <div key={i} className="rounded-xl border border-[#c9a24b]/20 bg-[#1a0505] p-6 text-sm text-[#f5e6d3]/70">
-              [Espacio para testimonio #{i}]
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Tags / cierre */}
-      <section className="px-6 py-16 text-center">
-        <h2 className="mb-10 text-2xl font-bold text-[#c9a24b] sm:text-3xl">
-          Recupera a tu ex pareja con la sabiduría del Tatabombori
-        </h2>
-        <div className="mx-auto flex max-w-md flex-col gap-2 text-sm text-[#f5e6d3]/80 sm:flex-row sm:justify-between">
-          <ul className="flex flex-col gap-1">
-            {tagsColumna1.map((t) => (
-              <li key={t}>{t}</li>
-            ))}
-          </ul>
-          <ul className="flex flex-col gap-1">
-            {tagsColumna2.map((t) => (
-              <li key={t}>{t}</li>
-            ))}
-          </ul>
-        </div>
+        <p className="max-w-md text-[#f5e6d3]/80">
+          Cada día que pasa sin actuar es tiempo que pierdes. Escríbeme ahora mismo.
+        </p>
+        <WhatsAppButton
+          numero={NUMERO}
+          mensaje="Hola Maestro Juan Santiago, quiero recibir información."
+          texto="Quiero recibir información"
+          className="text-base px-8 py-4"
+        />
       </section>
 
       {/* Disclaimer */}
@@ -192,10 +233,13 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="border-t border-[#c9a24b]/20 px-6 py-6 text-center text-xs text-[#f5e6d3]/60">
-        <p className="mt-4">© 2026 Maestro Juan Santiago</p>
+        <p className="mt-4">© 2026 Altar del Tata Bombori · Maestro Juan Santiago</p>
       </footer>
 
-      <FloatingWhatsApp numero={NUMERO} mensaje="Hola Maestro Juan Santiago, quisiera más información." />
+      <FloatingWhatsApp
+        numero={NUMERO}
+        mensaje="Hola Maestro Juan Santiago, soy del Altar del Tata Bombori. Cuéntame: ¿quieres recuperar a tu ex, fortalecer tu relación o necesitas un amarre de amor?"
+      />
     </main>
   );
 }
