@@ -239,9 +239,11 @@ export default function Home() {
 
       {/* Servicios (con video de fondo) */}
       <section id="servicios" className="relative overflow-hidden px-6 py-16">
-        <ScrollVideo
-          src="https://assets.mixkit.co/videos/3458/3458-720.mp4"
-          className="absolute inset-0 h-full w-full object-cover"
+        <Image
+          src="https://res.cloudinary.com/dkq95jus0/image/upload/aguayo-3"
+          alt="Aguayo andino"
+          fill
+          className="object-cover"
         />
         <div className="absolute inset-0 bg-black/90" />
         <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-[#2b0d0d] to-transparent" />
