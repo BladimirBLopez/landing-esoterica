@@ -130,15 +130,17 @@ const faq = [
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#1a0505] text-[#f5e6d3]">
-      {/* Hero */}
-      <section className="relative flex flex-col items-center gap-4 overflow-hidden px-6 py-24 text-center">
-        <Image
-          src="https://images.unsplash.com/photo-1516585427167-9f4af9627e6c?w=1600&q=80"
-          alt="Fondo místico"
-          fill
-          priority
-          className="object-cover"
-        />
+      {/* Hero (pantalla completa, con video de fondo) */}
+      <section className="relative flex min-h-screen flex-col items-center justify-center gap-4 overflow-hidden px-6 py-24 text-center">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 h-full w-full object-cover"
+        >
+          <source src="https://assets.mixkit.co/videos/3461/3461-720.mp4" type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-[#1a0505]/80" />
         <div className="relative z-10 flex flex-col items-center gap-4">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#c9a24b]">
