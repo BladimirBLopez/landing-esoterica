@@ -115,7 +115,10 @@ export default function ScrollVideo({
   if (!controls) {
     return (
       <video
-        ref={videoRef}
+        ref={(el) => {
+          videoRef.current = el;
+          if (el) el.playbackRate = 0.5;
+        }}
         muted
         autoPlay
         loop={loop}
