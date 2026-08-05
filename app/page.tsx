@@ -197,7 +197,7 @@ export default function Home() {
       </section>
 
       {/* Sobre el Altar: nicho con foto nitida + tarjeta solida con pasos tipo mecha */}
-      <section className="relative overflow-hidden bg-[#2a0a12] px-6 pb-20 pt-16">
+      <section className="relative overflow-hidden bg-[#2a0a12] px-6 pb-10 pt-8">
         <Image
           src="https://res.cloudinary.com/dkq95jus0/image/upload/aguayo-2"
           alt="Aguayo andino"
