@@ -19,34 +19,37 @@ export default function FloatingWhatsApp({
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
       {abierto && (
-        <div className="w-72 overflow-hidden rounded-2xl shadow-2xl">
-          <div className="flex items-center gap-2 bg-[#075e54] px-4 py-3">
-            <svg viewBox="0 0 32 32" className="h-6 w-6 fill-white">
+        <div className="w-80 overflow-hidden rounded-2xl shadow-2xl">
+          <div className="flex items-center gap-2 bg-[#25d366] px-4 py-4">
+            <svg viewBox="0 0 32 32" className="h-7 w-7 fill-white">
               <path d="M16.04 3C9.37 3 3.98 8.39 3.98 15.06c0 2.24.6 4.34 1.65 6.15L3 29l7.98-2.6a12.03 12.03 0 0 0 5.06 1.11h.01c6.67 0 12.06-5.39 12.06-12.06C28.11 8.79 22.71 3 16.04 3zm0 21.9h-.01a10 10 0 0 1-5.12-1.4l-.37-.22-3.8 1.24 1.26-3.71-.24-.38a9.9 9.9 0 0 1-1.52-5.27C6.24 9.5 10.7 5.04 16.05 5.04c2.63 0 5.1 1.03 6.96 2.9a9.78 9.78 0 0 1 2.88 6.96c0 5.35-4.46 9.8-9.85 9.8zm5.4-7.34c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.53.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.91-2.19-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37s-1.05 1.02-1.05 2.5 1.07 2.9 1.22 3.1c.15.2 2.1 3.2 5.1 4.49.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.75-.72 2-1.41.24-.7.24-1.29.17-1.41-.07-.13-.27-.2-.57-.35z"/>
             </svg>
-            <span className="font-semibold text-white">WhatsApp</span>
+            <span className="text-lg font-semibold text-white">WhatsApp</span>
             <button
               onClick={() => setAbierto(false)}
               aria-label="Cerrar"
-              className="ml-auto text-white/80 hover:text-white"
+              className="ml-auto flex h-7 w-7 items-center justify-center rounded-full text-white/90 hover:bg-white/10"
             >
               ✕
             </button>
           </div>
-          <div className="bg-[#e5ddd5] px-4 py-4">
-            <div className="relative whitespace-pre-line rounded-lg rounded-tl-none bg-white p-3 text-sm text-gray-800 shadow">
-              {mensaje}
+          <div className="bg-[#f0f0f0] px-4 py-5">
+            <div className="relative rounded-2xl rounded-tl-none bg-white p-4 text-sm leading-relaxed text-gray-800 shadow-sm">
+              <div className="whitespace-pre-line">{mensaje}</div>
+              <span className="absolute -left-2 top-0 h-4 w-4 overflow-hidden">
+                <span className="absolute -left-2 top-0 h-4 w-4 rotate-45 bg-white" />
+              </span>
             </div>
             <a
               href={url}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 flex items-center justify-center gap-2 rounded-full bg-[#25d366] py-3 font-semibold text-white transition-colors hover:bg-[#1fb855]"
+              className="mt-4 flex items-center justify-center gap-2 rounded-full bg-[#25d366] py-3 font-semibold text-white shadow-md transition-colors hover:bg-[#1fb855]"
             >
-              <svg viewBox="0 0 32 32" className="h-5 w-5 fill-white">
-                <path d="M16.04 3C9.37 3 3.98 8.39 3.98 15.06c0 2.24.6 4.34 1.65 6.15L3 29l7.98-2.6a12.03 12.03 0 0 0 5.06 1.11h.01c6.67 0 12.06-5.39 12.06-12.06C28.11 8.79 22.71 3 16.04 3zm0 21.9h-.01a10 10 0 0 1-5.12-1.4l-.37-.22-3.8 1.24 1.26-3.71-.24-.38a9.9 9.9 0 0 1-1.52-5.27C6.24 9.5 10.7 5.04 16.05 5.04c2.63 0 5.1 1.03 6.96 2.9a9.78 9.78 0 0 1 2.88 6.96c0 5.35-4.46 9.8-9.85 9.8zm5.4-7.34c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.53.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.91-2.19-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37s-1.05 1.02-1.05 2.5 1.07 2.9 1.22 3.1c.15.2 2.1 3.2 5.1 4.49.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.75-.72 2-1.41.24-.7.24-1.29.17-1.41-.07-.13-.27-.2-.57-.35z"/>
-              </svg>
               Escríbeme ahora
+              <svg viewBox="0 0 24 24" className="h-5 w-5 fill-white">
+                <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z" />
+              </svg>
             </a>
           </div>
         </div>
@@ -63,7 +66,7 @@ export default function FloatingWhatsApp({
           </span>
         )}
         <svg viewBox="0 0 32 32" className="h-9 w-9 fill-white">
-          <path d="M16.04 3C9.37 3 3.98 8.39 3.98 15.06c0 2.24.6 4.34 1.65 6.15L3 29l7.98-2.6a12.03 12.03 0 0 0 5.06 1.11h.01c6.67 0 12.06-5.39 12.06-12.06C28.11 8.79 22.71 3 16.04 3zm0 21.9h-.01a10 10 0 0 1-5.12-1.4l-.37-.22-3.8 1.24 1.26-3.71-.24-.38a9.9 9.9 0 0 1-1.52-5.27C6.24 9.5 10.7 5.04 16.05 5.04c2.63 0 5.1 1.03 6.96 2.9a9.78 9.78 0 0 1 2.88 6.96c0 5.35-4.46 9.8-9.85 9.8zm5.4-7.34c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.53.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.91-2.19-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37s-1.05 1.02-1.05 2.5 1.07 2.9 1.22 3.1c.15.2 2.1 3.2 5.1 4.49.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.75-.72 2-1.41.24-.7.24-1.29.17-1.41-.07-.13-.27-.2-.57-.35z"/>
+          <path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.386.7 4.605 1.906 6.47L4 29l7.72-1.87A11.94 11.94 0 0 0 16.001 27C22.63 27 28 21.627 28 15S22.63 3 16.001 3zm0 21.6a9.55 9.55 0 0 1-4.87-1.33l-.35-.21-4.58 1.11 1.13-4.46-.23-.36A9.56 9.56 0 1 1 16.001 24.6z"/>
         </svg>
       </button>
     </div>
