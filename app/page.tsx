@@ -197,7 +197,7 @@ export default function Home() {
       </section>
 
       {/* Sobre el Altar: nicho con foto nitida + tarjeta solida con pasos tipo mecha */}
-      <section className="relative overflow-hidden bg-[#170a06] px-6 pb-20 pt-16">
+      <section className="relative overflow-hidden bg-[#2a0a12] px-6 pb-20 pt-16">
         <Image
           src="https://res.cloudinary.com/dkq95jus0/image/upload/aguayo-2"
           alt="Aguayo andino"
@@ -222,7 +222,7 @@ export default function Home() {
         </div>
 
         {/* Tarjeta solida superpuesta */}
-        <div className="relative z-20 mx-auto -mt-10 max-w-xl rounded-3xl border border-[#c9a24b]/30 bg-[#2a1408] px-6 py-10 text-center shadow-2xl">
+        <div className="relative z-20 mx-auto -mt-10 max-w-xl rounded-3xl border border-[#c9a24b]/30 bg-[#3d0f1a] px-6 py-10 text-center shadow-2xl">
           <h2 className="mb-4 text-4xl font-bold text-white">
             Bienvenido al Altar del Tata Bombori
           </h2>
@@ -257,7 +257,7 @@ export default function Home() {
           fill
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-[#3d2418]/60" />
+        <div className="absolute inset-0 bg-[#4a1620]/60" />
         <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-[#2b0d0d] to-transparent" />
 
         <div className="relative z-10">
@@ -288,7 +288,7 @@ export default function Home() {
           ))}
         </div>
         </div>
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-32 bg-gradient-to-b from-transparent to-[#141029]" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-32 bg-gradient-to-b from-transparent to-[#2a0a1a]" />
       </section>
 
       {/* Video con sonido y controles */}
@@ -314,8 +314,8 @@ export default function Home() {
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="relative bg-[#141029] px-6 py-16">
-        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-[#141029] to-transparent" />
+      <section id="faq" className="relative bg-[#2a0a1a] px-6 py-16">
+        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-[#2a0a1a] to-transparent" />
         <h2 className="mb-10 text-center text-4xl font-bold text-white">
           Preguntas Frecuentes
         </h2>
