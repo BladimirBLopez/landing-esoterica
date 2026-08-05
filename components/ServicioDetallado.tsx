@@ -82,7 +82,7 @@ export default function ServicioDetallado({
                     <ul className="flex flex-col gap-2">
                       {beneficios!.map((b) => (
                         <li key={b} className="flex gap-2">
-                          <span className="text-[#c9a24b]">✦</span>
+                          <span className="text-[#c9a24b]">♥</span>
                           <span>{b}</span>
                         </li>
                       ))}
@@ -96,7 +96,7 @@ export default function ServicioDetallado({
                         <ul className="flex flex-col gap-2">
                           {incluye.map((i) => (
                             <li key={i} className="flex gap-2">
-                              <span className="text-[#c9a24b]">✦</span>
+                              <span className="text-[#c9a24b]">♥</span>
                               <span>{i}</span>
                             </li>
                           ))}
@@ -136,10 +136,10 @@ export default function ServicioDetallado({
       </div>
 
       {/* Destellos decorativos en las esquinas */}
-      <span className="absolute -left-2 -top-2 text-xl text-[#f0d78c] drop-shadow-[0_0_6px_rgba(240,215,140,0.9)]">✦</span>
-      <span className="absolute -right-2 -top-2 text-xl text-[#f0d78c] drop-shadow-[0_0_6px_rgba(240,215,140,0.9)]">✦</span>
-      <span className="absolute -bottom-2 -left-2 text-xl text-[#f0d78c] drop-shadow-[0_0_6px_rgba(240,215,140,0.9)]">✦</span>
-      <span className="absolute -bottom-2 -right-2 text-xl text-[#f0d78c] drop-shadow-[0_0_6px_rgba(240,215,140,0.9)]">✦</span>
+      <span className="absolute -left-2 -top-2 text-xl text-[#f0d78c] drop-shadow-[0_0_6px_rgba(240,215,140,0.9)]">♥</span>
+      <span className="absolute -right-2 -top-2 text-xl text-[#f0d78c] drop-shadow-[0_0_6px_rgba(240,215,140,0.9)]">♥</span>
+      <span className="absolute -bottom-2 -left-2 text-xl text-[#f0d78c] drop-shadow-[0_0_6px_rgba(240,215,140,0.9)]">♥</span>
+      <span className="absolute -bottom-2 -right-2 text-xl text-[#f0d78c] drop-shadow-[0_0_6px_rgba(240,215,140,0.9)]">♥</span>
     </div>
   );
 }

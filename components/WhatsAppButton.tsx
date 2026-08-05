@@ -18,7 +18,7 @@ export default function WhatsAppButton({
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className={`group relative inline-flex items-center gap-3 rounded-full bg-gradient-to-b from-[#e6c476] to-[#c9a24b] pl-2 pr-6 py-2 text-sm font-bold uppercase tracking-wider text-[#1a0505] shadow-[0_4px_20px_rgba(0,0,0,0.5),0_0_35px_-6px_rgba(230,196,118,0.9)] ring-2 ring-[#f5e6d3]/40 transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_4px_25px_rgba(0,0,0,0.5),0_0_45px_-4px_rgba(230,196,118,1)] ${className}`}
+      className={`group relative inline-flex items-center gap-3 rounded-full bg-gradient-to-b from-[#e6c476] to-[#c9a24b] pl-2 pr-6 py-2 text-sm font-bold uppercase tracking-wider text-[#1a0505] shadow-[0_4px_20px_rgba(0,0,0,0.5),0_0_35px_-6px_rgba(230,196,118,0.9),0_0_25px_-4px_rgba(233,60,90,0.5)] ring-2 ring-[#f5e6d3]/40 transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_4px_25px_rgba(0,0,0,0.5),0_0_45px_-4px_rgba(230,196,118,1),0_0_30px_-2px_rgba(233,60,90,0.6)] ${className}`}
     >
       <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#1a0505] transition-transform duration-300 group-hover:scale-105">
         <svg viewBox="0 0 32 32" className="h-5 w-5 fill-[#e6c476]">

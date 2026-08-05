@@ -167,6 +167,11 @@ export default function Home() {
           <h1 className="text-6xl leading-tight text-[#c9a24b] sm:text-7xl" style={{ fontFamily: "var(--font-script)", textShadow: "0 4px 20px rgba(0,0,0,0.9), 0 2px 8px rgba(0,0,0,0.9)" }}>
             Maestro Juan Santiago
           </h1>
+          <div className="flex items-center gap-2 text-[#c9a24b]">
+            <span className="h-[1px] w-10 bg-[#c9a24b]/60" />
+            <span>♥</span>
+            <span className="h-[1px] w-10 bg-[#c9a24b]/60" />
+          </div>
           <p className="text-lg text-[#f5e6d3]/90">Maestro Curandero · Heredero del Tatabombori</p>
 
           <h2 className="mt-4 max-w-xl text-3xl font-bold text-white sm:text-4xl" style={{ textShadow: "0 4px 16px rgba(0,0,0,0.9)" }}>
@@ -363,7 +368,15 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-[#c9a24b]/20 px-6 py-6 text-center text-xs text-[#f5e6d3]/60">
+      <footer className="relative overflow-hidden border-t border-[#c9a24b]/20 px-6 py-6 text-center text-xs text-[#f5e6d3]/60">
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage: "radial-gradient(#c9a24b 2px, transparent 2px)",
+            backgroundSize: "24px 24px",
+          }}
+        />
+        <div className="relative z-10">
         <div className="relative mx-auto mb-4 h-10 w-16">
           <Image
             src="https://res.cloudinary.com/dkq95jus0/image/upload/bandera-bolivia"
@@ -376,6 +389,7 @@ export default function Home() {
           📞 {TELEFONO_VISIBLE}
         </a>
         <p className="mt-4">© 2026 Altar del Tata Bombori · Maestro Juan Santiago</p>
+        </div>
       </footer>
 
       <FloatingWhatsApp
