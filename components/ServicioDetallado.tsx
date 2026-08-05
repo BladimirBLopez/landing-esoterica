@@ -5,7 +5,6 @@ import Image from "next/image";
 import WhatsAppButton from "./WhatsAppButton";
 
 interface ServicioDetalladoProps {
-  icono: string;
   titulo: string;
   descripcion: string;
   detalleExtra?: string;
@@ -17,7 +16,6 @@ interface ServicioDetalladoProps {
 }
 
 export default function ServicioDetallado({
-  icono,
   titulo,
   descripcion,
   detalleExtra,
@@ -31,18 +29,16 @@ export default function ServicioDetallado({
 
   return (
     <div className="mx-auto w-full max-w-xl overflow-hidden rounded-3xl border border-[#c9a24b]/20 shadow-xl">
-      {/* Título arriba de la imagen */}
-      <div className="bg-[#3d1414] px-6 pb-4 pt-8 text-center">
-        <div className="mb-2 text-4xl">{icono}</div>
-        <h3 className="text-2xl font-bold uppercase tracking-wide text-[#c9a24b]">
-          {titulo}
-        </h3>
-        <div className="mx-auto mt-3 h-[2px] w-16 bg-[#c9a24b]/60" />
-      </div>
-
-      {/* Imagen grande */}
+      {/* Imagen con título superpuesto */}
       <div className="relative h-72 w-full">
         <Image src={imagen} alt={titulo} fill className="object-cover" />
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-6 text-center">
+          <h3 className="text-3xl font-bold uppercase tracking-wide text-[#c9a24b] drop-shadow-lg">
+            {titulo}
+          </h3>
+          <div className="h-[2px] w-16 bg-[#c9a24b]/80" />
+        </div>
       </div>
 
       {/* Bloque de contenido */}
@@ -50,7 +46,7 @@ export default function ServicioDetallado({
         <p className="text-[#f5e6d3]/90">{descripcion}</p>
 
         <span className="rounded-full border border-[#c9a24b]/40 px-4 py-1 text-xs text-[#c9a24b]">
-          ⏳ Resultados en {duracion}
+          Resultados en {duracion}
         </span>
 
         {detalleExtra && (
@@ -79,7 +75,7 @@ export default function ServicioDetallado({
           />
         </div>
         <p className="text-xs text-[#f5e6d3]/60">
-          👆 Toca para consultar directo por WhatsApp
+          Toca para consultar directo por WhatsApp
         </p>
       </div>
     </div>

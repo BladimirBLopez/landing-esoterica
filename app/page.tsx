@@ -163,7 +163,6 @@ export default function Home() {
           {servicios.map((s) => (
             <ServicioDetallado
               key={s.titulo}
-              icono={s.icono}
               titulo={s.titulo}
               descripcion={s.descripcion}
               detalleExtra={s.detalleExtra}
