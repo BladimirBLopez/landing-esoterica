@@ -142,7 +142,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-[#1a0505]/80" />
         <div className="relative z-10 flex flex-col items-center gap-4">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#c9a24b]">
-            Altar del Tata Bombori · Norte de Potosí
+            Sabiduría Ancestral · Norte de Potosí
           </p>
           <h1 className="text-6xl leading-tight text-[#c9a24b] drop-shadow-lg sm:text-7xl" style={{ fontFamily: "var(--font-script)" }}>
             Maestro Juan Santiago
@@ -152,9 +152,6 @@ export default function Home() {
           <h2 className="mt-4 max-w-xl text-2xl font-bold sm:text-3xl">
             ¿Sientes que tu amor se está escapando?
           </h2>
-          <p className="max-w-md text-[#f5e6d3]/80">
-            No dejes que se pierda lo tuyo. Trabajo con respeto, fe y experiencia — no fuerzo voluntades, despierto lo que ya existe.
-          </p>
 
           <WhatsAppButton
             numero={NUMERO}
@@ -162,12 +159,6 @@ export default function Home() {
             texto="Quiero recuperar a mi pareja"
             className="text-base px-8 py-4"
           />
-
-          <ul className="mt-4 flex flex-col gap-2 text-sm text-[#f5e6d3]/90">
-            <li>✓ Que piense solo en ti día y noche</li>
-            <li>✓ Que regrese arrepentido/a y con más amor que nunca</li>
-            <li>✓ Que se acabe la indiferencia y vuelva la pasión</li>
-          </ul>
         </div>
       </section>
 
