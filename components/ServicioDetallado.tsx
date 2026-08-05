@@ -51,11 +51,6 @@ export default function ServicioDetallado({
             <Image src={imagen} alt={titulo} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
             <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/70" />
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-6 text-center">
-              {icono && (
-                <span className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-[#c9a24b] bg-[#1a0505]/80 text-3xl shadow-lg">
-                  {icono}
-                </span>
-              )}
               <h3 className="text-4xl font-bold uppercase tracking-wide text-white drop-shadow-lg">
                 {titulo}
               </h3>
@@ -65,9 +60,11 @@ export default function ServicioDetallado({
 
           {/* Joyero decorativo entre imagen y contenido */}
           <div className="relative flex justify-center" style={{ backgroundColor: colorFondo }}>
-            <span className="absolute -top-3 flex h-6 w-6 rotate-45 items-center justify-center bg-gradient-to-br from-[#f0d78c] to-[#8a651f] shadow-md">
-              <span className="-rotate-45 text-[10px] text-[#1a0505]">✦</span>
-            </span>
+            {icono && (
+              <span className="absolute -top-6 flex h-12 w-12 items-center justify-center rounded-full border-2 border-[#c9a24b] bg-[#1a0505] text-2xl shadow-lg">
+                {icono}
+              </span>
+            )}
           </div>
 
           {/* Contenido */}
