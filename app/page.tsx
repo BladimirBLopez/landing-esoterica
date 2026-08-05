@@ -159,8 +159,8 @@ export default function Home() {
         <p className="mb-12 text-center text-[#f5e6d3]/70">
           Trabajo espiritual serio y personalizado
         </p>
-        <div className="mx-auto flex max-w-4xl flex-col gap-16">
-          {servicios.map((s, i) => (
+        <div className="mx-auto flex max-w-4xl flex-col gap-12">
+          {servicios.map((s) => (
             <ServicioDetallado
               key={s.titulo}
               icono={s.icono}
@@ -172,7 +172,7 @@ export default function Home() {
               numero={NUMERO}
               mensaje={s.mensaje}
               cta={s.cta}
-              invertido={i % 2 === 1}
+              telefonoVisible={TELEFONO_VISIBLE}
             />
           ))}
         </div>
