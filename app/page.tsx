@@ -5,7 +5,6 @@ import FaqAccordion from "@/components/FaqAccordion";
 import ServicioDetallado from "@/components/ServicioDetallado";
 
 const NUMERO = "59175928656";
-const TELEFONO_VISIBLE = "(+591) 75928656";
 
 const servicios = [
   {
@@ -172,7 +171,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Sobre el Altar */}
+      {/* Sobre el Altar + Primero consultamos (fusionado) */}
       <section className="bg-[#1e1030] px-6 py-16 text-center">
         <h2 className="mb-4 text-3xl font-bold text-[#c9a24b]">
           Bienvenido al Altar del Tata Bombori
@@ -180,22 +179,17 @@ export default function Home() {
         <p className="mx-auto max-w-2xl text-[#f5e6d3]/80">
           Donde la sabiduría ancestral de las Sagradas Hojas de Coca y la verdad revelada por las Cartas del Tarot se unen para ver tu situación, orientarte y trabajar con justicia y fe verdadera.
         </p>
-        <div className="relative mx-auto mt-10 h-64 w-full max-w-2xl overflow-hidden rounded-2xl">
+
+        <div className="relative mx-auto mt-10 h-56 w-full max-w-2xl overflow-hidden rounded-2xl">
           <Image src="https://picsum.photos/id/1040/900/600" alt="Altar del Tata Bombori" fill className="object-cover" />
         </div>
-      </section>
 
-      {/* Primero consultamos */}
-      <section className="bg-[#0f2027] px-6 py-16 text-center">
-        <h2 className="mb-2 text-3xl font-bold text-[#c9a24b]">Primero consultamos, después trabajamos</h2>
-        <p className="mx-auto mb-10 max-w-xl text-[#f5e6d3]/80">
-          No se hace nada sin saber qué dicen las señales. Primero leemos tu caso en las Sagradas Hojas de Coca y en el Tarot para ver:
-        </p>
-        <div className="mx-auto grid max-w-2xl gap-4 text-left sm:grid-cols-2">
-          <p>✅ Si hay amor verdadero o bloqueos</p>
-          <p>✅ Si terceros están interfiriendo</p>
-          <p>✅ Qué trabajos necesita exactamente tu caso</p>
-          <p>✅ Si es posible y cuánto tiempo tomará</p>
+        <div className="mx-auto mt-12 flex max-w-3xl flex-col items-center gap-3 sm:flex-row sm:justify-center">
+          <span className="rounded-full bg-[#3d1414] px-5 py-3 text-sm">🌿 Consultamos en Hojas de Coca y Tarot</span>
+          <span className="hidden text-[#c9a24b] sm:inline">→</span>
+          <span className="rounded-full bg-[#3d1414] px-5 py-3 text-sm">📖 Te decimos qué dicen y qué necesitas</span>
+          <span className="hidden text-[#c9a24b] sm:inline">→</span>
+          <span className="rounded-full bg-[#3d1414] px-5 py-3 text-sm">🕯️ Trabajamos desde el Altar del Tata Bombori</span>
         </div>
       </section>
 
@@ -224,30 +218,6 @@ export default function Home() {
               cta={s.cta}
             />
           ))}
-        </div>
-      </section>
-
-      {/* Requisitos */}
-      <section className="bg-[#2a1810] px-6 py-16 text-center">
-        <h2 className="mb-6 text-3xl font-bold text-[#c9a24b]">
-          Para tu consulta y trabajo solo necesito
-        </h2>
-        <div className="mx-auto flex max-w-md flex-col gap-3 text-left text-[#f5e6d3]/90">
-          <p>📋 Nombres completos de ambos</p>
-          <p>📋 Fechas de nacimiento</p>
-          <p>📋 Tu situación actual</p>
-        </div>
-        <p className="mx-auto mt-8 max-w-md text-sm text-[#f5e6d3]/70">
-          🔒 100% Confidencial. Trabajo serio, con fe y respeto.
-        </p>
-        <div className="mt-8 flex flex-col items-center gap-1">
-          <WhatsAppButton
-            numero={NUMERO}
-            mensaje="Hola Maestro, quiero empezar mi consulta."
-            texto="Empezar mi consulta hoy"
-            className="text-base px-8 py-4"
-          />
-          <span className="text-sm text-[#f5e6d3]/60">{TELEFONO_VISIBLE}</span>
         </div>
       </section>
 
