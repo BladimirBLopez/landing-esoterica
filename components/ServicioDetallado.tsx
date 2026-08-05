@@ -42,7 +42,7 @@ export default function ServicioDetallado({
         <Image src={imagen} alt={titulo} fill className="object-cover" />
         <div className="absolute inset-0 bg-black/50" />
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-6 text-center">
-          <h3 className="text-3xl font-bold uppercase tracking-wide text-[#c9a24b] drop-shadow-lg">
+          <h3 className="text-4xl font-bold uppercase tracking-wide text-white drop-shadow-lg">
             {titulo}
           </h3>
           <div className="h-[2px] w-16 bg-[#c9a24b]/80" />
@@ -52,7 +52,7 @@ export default function ServicioDetallado({
       <div className="flex flex-col items-center gap-4 px-6 py-8 text-center" style={{ backgroundColor: colorFondo }}>
         <p className="text-[#f5e6d3]/90">{descripcion}</p>
 
-        <span className="rounded-full border border-[#c9a24b]/40 px-4 py-1 text-xs text-[#c9a24b]">
+        <span className="rounded-full border-2 border-red-500 bg-red-500/10 px-4 py-1 text-sm font-bold text-red-400">
           Resultados en {duracion}
         </span>
 
