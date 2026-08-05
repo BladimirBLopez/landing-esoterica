@@ -23,17 +23,18 @@ export default function ScrollVideo({
 }: ScrollVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(muted);
+  const [progreso, setProgreso] = useState(0);
 
   useEffect(() => {
+    if (controls) return;
     const video = videoRef.current;
     if (!video) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          if (autoPlayOnView) {
-            video.play().catch(() => {});
-          }
+          if (autoPlayOnView) video.play().catch(() => {});
         } else {
           video.pause();
         }
@@ -43,7 +44,7 @@ export default function ScrollVideo({
 
     observer.observe(video);
     return () => observer.disconnect();
-  }, [autoPlayOnView]);
+  }, [autoPlayOnView, controls]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -51,34 +52,67 @@ export default function ScrollVideo({
 
     const onPlay = () => setIsPlaying(true);
     const onPause = () => setIsPlaying(false);
+    const onTimeUpdate = () => {
+      if (video.duration) setProgreso((video.currentTime / video.duration) * 100);
+    };
 
     video.addEventListener("play", onPlay);
     video.addEventListener("pause", onPause);
+    video.addEventListener("timeupdate", onTimeUpdate);
     return () => {
       video.removeEventListener("play", onPlay);
       video.removeEventListener("pause", onPause);
+      video.removeEventListener("timeupdate", onTimeUpdate);
     };
   }, []);
 
-  const mostrarBotonPersonalizado = controls && !isPlaying;
+  const togglePlay = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (video.paused) video.play();
+    else video.pause();
+  };
+
+  const toggleMute = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = !video.muted;
+    setIsMuted(video.muted);
+  };
+
+  const buscar = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const video = videoRef.current;
+    if (!video || !video.duration) return;
+    const nuevoProgreso = Number(e.target.value);
+    video.currentTime = (nuevoProgreso / 100) * video.duration;
+    setProgreso(nuevoProgreso);
+  };
+
+  if (!controls) {
+    return (
+      <video ref={videoRef} muted={muted} loop={loop} playsInline className={className}>
+        <source src={src} type="video/mp4" />
+      </video>
+    );
+  }
 
   return (
     <div className="relative">
       <video
         ref={videoRef}
-        muted={muted}
+        muted={isMuted}
         loop={loop}
         playsInline
-        controls={controls}
         poster={poster}
         className={className}
+        onClick={togglePlay}
       >
         <source src={src} type="video/mp4" />
       </video>
 
-      {mostrarBotonPersonalizado && (
+      {!isPlaying && (
         <button
-          onClick={() => videoRef.current?.play()}
+          onClick={togglePlay}
           aria-label="Reproducir video"
           className="absolute inset-0 flex items-center justify-center bg-black/30 transition-opacity hover:bg-black/40"
         >
@@ -89,6 +123,33 @@ export default function ScrollVideo({
           </span>
         </button>
       )}
+
+      <div className="absolute inset-x-0 bottom-0 flex items-center gap-3 bg-gradient-to-t from-black/80 to-transparent px-4 py-3">
+        <button onClick={togglePlay} aria-label={isPlaying ? "Pausar" : "Reproducir"} className="text-[#c9a24b]">
+          {isPlaying ? (
+            <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current"><path d="M6 5h4v14H6zM14 5h4v14h-4z" /></svg>
+          ) : (
+            <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current"><path d="M8 5v14l11-7z" /></svg>
+          )}
+        </button>
+
+        <input
+          type="range"
+          min={0}
+          max={100}
+          value={progreso}
+          onChange={buscar}
+          className="h-1 flex-1 cursor-pointer accent-[#c9a24b]"
+        />
+
+        <button onClick={toggleMute} aria-label={isMuted ? "Activar sonido" : "Silenciar"} className="text-[#c9a24b]">
+          {isMuted ? (
+            <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current"><path d="M16.5 12A4.5 4.5 0 0014 8v1.5a3 3 0 010 5v1.5a4.5 4.5 0 002.5-4zM5 9v6h4l5 5V4L9 9H5z" /></svg>
+          ) : (
+            <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current"><path d="M3 10v4h4l5 5V5L7 10H3zm13.5 2A4.5 4.5 0 0014 7.5v9a4.5 4.5 0 002.5-4.5z" /></svg>
+          )}
+        </button>
+      </div>
     </div>
   );
 }
