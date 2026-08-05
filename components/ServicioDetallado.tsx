@@ -6,6 +6,7 @@ import WhatsAppButton from "./WhatsAppButton";
 
 interface ServicioDetalladoProps {
   titulo: string;
+  icono?: string;
   descripcion: string;
   beneficios?: string[];
   incluyeTitulo?: string;
@@ -21,6 +22,7 @@ interface ServicioDetalladoProps {
 
 export default function ServicioDetallado({
   titulo,
+  icono,
   descripcion,
   beneficios,
   incluyeTitulo,
@@ -45,9 +47,14 @@ export default function ServicioDetallado({
       <div className="relative rounded-[28px] bg-gradient-to-br from-[#f0d78c] via-[#c9a24b] to-[#8a651f] p-[3px] shadow-[0_15px_40px_-10px_rgba(0,0,0,0.7)]">
         <div className="overflow-hidden rounded-[25px]">
           {/* Imagen con titulo */}
-          <div className="relative h-72 w-full">
+          <div className="relative aspect-video w-full">
             <Image src={imagen} alt={titulo} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
             <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/70" />
+            {icono && (
+              <span className="absolute left-4 top-4 flex h-12 w-12 items-center justify-center rounded-full border-2 border-[#c9a24b] bg-[#1a0505]/80 text-2xl shadow-lg">
+                {icono}
+              </span>
+            )}
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-6 text-center">
               <h3 className="text-4xl font-bold uppercase tracking-wide text-white drop-shadow-lg">
                 {titulo}
