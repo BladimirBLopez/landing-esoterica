@@ -114,7 +114,6 @@ export default function Home() {
             texto="Quiero recuperar a mi pareja"
             className="text-base px-8 py-4"
           />
-          <p className="text-sm text-[#f5e6d3]/60">{TELEFONO_VISIBLE}</p>
 
           <ul className="mt-4 flex flex-col gap-2 text-sm text-[#f5e6d3]/90">
             <li>✓ Que piense solo en ti día y noche</li>
