@@ -46,7 +46,7 @@ export default function Home() {
       {/* Hero */}
       <section className="relative flex flex-col items-center gap-4 overflow-hidden px-6 py-24 text-center">
         <Image
-          src="https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?w=1600&q=80"
+          src="https://images.unsplash.com/photo-1516585427167-9f4af9627e6c?w=1600&q=80"
           alt="Fondo ritual"
           fill
           priority
