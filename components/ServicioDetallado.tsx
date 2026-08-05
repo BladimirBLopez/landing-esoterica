@@ -50,12 +50,12 @@ export default function ServicioDetallado({
           <div className="relative aspect-video w-full">
             <Image src={imagen} alt={titulo} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
             <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/70" />
-            {icono && (
-              <span className="absolute left-4 top-4 flex h-12 w-12 items-center justify-center rounded-full border-2 border-[#c9a24b] bg-[#1a0505]/80 text-2xl shadow-lg">
-                {icono}
-              </span>
-            )}
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-6 text-center">
+              {icono && (
+                <span className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-[#c9a24b] bg-[#1a0505]/80 text-3xl shadow-lg">
+                  {icono}
+                </span>
+              )}
               <h3 className="text-4xl font-bold uppercase tracking-wide text-white drop-shadow-lg">
                 {titulo}
               </h3>
