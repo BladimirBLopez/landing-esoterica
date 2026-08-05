@@ -9,55 +9,100 @@ const TELEFONO_VISIBLE = "(+591) 75928656";
 
 const servicios = [
   {
-    icono: "💜",
     titulo: "Amarre de Amor",
-    descripcion: "Une corazones, despierta el sentimiento y fortalece el vínculo. No fuerzo voluntades — despierto lo que ya existe.",
-    detalleExtra: "Este trabajo te ayuda a: que piense solo en ti día y noche, que regrese arrepentido/a y con más amor que nunca, que se acabe la indiferencia y vuelva la pasión, que se alejen quienes se interponen en su camino, y a fortalecer el vínculo para que nada ni nadie los separe.",
+    descripcion: "¿Sientes que tu amor se está escapando? No dejes que se pierda lo tuyo. Hay momentos en que las energías se bloquean, aparecen dudas, celos, gente mala, y dos personas que se amaban empiezan a alejarse sin saber por qué. Eso no significa que se acabó — significa que necesita ayuda espiritual.",
+    beneficios: [
+      "Que piense solo en ti día y noche",
+      "Que regrese arrepentido/a y con más amor que nunca",
+      "Que se acabe la indiferencia y vuelva la pasión",
+      "Que se vayan quienes se interponen en su camino",
+      "Fortalecer el vínculo para que nada ni nadie los separe",
+    ],
+    notaFinal: "Trabajo con respeto, fe y experiencia. No fuerzo voluntades — despierto lo que ya existe.",
     duracion: "7 a 21 días",
     imagen: "https://picsum.photos/id/1011/900/700",
     mensaje: "Hola Maestro Juan Santiago, me interesa un Amarre de Amor. ¿Podría darme más información?",
     cta: "Solicitar un Amarre",
   },
   {
-    icono: "🔗",
     titulo: "Unión de Parejas",
-    descripcion: "Consolida, sella y protege. Elimina distancias, orgullos y peleas. Un vínculo tan fuerte que nada ni nadie los separa.",
-    detalleExtra: "Este trabajo une corazones y voluntades, acaba con la indiferencia, elimina distancias y orgullos, cierra el camino a terceros, y fortalece el amor para que sea inquebrantable.",
+    descripcion: "¿Se alejan sin razón? ¿Pelean por todo? ¿Sientes que se está rompiendo el vínculo? Este trabajo es para que nada ni nadie los separe.",
+    beneficios: [
+      "Une corazones y voluntades",
+      "Acaba con la indiferencia",
+      "Elimina distancias y orgullos",
+      "Cierra caminos a terceros",
+      "Fortalece el amor para que sea inquebrantable",
+    ],
+    notaFinal: "Trabajo espiritual serio y personalizado.",
     duracion: "7 a 21 días",
     imagen: "https://picsum.photos/id/1015/900/700",
     mensaje: "Hola Maestro, me interesa el trabajo de Unión de Parejas.",
     cta: "Consultar por Unión",
   },
   {
-    icono: "🍯",
     titulo: "Endulzamiento",
-    descripcion: "Ablanda corazones endurecidos. Cambia dureza, malas contestaciones y frialdad por dulzura, cariño y diálogo.",
-    detalleExtra: "Este trabajo ablanda el corazón endurecido, convierte la dureza en dulzura y cariño, baja el orgullo, la rabia y las malas contestaciones, abre el diálogo y la comprensión mutua, y recupera la ternura y la buena convivencia.",
+    descripcion: "¿Todo se vuelve peleas y malas palabras? ¿Se volvió frío/a, cortante o indiferente? ¿El orgullo no deja que se arreglen las cosas? Este trabajo suaviza, reconcilia y endulza tu relación.",
+    beneficios: [
+      "Ablanda el corazón endurecido",
+      "Convierte la dureza en dulzura y cariño",
+      "Baja el orgullo, la rabia y las malas contestaciones",
+      "Abre el diálogo y la comprensión mutua",
+      "Recupera la ternura y la buena convivencia",
+    ],
+    notaFinal: "Trabajo serio, personalizado y con elementos dulces sagrados.",
     duracion: "5 a 14 días",
     imagen: "https://picsum.photos/id/1016/900/700",
     mensaje: "Hola Maestro, quiero saber más sobre el Endulzamiento.",
     cta: "Consultar Endulzamiento",
   },
   {
-    icono: "🔄",
     titulo: "Retorno del Ser Amado",
-    descripcion: "Rompe orgullos, confusiones y bloqueos. Que regrese arrepentido/a, enamorado/a y para quedarse.",
-    detalleExtra: "Este trabajo rompe barreras y orgullos, hace que te extrañe día y noche, que sienta que sin ti no puede estar, que regrese arrepentido/a y buscándote, y aleja a quienes estorban en el camino.",
+    descripcion: "¿Se fue y no da señales? ¿Dice que ya no vuelve? ¿Está con otra persona? ¿El orgullo no lo/la deja volver? Este trabajo es para que regrese arrepentido, enamorado y para siempre.",
+    beneficios: [
+      "Rompe barreras y orgullos",
+      "Que te extrañe día y noche",
+      "Que sienta que sin ti no puede estar",
+      "Que regrese arrepentido/a y buscándote",
+      "Que se alejen quienes estorban",
+    ],
+    notaFinal: "Trabajo espiritual serio y personalizado.",
     duracion: "7 a 21 días",
     imagen: "https://picsum.photos/id/1025/900/700",
     mensaje: "Hola Maestro, me interesa el Retorno del Ser Amado.",
     cta: "Solicitar Retorno",
   },
   {
-    icono: "⚔️",
     titulo: "Alejamiento de Terceros",
-    descripcion: "Aparta rivales, pretendientes, chismes y malas influencias. Bloquea intrusos y protege tu relación con una barrera espiritual.",
-    detalleExtra: "Incluye: corte energético para romper la conexión con quien se interpone, protección y sellado del vínculo, elementos de limpieza (hierbas consagradas, velas de corte, aceites de protección), oración de apartamiento, y bloqueo permanente contra nuevas intromisiones.",
+    descripcion: "¿Hay otra/o metiéndose? ¿Chismes, consejas o envidias dañando tu relación? ¿Alguien quiere separarlos? ¿Tu pareja se deja influenciar por otros? Este trabajo es para que se aleje quien se mete en tu amor, definitivamente.",
+    beneficios: [
+      "Alejar a rivales, pretendientes o amantes que se interponen",
+      "Cortar chismes, malas consejas y personas que influyen mal",
+      "Apartar envidias, ojos malos y energías dañinas",
+      "Fortalecer la fidelidad y la unión entre ustedes",
+      "Crear una barrera espiritual para que nadie los separe",
+    ],
+    incluyeTitulo: "¿Qué incluye el trabajo?",
+    incluye: [
+      "Corte energético: rompe la conexión e influencia con quien se interpone",
+      "Protección y sellado del vínculo para que nadie más pueda entrar",
+      "Elementos de limpieza: hierbas consagradas, velas de corte, aceites de protección",
+      "Oración de apartamiento y bloqueo permanente contra nuevas intromisiones",
+    ],
+    notaFinal: "Trabajo espiritual serio y poderoso.",
     duracion: "5 a 14 días",
     imagen: "https://picsum.photos/id/1039/900/700",
     mensaje: "Hola Maestro, me interesa el Alejamiento de Terceros.",
     cta: "Consultar Alejamiento",
   },
+];
+
+const resumenServicios = [
+  { titulo: "Amarre de Amor", texto: "Une corazones, despierta el sentimiento, fortalece el vínculo.", duracion: "7–21 días" },
+  { titulo: "Unión de Parejas", texto: "Consolida, sella y protege. Un vínculo tan fuerte que nadie los separa.", duracion: "7–21 días" },
+  { titulo: "Endulzamiento", texto: "Ablanda corazones endurecidos, cambia frialdad por dulzura y diálogo.", duracion: "5–14 días" },
+  { titulo: "Retorno del Ser Amado", texto: "Rompe orgullos y bloqueos. Que regrese arrepentido/a y para quedarse.", duracion: "7–21 días" },
+  { titulo: "Alejamiento de Terceros", texto: "Aparta rivales, chismes y malas influencias. Protege tu relación.", duracion: "5–14 días" },
 ];
 
 const faq = [
@@ -103,7 +148,7 @@ export default function Home() {
           <h1 className="text-6xl leading-tight text-[#c9a24b] drop-shadow-lg sm:text-7xl" style={{ fontFamily: "var(--font-script)" }}>
             Maestro Juan Santiago
           </h1>
-          <p className="text-lg text-[#f5e6d3]/90">Heredero del Tatabombori</p>
+          <p className="text-lg text-[#f5e6d3]/90">Maestro Curandero · Heredero del Tatabombori</p>
 
           <h2 className="mt-4 max-w-xl text-2xl font-bold sm:text-3xl">
             ¿Sientes que tu amor se está escapando?
@@ -168,7 +213,10 @@ export default function Home() {
               key={s.titulo}
               titulo={s.titulo}
               descripcion={s.descripcion}
-              detalleExtra={s.detalleExtra}
+              beneficios={s.beneficios}
+              incluyeTitulo={s.incluyeTitulo}
+              incluye={s.incluye}
+              notaFinal={s.notaFinal}
               duracion={s.duracion}
               imagen={s.imagen}
               numero={NUMERO}
@@ -211,20 +259,37 @@ export default function Home() {
         <FaqAccordion items={faq} />
       </section>
 
-      {/* CTA final */}
-      <section className="flex flex-col items-center gap-6 px-6 py-16 text-center">
-        <h2 className="text-3xl font-bold text-[#c9a24b]">
-          Empezamos por la consulta y vemos tu camino
+      {/* Resumen final + CTA */}
+      <section className="px-6 py-16 text-center">
+        <h2 className="mb-10 text-3xl font-bold text-[#c9a24b]">
+          Resumen de mis trabajos
         </h2>
-        <p className="max-w-md text-[#f5e6d3]/80">
-          Cada día que pasa sin actuar es tiempo que pierdes. Escríbeme ahora mismo.
+        <div className="mx-auto flex max-w-2xl flex-col gap-4 text-left">
+          {resumenServicios.map((r) => (
+            <div key={r.titulo} className="rounded-xl border border-[#c9a24b]/20 bg-[#2b0d0d] p-4">
+              <div className="flex items-baseline justify-between gap-2">
+                <h3 className="font-semibold text-[#c9a24b]">{r.titulo}</h3>
+                <span className="whitespace-nowrap text-xs text-[#f5e6d3]/60">⏳ {r.duracion}</span>
+              </div>
+              <p className="mt-1 text-sm text-[#f5e6d3]/80">{r.texto}</p>
+            </div>
+          ))}
+        </div>
+
+        <p className="mx-auto mt-8 max-w-md text-sm text-[#f5e6d3]/70">
+          🔒 100% Confidencial. Trabajo serio y con fe.
+          <br />
+          Para cualquier trabajo solo necesito: nombres completos, fechas de nacimiento y tu situación.
         </p>
-        <WhatsAppButton
-          numero={NUMERO}
-          mensaje="Hola Maestro Juan Santiago, quiero recibir información."
-          texto="Quiero recibir información"
-          className="text-base px-8 py-4"
-        />
+
+        <div className="mt-8 flex justify-center">
+          <WhatsAppButton
+            numero={NUMERO}
+            mensaje="Hola Maestro Juan Santiago, quiero empezar hoy mismo."
+            texto="Escríbeme ahora y empezamos hoy mismo"
+            className="text-base px-8 py-4"
+          />
+        </div>
       </section>
 
       {/* Disclaimer */}

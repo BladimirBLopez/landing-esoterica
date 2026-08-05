@@ -7,7 +7,10 @@ import WhatsAppButton from "./WhatsAppButton";
 interface ServicioDetalladoProps {
   titulo: string;
   descripcion: string;
-  detalleExtra?: string;
+  beneficios?: string[];
+  incluyeTitulo?: string;
+  incluye?: string[];
+  notaFinal?: string;
   duracion: string;
   imagen: string;
   numero: string;
@@ -18,7 +21,10 @@ interface ServicioDetalladoProps {
 export default function ServicioDetallado({
   titulo,
   descripcion,
-  detalleExtra,
+  beneficios,
+  incluyeTitulo,
+  incluye,
+  notaFinal,
   duracion,
   imagen,
   numero,
@@ -26,10 +32,10 @@ export default function ServicioDetallado({
   cta,
 }: ServicioDetalladoProps) {
   const [abierto, setAbierto] = useState(false);
+  const tieneDetalle = beneficios && beneficios.length > 0;
 
   return (
     <div className="mx-auto w-full max-w-xl overflow-hidden rounded-3xl border border-[#c9a24b]/20 shadow-xl">
-      {/* Imagen con título superpuesto */}
       <div className="relative h-72 w-full">
         <Image src={imagen} alt={titulo} fill className="object-cover" />
         <div className="absolute inset-0 bg-black/50" />
@@ -41,7 +47,6 @@ export default function ServicioDetallado({
         </div>
       </div>
 
-      {/* Bloque de contenido */}
       <div className="flex flex-col items-center gap-4 bg-[#3d1414] px-6 py-8 text-center">
         <p className="text-[#f5e6d3]/90">{descripcion}</p>
 
@@ -49,12 +54,41 @@ export default function ServicioDetallado({
           Resultados en {duracion}
         </span>
 
-        {detalleExtra && (
+        {tieneDetalle && (
           <>
             {abierto && (
-              <p className="rounded-lg bg-[#2b0d0d] p-4 text-sm text-[#f5e6d3]/70">
-                {detalleExtra}
-              </p>
+              <div className="w-full rounded-lg bg-[#2b0d0d] p-5 text-left text-sm text-[#f5e6d3]/80">
+                <ul className="flex flex-col gap-2">
+                  {beneficios!.map((b) => (
+                    <li key={b} className="flex gap-2">
+                      <span className="text-[#c9a24b]">✦</span>
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                {incluye && incluye.length > 0 && (
+                  <>
+                    <p className="mt-4 mb-2 font-semibold text-[#c9a24b]">
+                      {incluyeTitulo || "¿Qué incluye el trabajo?"}
+                    </p>
+                    <ul className="flex flex-col gap-2">
+                      {incluye.map((i) => (
+                        <li key={i} className="flex gap-2">
+                          <span className="text-[#c9a24b]">✦</span>
+                          <span>{i}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+
+                {notaFinal && (
+                  <p className="mt-4 border-t border-[#c9a24b]/20 pt-4 text-xs italic text-[#f5e6d3]/60">
+                    {notaFinal}
+                  </p>
+                )}
+              </div>
             )}
             <button
               onClick={() => setAbierto(!abierto)}
