@@ -331,7 +331,17 @@ export default function Home() {
 
       <FloatingWhatsApp
         numero={NUMERO}
-        mensaje="Hola Maestro Juan Santiago, soy del Altar del Tata Bombori. Cuéntame: ¿quieres recuperar a tu ex, fortalecer tu relación o necesitas un amarre de amor?"
+        mensaje={`🤝 Bienvenido de parte del Maestro Juan Santiago
+
+¡Hola! Gracias por contactarme. Soy el Maestro Juan Santiago, especialista en:
+✨ Amarres de amor • Unión de parejas
+✨ Retornos de seres amados
+✨ Endulzamiento de relaciones
+✨ Alejamiento de personas y terceros
+
+Con años de experiencia y sabiduría tradicional, trabajo con respeto, seriedad y confidencialidad absoluta. Cuéntame con claridad tu situación y lo que deseas lograr. Estoy aquí para orientarte.
+
+🙏 Bendiciones.`}
       />
     </main>
   );
