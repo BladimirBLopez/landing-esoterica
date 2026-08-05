@@ -20,38 +20,58 @@ export default function FloatingWhatsApp({
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
       {abierto && (
         <div className="w-80 overflow-hidden rounded-2xl shadow-2xl">
-          <div className="flex items-center gap-2 bg-[#25d366] px-4 py-4">
-            <svg viewBox="0 0 32 32" className="h-7 w-7 fill-white">
-              <path d="M16.04 3C9.37 3 3.98 8.39 3.98 15.06c0 2.24.6 4.34 1.65 6.15L3 29l7.98-2.6a12.03 12.03 0 0 0 5.06 1.11h.01c6.67 0 12.06-5.39 12.06-12.06C28.11 8.79 22.71 3 16.04 3zm0 21.9h-.01a10 10 0 0 1-5.12-1.4l-.37-.22-3.8 1.24 1.26-3.71-.24-.38a9.9 9.9 0 0 1-1.52-5.27C6.24 9.5 10.7 5.04 16.05 5.04c2.63 0 5.1 1.03 6.96 2.9a9.78 9.78 0 0 1 2.88 6.96c0 5.35-4.46 9.8-9.85 9.8zm5.4-7.34c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.53.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.91-2.19-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37s-1.05 1.02-1.05 2.5 1.07 2.9 1.22 3.1c.15.2 2.1 3.2 5.1 4.49.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.75-.72 2-1.41.24-.7.24-1.29.17-1.41-.07-.13-.27-.2-.57-.35z"/>
-            </svg>
-            <span className="text-lg font-semibold text-white">WhatsApp</span>
-            <button
-              onClick={() => setAbierto(false)}
-              aria-label="Cerrar"
-              className="ml-auto flex h-7 w-7 items-center justify-center rounded-full text-white/90 hover:bg-white/10"
-            >
-              ✕
+          {/* Header estilo WhatsApp */}
+          <div className="flex items-center gap-3 bg-[#075e54] px-3 py-3">
+            <button onClick={() => setAbierto(false)} aria-label="Cerrar" className="text-white">
+              <svg viewBox="0 0 24 24" className="h-5 w-5 fill-white"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
             </button>
-          </div>
-          <div className="bg-[#f0f0f0] px-4 py-5">
-            <div className="relative rounded-2xl rounded-tl-none bg-white p-4 text-sm leading-relaxed text-gray-800 shadow-sm">
-              <div className="whitespace-pre-line">{mensaje}</div>
-              <span className="absolute -left-2 top-0 h-4 w-4 overflow-hidden">
-                <span className="absolute -left-2 top-0 h-4 w-4 rotate-45 bg-white" />
-              </span>
+            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#c9a24b] text-sm font-bold text-[#1a0505]">
+              MJ
             </div>
-            <a
-              href={url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 flex items-center justify-center gap-2 rounded-full bg-[#25d366] py-3 font-semibold text-white shadow-md transition-colors hover:bg-[#1fb855]"
-            >
-              Escríbeme ahora
-              <svg viewBox="0 0 24 24" className="h-5 w-5 fill-white">
-                <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z" />
-              </svg>
-            </a>
+            <div className="flex flex-col leading-tight">
+              <span className="text-sm font-semibold text-white">{nombre}</span>
+              <span className="text-xs text-white/70">en línea</span>
+            </div>
+            <div className="ml-auto flex items-center gap-4 text-white/90">
+              <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current"><path d="M17 10.5V7a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h12a1 1 0 001-1v-3.5l4 4v-11l-4 4z"/></svg>
+              <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.57.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.57 1 1 0 01-.25 1.01l-2.2 2.21z"/></svg>
+              <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current"><path d="M12 8a2 2 0 100-4 2 2 0 000 4zm0 2a2 2 0 100 4 2 2 0 000-4zm0 6a2 2 0 100 4 2 2 0 000-4z"/></svg>
+            </div>
           </div>
+
+          {/* Fondo de chat con la burbuja */}
+          <div
+            className="px-4 py-5"
+            style={{
+              backgroundColor: "#e5ddd5",
+              backgroundImage:
+                "radial-gradient(circle at 20% 20%, rgba(0,0,0,0.03) 1px, transparent 1px), radial-gradient(circle at 60% 70%, rgba(0,0,0,0.03) 1px, transparent 1px)",
+              backgroundSize: "28px 28px",
+            }}
+          >
+            <div className="relative max-w-[85%] rounded-lg rounded-tl-none bg-white p-3 text-sm leading-relaxed text-gray-800 shadow">
+              <div className="whitespace-pre-line">{mensaje}</div>
+              <div className="mt-1 flex justify-end text-[10px] text-gray-400">
+                {new Date().toLocaleTimeString("es-BO", { hour: "2-digit", minute: "2-digit" })}
+              </div>
+              <span className="absolute -left-[7px] top-0 h-0 w-0 border-b-[10px] border-r-[10px] border-b-transparent border-r-white" />
+            </div>
+          </div>
+
+          {/* Input simulado que lleva al chat real */}
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 bg-[#f0f0f0] px-3 py-3"
+          >
+            <span className="flex-1 truncate rounded-full bg-white px-4 py-2 text-sm text-gray-400 shadow-inner">
+              Escribe un mensaje
+            </span>
+            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#25d366]">
+              <svg viewBox="0 0 24 24" className="h-5 w-5 fill-white"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>
+            </span>
+          </a>
         </div>
       )}
 
