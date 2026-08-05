@@ -34,7 +34,7 @@ export default function ServicioDetallado({
   return (
     <div className="mx-auto w-full max-w-xl overflow-hidden rounded-3xl border border-[#c9a24b]/20 shadow-xl">
       {/* Título arriba de la imagen */}
-      <div className="bg-[#1a0505] px-6 pb-4 pt-8 text-center">
+      <div className="bg-[#3d1414] px-6 pb-4 pt-8 text-center">
         <div className="mb-2 text-4xl">{icono}</div>
         <h3 className="text-2xl font-bold uppercase tracking-wide text-[#c9a24b]">
           {titulo}
@@ -48,7 +48,7 @@ export default function ServicioDetallado({
       </div>
 
       {/* Bloque de contenido */}
-      <div className="flex flex-col items-center gap-4 bg-[#2b0d0d] px-6 py-8 text-center">
+      <div className="flex flex-col items-center gap-4 bg-[#3d1414] px-6 py-8 text-center">
         <p className="text-[#f5e6d3]/90">{descripcion}</p>
 
         <span className="rounded-full border border-[#c9a24b]/40 px-4 py-1 text-xs text-[#c9a24b]">
@@ -58,7 +58,7 @@ export default function ServicioDetallado({
         {detalleExtra && (
           <>
             {abierto && (
-              <p className="rounded-lg bg-[#1a0505] p-4 text-sm text-[#f5e6d3]/70">
+              <p className="rounded-lg bg-[#2b0d0d] p-4 text-sm text-[#f5e6d3]/70">
                 {detalleExtra}
               </p>
             )}
