@@ -1,4 +1,5 @@
 import Image from "next/image";
+import ScrollVideo from "@/components/ScrollVideo";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import FaqAccordion from "@/components/FaqAccordion";
@@ -132,15 +133,10 @@ export default function Home() {
     <main className="min-h-screen bg-[#1a0505] text-[#f5e6d3]">
       {/* Hero (pantalla completa, con video de fondo) */}
       <section className="relative flex min-h-screen flex-col items-center justify-center gap-4 overflow-hidden px-6 py-24 text-center">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
+        <ScrollVideo
+          src="https://assets.mixkit.co/videos/3461/3461-720.mp4"
           className="absolute inset-0 h-full w-full object-cover"
-        >
-          <source src="https://assets.mixkit.co/videos/3461/3461-720.mp4" type="video/mp4" />
-        </video>
+        />
         <div className="absolute inset-0 bg-[#1a0505]/80" />
         <div className="relative z-10 flex flex-col items-center gap-4">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#c9a24b]">
@@ -221,28 +217,24 @@ export default function Home() {
           Toca play para ver y escuchar
         </p>
         <div className="mx-auto max-w-xl overflow-hidden rounded-2xl border border-[#c9a24b]/30 shadow-2xl">
-          <video
-            controls
-            playsInline
-            className="w-full"
+          <ScrollVideo
+            src="https://res.cloudinary.com/dkq95jus0/video/upload/hero-video-1"
             poster="https://res.cloudinary.com/dkq95jus0/video/upload/so_0/hero-video-1.jpg"
-          >
-            <source src="https://res.cloudinary.com/dkq95jus0/video/upload/hero-video-1" type="video/mp4" />
-          </video>
+            className="w-full"
+            muted={false}
+            loop={false}
+            controls={true}
+            autoPlayOnView={false}
+          />
         </div>
       </section>
 
       {/* Servicios (con video de fondo) */}
       <section id="servicios" className="relative overflow-hidden px-6 py-16">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
+        <ScrollVideo
+          src="https://assets.mixkit.co/videos/3458/3458-720.mp4"
           className="absolute inset-0 h-full w-full object-cover"
-        >
-          <source src="https://assets.mixkit.co/videos/3458/3458-720.mp4" type="video/mp4" />
-        </video>
+        />
         <div className="absolute inset-0 bg-black/90" />
         <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-[#2b0d0d] to-transparent" />
 
