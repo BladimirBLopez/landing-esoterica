@@ -135,7 +135,7 @@ const faq = [
   },
   {
     pregunta: "¿Atienden a distancia?",
-    respuesta: "Sí, se atiende por WhatsApp a cualquier persona, sin importar dónde se encuentre.",
+    respuesta: "Sí. Atiendo en Bolivia y también a distancia a otros países por WhatsApp, sin importar dónde te encuentres.",
   },
 ];
 
