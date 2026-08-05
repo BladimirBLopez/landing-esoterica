@@ -355,12 +355,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Disclaimer */}
-      <section className="px-6 pb-8 text-center text-xs text-[#f5e6d3]/50">
-        <p>* Servicio exclusivo para mayores de 18 años, según legislaciones vigentes.</p>
-        <p>** No se garantiza ningún resultado específico y dichos resultados pueden variar según los casos.</p>
-      </section>
-
       {/* Footer */}
       <footer className="border-t border-[#c9a24b]/20 px-6 py-6 text-center text-xs text-[#f5e6d3]/60">
         <div className="relative mx-auto mb-4 h-10 w-16">
