@@ -243,7 +243,7 @@ export default function Home() {
         >
           <source src="https://assets.mixkit.co/videos/3458/3458-720.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-[#2b0d0d]/85" />
+        <div className="absolute inset-0 bg-black/90" />
         <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-[#2b0d0d] to-transparent" />
 
         <div className="relative z-10">
