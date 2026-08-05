@@ -19,7 +19,7 @@ export default function FloatingWhatsApp({
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
       {abierto && (
-        <div className="w-80 overflow-hidden rounded-2xl shadow-2xl">
+        <div className="flex w-96 max-w-[90vw] flex-col overflow-hidden rounded-2xl shadow-2xl">
           {/* Header estilo WhatsApp */}
           <div className="flex items-center gap-3 bg-[#075e54] px-3 py-3">
             <button onClick={() => setAbierto(false)} aria-label="Cerrar" className="text-white">
@@ -41,7 +41,7 @@ export default function FloatingWhatsApp({
 
           {/* Fondo de chat con la burbuja */}
           <div
-            className="px-4 py-5"
+            className="max-h-[45vh] overflow-y-auto px-4 py-5"
             style={{
               backgroundColor: "#e5ddd5",
               backgroundImage:
