@@ -151,7 +151,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-[#1a0505]/80" />
 
         {/* Bandera de Potosi, esquina superior derecha, mas grande e inclinada */}
-        <div className="absolute right-0 top-0 z-10 h-44 w-60 opacity-50 drop-shadow-lg">
+        <div className="absolute -right-6 -top-6 z-10 h-40 w-52 opacity-50 drop-shadow-lg">
           <Image
             src="https://res.cloudinary.com/dkq95jus0/image/upload/bandera-potosi-2"
             alt="Bandera de Potosí"
