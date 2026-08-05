@@ -16,6 +16,7 @@ interface ServicioDetalladoProps {
   numero: string;
   mensaje: string;
   cta: string;
+  colorFondo?: string;
 }
 
 export default function ServicioDetallado({
@@ -30,6 +31,7 @@ export default function ServicioDetallado({
   numero,
   mensaje,
   cta,
+  colorFondo = "#3d1414",
 }: ServicioDetalladoProps) {
   const [abierto, setAbierto] = useState(false);
   const tieneDetalle = beneficios && beneficios.length > 0;
@@ -47,7 +49,7 @@ export default function ServicioDetallado({
         </div>
       </div>
 
-      <div className="flex flex-col items-center gap-4 bg-[#3d1414] px-6 py-8 text-center">
+      <div className="flex flex-col items-center gap-4 px-6 py-8 text-center" style={{ backgroundColor: colorFondo }}>
         <p className="text-[#f5e6d3]/90">{descripcion}</p>
 
         <span className="rounded-full border border-[#c9a24b]/40 px-4 py-1 text-xs text-[#c9a24b]">

@@ -23,6 +23,7 @@ const servicios = [
     imagen: "https://picsum.photos/id/1011/900/700",
     mensaje: "Hola Maestro Juan Santiago, me interesa un Amarre de Amor. ¿Podría darme más información?",
     cta: "Solicitar un Amarre",
+    color: "#4a1420",
   },
   {
     titulo: "Unión de Parejas",
@@ -39,6 +40,7 @@ const servicios = [
     imagen: "https://picsum.photos/id/1015/900/700",
     mensaje: "Hola Maestro, me interesa el trabajo de Unión de Parejas.",
     cta: "Consultar por Unión",
+    color: "#3d2814",
   },
   {
     titulo: "Endulzamiento",
@@ -55,6 +57,7 @@ const servicios = [
     imagen: "https://picsum.photos/id/1016/900/700",
     mensaje: "Hola Maestro, quiero saber más sobre el Endulzamiento.",
     cta: "Consultar Endulzamiento",
+    color: "#3d2b0a",
   },
   {
     titulo: "Retorno del Ser Amado",
@@ -71,6 +74,7 @@ const servicios = [
     imagen: "https://picsum.photos/id/1025/900/700",
     mensaje: "Hola Maestro, me interesa el Retorno del Ser Amado.",
     cta: "Solicitar Retorno",
+    color: "#4a1414",
   },
   {
     titulo: "Alejamiento de Terceros",
@@ -94,6 +98,7 @@ const servicios = [
     imagen: "https://picsum.photos/id/1039/900/700",
     mensaje: "Hola Maestro, me interesa el Alejamiento de Terceros.",
     cta: "Consultar Alejamiento",
+    color: "#1e1830",
   },
 ];
 
@@ -238,6 +243,7 @@ export default function Home() {
               numero={NUMERO}
               mensaje={s.mensaje}
               cta={s.cta}
+              colorFondo={s.color}
             />
           ))}
         </div>
