@@ -165,33 +165,49 @@ export default function Home() {
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-40 bg-gradient-to-b from-transparent to-[#1a0505]" />
       </section>
 
-      {/* Sobre el Altar + Primero consultamos (fusionado, con imagen de fondo) */}
-      <section className="relative min-h-[700px] overflow-hidden px-6 py-20 text-center">
-        <Image
-          src="https://res.cloudinary.com/dkq95jus0/image/upload/altar-principal-2"
-          alt="Altar del Tata Bombori"
-          fill
-          style={{ objectFit: "cover", objectPosition: "center 30%" }}
-        />
-        <div className="absolute inset-0 bg-[#2a1408]/60" />
+      {/* Sobre el Altar: nicho con foto nitida + tarjeta solida con pasos tipo mecha */}
+      <section className="relative bg-[#170a06] px-6 pb-20 pt-16">
         <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-[#1a0505] to-transparent" />
 
-        <div className="relative z-10">
+        {/* Nicho con la foto */}
+        <div className="relative mx-auto h-80 w-full max-w-sm">
+          <div className="absolute -inset-6 rounded-full bg-[#ff9d42]/20 blur-3xl" />
+          <div className="relative h-full w-full overflow-hidden rounded-t-full border-2 border-[#c9a24b]/50 shadow-2xl">
+            <Image
+              src="https://res.cloudinary.com/dkq95jus0/image/upload/altar-principal-2"
+              alt="Altar del Tata Bombori"
+              fill
+              style={{ objectFit: "cover", objectPosition: "center 30%" }}
+            />
+            <div className="absolute inset-0 shadow-[inset_0_0_60px_25px_rgba(0,0,0,0.55)]" />
+          </div>
+        </div>
+
+        {/* Tarjeta solida superpuesta */}
+        <div className="relative z-20 mx-auto -mt-10 max-w-xl rounded-3xl border border-[#c9a24b]/30 bg-[#2a1408] px-6 py-10 text-center shadow-2xl">
           <h2 className="mb-4 text-3xl font-bold text-[#c9a24b]">
             Bienvenido al Altar del Tata Bombori
           </h2>
-          <p className="mx-auto max-w-2xl text-[#f5e6d3]/90">
+          <p className="mx-auto max-w-md text-[#f5e6d3]/90">
             Donde la sabiduría ancestral de las Sagradas Hojas de Coca y la verdad revelada por las Cartas del Tarot se unen para ver tu situación, orientarte y trabajar con justicia y fe verdadera.
           </p>
 
-          <div className="mx-auto mt-12 flex max-w-3xl flex-col items-center gap-3 sm:flex-row sm:justify-center">
-            <span className="rounded-full bg-[#3d1414] px-5 py-3 text-sm">🌿 Consultamos en Hojas de Coca y Tarot</span>
-            <span className="hidden text-[#c9a24b] sm:inline">→</span>
-            <span className="rounded-full bg-[#3d1414] px-5 py-3 text-sm">📖 Te decimos qué dicen y qué necesitas</span>
-            <span className="hidden text-[#c9a24b] sm:inline">→</span>
-            <span className="rounded-full bg-[#3d1414] px-5 py-3 text-sm">🕯️ Trabajamos desde el Altar del Tata Bombori</span>
+          <div className="relative mx-auto mt-10 flex max-w-xs flex-col gap-7 border-l-2 border-[#c9a24b]/50 pl-6 text-left">
+            <div className="relative">
+              <span className="absolute -left-[31px] top-1 h-3 w-3 rounded-full bg-[#c9a24b] shadow-[0_0_8px_2px_rgba(201,162,75,0.6)]" />
+              <p className="text-sm text-[#f5e6d3]/90">🌿 Consultamos en Hojas de Coca y Tarot</p>
+            </div>
+            <div className="relative">
+              <span className="absolute -left-[31px] top-1 h-3 w-3 rounded-full bg-[#c9a24b] shadow-[0_0_8px_2px_rgba(201,162,75,0.6)]" />
+              <p className="text-sm text-[#f5e6d3]/90">📖 Te decimos qué dicen y qué necesitas</p>
+            </div>
+            <div className="relative">
+              <span className="absolute -left-[31px] top-1 h-3 w-3 rounded-full bg-[#c9a24b] shadow-[0_0_8px_2px_rgba(201,162,75,0.6)]" />
+              <p className="text-sm text-[#f5e6d3]/90">🕯️ Trabajamos desde el Altar del Tata Bombori</p>
+            </div>
           </div>
         </div>
+
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-32 bg-gradient-to-b from-transparent to-[#2b0d0d]" />
       </section>
 
