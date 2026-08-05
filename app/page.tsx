@@ -179,7 +179,7 @@ export default function Home() {
             texto="Quiero recuperar a mi pareja"
             className="text-base px-8 py-4"
           />
-          <a href={`tel:+${NUMERO}`} className="text-4xl tracking-wide text-[#c9a24b] drop-shadow-lg hover:text-[#f0d78c] sm:text-5xl" style={{ fontFamily: "var(--font-script)" }}>
+          <a href={`tel:+${NUMERO}`} className="text-3xl font-bold tracking-wide text-[#c9a24b] drop-shadow-lg hover:text-[#f0d78c] sm:text-4xl" style={{ fontFamily: "var(--font-cinzel)" }}>
             📞 {TELEFONO_VISIBLE}
           </a>
         </div>
