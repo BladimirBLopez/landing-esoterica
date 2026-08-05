@@ -5,13 +5,11 @@ import { useState } from "react";
 interface FloatingWhatsAppProps {
   numero: string;
   mensaje: string;
-  nombre?: string;
 }
 
 export default function FloatingWhatsApp({
   numero,
   mensaje,
-  nombre = "Maestro Juan Santiago",
 }: FloatingWhatsAppProps) {
   const [abierto, setAbierto] = useState(false);
   const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
