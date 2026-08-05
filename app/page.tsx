@@ -245,7 +245,7 @@ export default function Home() {
           fill
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-black/90" />
+        <div className="absolute inset-0 bg-black/60" />
         <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-[#2b0d0d] to-transparent" />
 
         <div className="relative z-10">
