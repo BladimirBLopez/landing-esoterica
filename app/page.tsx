@@ -192,7 +192,14 @@ export default function Home() {
       </section>
 
       {/* Sobre el Altar: nicho con foto nitida + tarjeta solida con pasos tipo mecha */}
-      <section className="relative bg-[#170a06] px-6 pb-20 pt-16">
+      <section className="relative overflow-hidden bg-[#170a06] px-6 pb-20 pt-16">
+        <Image
+          src="https://res.cloudinary.com/dkq95jus0/image/upload/aguayo-2"
+          alt="Aguayo andino"
+          fill
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-[#170a06]/85" />
         <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-[#1a0505] to-transparent" />
 
         {/* Nicho con la foto */}
