@@ -2,6 +2,7 @@ import Image from "next/image";
 import ScrollVideo from "@/components/ScrollVideo";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import MusicaFondo from "@/components/MusicaFondo";
 import FaqAccordion from "@/components/FaqAccordion";
 import ServicioDetallado from "@/components/ServicioDetallado";
 
@@ -402,6 +403,7 @@ export default function Home() {
         </div>
       </footer>
 
+      <MusicaFondo src="https://res.cloudinary.com/dkq95jus0/video/upload/sonido-landing" />
       <FloatingWhatsApp
         numero={NUMERO}
         mensaje={`🤝 Bienvenido de parte del Maestro Juan Santiago
