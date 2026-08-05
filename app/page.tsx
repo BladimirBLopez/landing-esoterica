@@ -139,7 +139,7 @@ export default function Home() {
           playsInline
           className="absolute inset-0 h-full w-full object-cover"
         >
-          <source src="https://res.cloudinary.com/dkq95jus0/video/upload/hero-video-1" type="video/mp4" />
+          <source src="https://assets.mixkit.co/videos/3461/3461-720.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-[#1a0505]/80" />
         <div className="relative z-10 flex flex-col items-center gap-4">
