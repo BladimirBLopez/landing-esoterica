@@ -302,7 +302,14 @@ export default function Home() {
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="relative bg-[#2a0a1a] px-6 py-16">
+      <section id="faq" className="relative overflow-hidden bg-[#2a0a1a] px-6 py-16">
+        <Image
+          src="https://res.cloudinary.com/dkq95jus0/image/upload/aguayo-2"
+          alt="Aguayo andino"
+          fill
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-[#2a0a1a]/85" />
         <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-[#2a0a1a] to-transparent" />
         <h2 className="mb-10 text-center text-4xl font-bold text-white" style={{ fontFamily: "var(--font-cinzel)" }}>
           Preguntas Frecuentes
