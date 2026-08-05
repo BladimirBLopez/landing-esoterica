@@ -145,7 +145,7 @@ export default function Home() {
       {/* Hero (pantalla completa, con video de fondo) */}
       <section className="relative flex min-h-screen flex-col items-center justify-center gap-4 overflow-hidden px-6 py-24 text-center">
         <ScrollVideo
-          src="https://assets.mixkit.co/videos/18802/18802-720.mp4"
+          src="https://assets.mixkit.co/videos/3461/3461-720.mp4"
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-[#1a0505]/80" />
@@ -251,13 +251,11 @@ export default function Home() {
 
       {/* Servicios (con video de fondo) */}
       <section id="servicios" className="relative overflow-hidden px-6 py-16">
-        <Image
-          src="https://res.cloudinary.com/dkq95jus0/image/upload/aguayo-3"
-          alt="Aguayo andino"
-          fill
-          className="object-cover"
+        <ScrollVideo
+          src="https://assets.mixkit.co/active_storage/video_items/99990/1718655073/99990-video-720.mp4"
+          className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-[#4a1620]/60" />
+        <div className="absolute inset-0 bg-[#4a1620]/40" />
         <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-[#2b0d0d] to-transparent" />
 
         <div className="relative z-10">
