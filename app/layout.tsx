@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Alex_Brush } from "next/font/google";
+import { Playfair_Display, Mrs_Saint_Delafield } from "next/font/google";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -7,7 +7,7 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
 });
 
-const alexBrush = Alex_Brush({
+const alexBrush = Mrs_Saint_Delafield({
   variable: "--font-script",
   weight: "400",
   subsets: ["latin"],
