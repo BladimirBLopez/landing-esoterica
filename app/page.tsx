@@ -181,7 +181,7 @@ export default function Home() {
         </p>
 
         <div className="relative mx-auto mt-10 h-56 w-full max-w-2xl overflow-hidden rounded-2xl">
-          <Image src="https://picsum.photos/id/1040/900/600" alt="Altar del Tata Bombori" fill className="object-cover" />
+          <Image src="https://res.cloudinary.com/dkq95jus0/image/upload/altar-principal" alt="Altar del Tata Bombori" fill className="object-cover" />
         </div>
 
         <div className="mx-auto mt-12 flex max-w-3xl flex-col items-center gap-3 sm:flex-row sm:justify-center">
