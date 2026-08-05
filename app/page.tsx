@@ -174,6 +174,7 @@ export default function Home() {
           style={{ objectFit: "cover", objectPosition: "center 30%" }}
         />
         <div className="absolute inset-0 bg-[#2a1408]/60" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-[#1a0505] to-transparent" />
 
         <div className="relative z-10">
           <h2 className="mb-4 text-3xl font-bold text-[#c9a24b]">
@@ -206,6 +207,7 @@ export default function Home() {
           <source src="https://assets.mixkit.co/videos/3458/3458-720.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-[#2b0d0d]/85" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-[#2b0d0d] to-transparent" />
 
         <div className="relative z-10">
           <h2 className="mb-2 text-center text-3xl font-bold text-[#c9a24b]">
@@ -238,6 +240,7 @@ export default function Home() {
 
       {/* FAQ */}
       <section id="faq" className="relative bg-[#141029] px-6 py-16">
+        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-[#141029] to-transparent" />
         <h2 className="mb-10 text-center text-3xl font-bold text-[#c9a24b]">
           Preguntas Frecuentes
         </h2>
