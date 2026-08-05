@@ -355,6 +355,13 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Frase de garantia */}
+      <section className="px-6 pb-8 text-center">
+        <p className="mx-auto max-w-md text-sm italic text-[#c9a24b]" style={{ fontFamily: "var(--font-cinzel)" }}>
+          "Garantizo mi trabajo con la fuerza de la tierra y la verdad de mi espíritu."
+        </p>
+      </section>
+
       {/* Footer */}
       <footer className="border-t border-[#c9a24b]/20 px-6 py-6 text-center text-xs text-[#f5e6d3]/60">
         <div className="relative mx-auto mb-4 h-10 w-16">
