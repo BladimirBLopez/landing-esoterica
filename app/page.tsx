@@ -2,48 +2,55 @@ import Image from "next/image";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import FaqAccordion from "@/components/FaqAccordion";
+import ServicioDetallado from "@/components/ServicioDetallado";
 
 const NUMERO = "59175928656";
 const TELEFONO_VISIBLE = "(+591) 75928656";
 
 const servicios = [
   {
+    icono: "💜",
     titulo: "Amarre de Amor",
     descripcion: "Une corazones, despierta el sentimiento y fortalece el vínculo. No fuerzo voluntades — despierto lo que ya existe.",
     duracion: "7 a 21 días",
-    imagen: "PLACEHOLDER_IMAGEN",
+    imagen: "https://picsum.photos/id/1011/900/700",
     mensaje: "Hola Maestro Juan Santiago, me interesa un Amarre de Amor. ¿Podría darme más información?",
     cta: "Solicitar un Amarre",
   },
   {
+    icono: "🔗",
     titulo: "Unión de Parejas",
     descripcion: "Consolida, sella y protege. Elimina distancias, orgullos y peleas. Un vínculo tan fuerte que nada ni nadie los separa.",
     duracion: "7 a 21 días",
-    imagen: "PLACEHOLDER_IMAGEN",
+    imagen: "https://picsum.photos/id/1015/900/700",
     mensaje: "Hola Maestro, me interesa el trabajo de Unión de Parejas.",
     cta: "Consultar por Unión",
   },
   {
+    icono: "🍯",
     titulo: "Endulzamiento",
     descripcion: "Ablanda corazones endurecidos. Cambia dureza, malas contestaciones y frialdad por dulzura, cariño y diálogo.",
     duracion: "5 a 14 días",
-    imagen: "PLACEHOLDER_IMAGEN",
+    imagen: "https://picsum.photos/id/1016/900/700",
     mensaje: "Hola Maestro, quiero saber más sobre el Endulzamiento.",
     cta: "Consultar Endulzamiento",
   },
   {
+    icono: "🔄",
     titulo: "Retorno del Ser Amado",
     descripcion: "Rompe orgullos, confusiones y bloqueos. Que regrese arrepentido/a, enamorado/a y para quedarse.",
     duracion: "7 a 21 días",
-    imagen: "PLACEHOLDER_IMAGEN",
+    imagen: "https://picsum.photos/id/1025/900/700",
     mensaje: "Hola Maestro, me interesa el Retorno del Ser Amado.",
     cta: "Solicitar Retorno",
   },
   {
+    icono: "⚔️",
     titulo: "Alejamiento de Terceros",
     descripcion: "Aparta rivales, pretendientes, chismes y malas influencias. Bloquea intrusos y protege tu relación con una barrera espiritual.",
+    detalleExtra: "Incluye: corte energético para romper la conexión con quien se interpone, protección y sellado del vínculo, elementos de limpieza (hierbas consagradas, velas de corte, aceites de protección), oración de apartamiento, y bloqueo permanente contra nuevas intromisiones.",
     duracion: "5 a 14 días",
-    imagen: "PLACEHOLDER_IMAGEN",
+    imagen: "https://picsum.photos/id/1039/900/700",
     mensaje: "Hola Maestro, me interesa el Alejamiento de Terceros.",
     cta: "Consultar Alejamiento",
   },
@@ -126,7 +133,7 @@ export default function Home() {
           Donde la sabiduría ancestral de las Sagradas Hojas de Coca y la verdad revelada por las Cartas del Tarot se unen para ver tu situación, orientarte y trabajar con justicia y fe verdadera.
         </p>
         <div className="relative mx-auto mt-10 h-64 w-full max-w-2xl overflow-hidden rounded-2xl">
-          <Image src="PLACEHOLDER_IMAGEN_ALTAR" alt="Altar del Tata Bombori" fill className="object-cover" />
+          <Image src="https://picsum.photos/id/1040/900/600" alt="Altar del Tata Bombori" fill className="object-cover" />
         </div>
       </section>
 
@@ -154,25 +161,19 @@ export default function Home() {
         </p>
         <div className="mx-auto flex max-w-4xl flex-col gap-16">
           {servicios.map((s, i) => (
-            <div
+            <ServicioDetallado
               key={s.titulo}
-              className={`flex flex-col items-center gap-6 sm:flex-row ${
-                i % 2 === 1 ? "sm:flex-row-reverse" : ""
-              }`}
-            >
-              <div className="relative h-64 w-full overflow-hidden rounded-2xl sm:w-1/2">
-                <Image src={s.imagen} alt={s.titulo} fill className="object-cover" />
-              </div>
-              <div className="flex flex-col gap-3 text-center sm:w-1/2 sm:text-left">
-                <h3 className="text-2xl font-bold text-[#c9a24b]">{s.titulo}</h3>
-                <p className="text-[#f5e6d3]/80">{s.descripcion}</p>
-                <p className="text-sm text-[#c9a24b]/80">⏳ {s.duracion}</p>
-                <div className="flex flex-col items-center gap-1 sm:items-start">
-                  <WhatsAppButton numero={NUMERO} mensaje={s.mensaje} texto={s.cta} />
-                  <span className="text-sm text-[#f5e6d3]/60">{TELEFONO_VISIBLE}</span>
-                </div>
-              </div>
-            </div>
+              icono={s.icono}
+              titulo={s.titulo}
+              descripcion={s.descripcion}
+              detalleExtra={s.detalleExtra}
+              duracion={s.duracion}
+              imagen={s.imagen}
+              numero={NUMERO}
+              mensaje={s.mensaje}
+              cta={s.cta}
+              invertido={i % 2 === 1}
+            />
           ))}
         </div>
       </section>
