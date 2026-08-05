@@ -172,14 +172,14 @@ export default function Home() {
       </section>
 
       {/* Sobre el Altar + Primero consultamos (fusionado, con imagen de fondo) */}
-      <section className="relative overflow-hidden px-6 py-20 text-center">
+      <section className="relative min-h-[700px] overflow-hidden px-6 py-20 text-center">
         <Image
           src="https://res.cloudinary.com/dkq95jus0/image/upload/altar-principal"
           alt="Altar del Tata Bombori"
           fill
-          className="object-cover"
+          style={{ objectFit: "cover", objectPosition: "center 30%" }}
         />
-        <div className="absolute inset-0 bg-[#2a1408]/70" />
+        <div className="absolute inset-0 bg-[#2a1408]/60" />
 
         <div className="relative z-10">
           <h2 className="mb-4 text-3xl font-bold text-[#c9a24b]">
