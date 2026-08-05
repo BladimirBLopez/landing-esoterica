@@ -57,7 +57,7 @@ export default function Home() {
         <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#c9a24b]">
           Curanderismo ancestral · Norte de Potosí
         </p>
-        <h1 className="text-6xl font-extrabold uppercase tracking-wide text-[#c9a24b] drop-shadow-lg sm:text-7xl">
+        <h1 className="text-7xl leading-tight text-[#c9a24b] drop-shadow-lg sm:text-8xl" style={{ fontFamily: "var(--font-script)" }}>
           Maestro Juan Santiago
         </h1>
         <p className="text-lg text-[#f5e6d3]/90">Heredero del Tatabombori</p>
