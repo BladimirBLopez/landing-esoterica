@@ -37,17 +37,17 @@ export default function ServicioDetallado({
   const tieneDetalle = beneficios && beneficios.length > 0;
 
   return (
-    <div className="relative mx-auto w-full max-w-xl">
+    <div className="group relative mx-auto w-full max-w-xl transition-transform duration-300 hover:-translate-y-1">
       {/* Resplandor detras */}
-      <div className="absolute -inset-3 rounded-[32px] bg-[#c9a24b]/25 blur-2xl" />
+      <div className="absolute -inset-3 rounded-[32px] bg-[#c9a24b]/25 blur-2xl transition-opacity duration-300 group-hover:opacity-80" />
 
       {/* Marco degradado dorado */}
       <div className="relative rounded-[28px] bg-gradient-to-br from-[#f0d78c] via-[#c9a24b] to-[#8a651f] p-[3px] shadow-[0_15px_40px_-10px_rgba(0,0,0,0.7)]">
         <div className="overflow-hidden rounded-[25px]">
           {/* Imagen con titulo */}
           <div className="relative h-72 w-full">
-            <Image src={imagen} alt={titulo} fill className="object-cover" />
-            <div className="absolute inset-0 bg-black/50" />
+            <Image src={imagen} alt={titulo} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/70" />
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-6 text-center">
               <h3 className="text-4xl font-bold uppercase tracking-wide text-white drop-shadow-lg">
                 {titulo}
@@ -56,9 +56,16 @@ export default function ServicioDetallado({
             </div>
           </div>
 
+          {/* Joyero decorativo entre imagen y contenido */}
+          <div className="relative flex justify-center" style={{ backgroundColor: colorFondo }}>
+            <span className="absolute -top-3 flex h-6 w-6 rotate-45 items-center justify-center bg-gradient-to-br from-[#f0d78c] to-[#8a651f] shadow-md">
+              <span className="-rotate-45 text-[10px] text-[#1a0505]">✦</span>
+            </span>
+          </div>
+
           {/* Contenido */}
-          <div className="flex flex-col items-center gap-4 px-6 py-8 text-center" style={{ backgroundColor: colorFondo }}>
-            <p className="text-[#f5e6d3]/90">{descripcion}</p>
+          <div className="flex flex-col items-center gap-4 px-6 pb-8 pt-6 text-center" style={{ backgroundColor: colorFondo }}>
+            <p className="leading-relaxed text-[#f5e6d3]/90">{descripcion}</p>
 
             <span className="rounded-full border-2 border-red-500 bg-red-500/10 px-4 py-1 text-sm font-bold text-red-400">
               Resultados en {duracion}
@@ -102,18 +109,20 @@ export default function ServicioDetallado({
                 )}
                 <button
                   onClick={() => setAbierto(!abierto)}
-                  className="text-sm text-[#c9a24b] underline"
+                  className="rounded-full border border-[#c9a24b]/50 px-5 py-1.5 text-sm text-[#c9a24b] transition-colors hover:bg-[#c9a24b]/10"
                 >
                   {abierto ? "Ver menos" : "Ver más detalles"}
                 </button>
               </>
             )}
 
+            <div className="mt-2 h-px w-16 bg-[#c9a24b]/30" />
+
             <WhatsAppButton
               numero={numero}
               mensaje={mensaje}
               texto={cta}
-              className="mt-2 text-base px-8 py-3"
+              className="text-base px-8 py-3"
             />
             <p className="text-xs text-[#f5e6d3]/60">
               Toca para consultar directo por WhatsApp
