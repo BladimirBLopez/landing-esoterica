@@ -171,25 +171,31 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Sobre el Altar + Primero consultamos (fusionado) */}
-      <section className="bg-[#1e1030] px-6 py-16 text-center">
-        <h2 className="mb-4 text-3xl font-bold text-[#c9a24b]">
-          Bienvenido al Altar del Tata Bombori
-        </h2>
-        <p className="mx-auto max-w-2xl text-[#f5e6d3]/80">
-          Donde la sabiduría ancestral de las Sagradas Hojas de Coca y la verdad revelada por las Cartas del Tarot se unen para ver tu situación, orientarte y trabajar con justicia y fe verdadera.
-        </p>
+      {/* Sobre el Altar + Primero consultamos (fusionado, con imagen de fondo) */}
+      <section className="relative overflow-hidden px-6 py-20 text-center">
+        <Image
+          src="https://res.cloudinary.com/dkq95jus0/image/upload/altar-principal"
+          alt="Altar del Tata Bombori"
+          fill
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-[#1e1030]/90" />
 
-        <div className="relative mx-auto mt-10 h-56 w-full max-w-2xl overflow-hidden rounded-2xl">
-          <Image src="https://res.cloudinary.com/dkq95jus0/image/upload/altar-principal" alt="Altar del Tata Bombori" fill className="object-cover" />
-        </div>
+        <div className="relative z-10">
+          <h2 className="mb-4 text-3xl font-bold text-[#c9a24b]">
+            Bienvenido al Altar del Tata Bombori
+          </h2>
+          <p className="mx-auto max-w-2xl text-[#f5e6d3]/90">
+            Donde la sabiduría ancestral de las Sagradas Hojas de Coca y la verdad revelada por las Cartas del Tarot se unen para ver tu situación, orientarte y trabajar con justicia y fe verdadera.
+          </p>
 
-        <div className="mx-auto mt-12 flex max-w-3xl flex-col items-center gap-3 sm:flex-row sm:justify-center">
-          <span className="rounded-full bg-[#3d1414] px-5 py-3 text-sm">🌿 Consultamos en Hojas de Coca y Tarot</span>
-          <span className="hidden text-[#c9a24b] sm:inline">→</span>
-          <span className="rounded-full bg-[#3d1414] px-5 py-3 text-sm">📖 Te decimos qué dicen y qué necesitas</span>
-          <span className="hidden text-[#c9a24b] sm:inline">→</span>
-          <span className="rounded-full bg-[#3d1414] px-5 py-3 text-sm">🕯️ Trabajamos desde el Altar del Tata Bombori</span>
+          <div className="mx-auto mt-12 flex max-w-3xl flex-col items-center gap-3 sm:flex-row sm:justify-center">
+            <span className="rounded-full bg-[#3d1414] px-5 py-3 text-sm">🌿 Consultamos en Hojas de Coca y Tarot</span>
+            <span className="hidden text-[#c9a24b] sm:inline">→</span>
+            <span className="rounded-full bg-[#3d1414] px-5 py-3 text-sm">📖 Te decimos qué dicen y qué necesitas</span>
+            <span className="hidden text-[#c9a24b] sm:inline">→</span>
+            <span className="rounded-full bg-[#3d1414] px-5 py-3 text-sm">🕯️ Trabajamos desde el Altar del Tata Bombori</span>
+          </div>
         </div>
       </section>
 
