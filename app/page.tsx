@@ -160,6 +160,16 @@ export default function Home() {
           />
         </div>
 
+        {/* Bandera de Bolivia, esquina superior izquierda, espejada, misma altura y tamano */}
+        <div className="absolute -left-6 -top-6 z-10 h-40 w-52 scale-x-[-1] opacity-50 drop-shadow-lg">
+          <Image
+            src="https://res.cloudinary.com/dkq95jus0/image/upload/bandera-bolivia-2"
+            alt="Bandera de Bolivia"
+            fill
+            className="object-contain"
+          />
+        </div>
+
         <div className="relative z-10 flex flex-col items-center gap-4">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#c9a24b]">
             Sabiduría Ancestral · Norte de Potosí
