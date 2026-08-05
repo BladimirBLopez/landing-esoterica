@@ -339,7 +339,7 @@ export default function Home() {
 ✨ Endulzamiento de relaciones
 ✨ Alejamiento de personas y terceros
 
-Con años de experiencia y sabiduría tradicional, trabajo con respeto, seriedad y confidencialidad absoluta. Cuéntame con claridad tu situación y lo que deseas lograr. Estoy aquí para orientarte.
+Con 25 años de experiencia y sabiduría tradicional, trabajo con respeto, seriedad y confidencialidad absoluta. Cuéntame con claridad tu situación y lo que deseas lograr. Estoy aquí para orientarte.
 
 🙏 Bendiciones.`}
       />
