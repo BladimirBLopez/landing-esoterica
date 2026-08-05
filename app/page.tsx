@@ -235,36 +235,39 @@ export default function Home() {
         <FaqAccordion items={faq} />
       </section>
 
-      {/* Resumen final + CTA */}
+      {/* Resumen final + CTA (estilo caja con borde) */}
       <section className="px-6 py-16 text-center">
-        <h2 className="mb-10 text-3xl font-bold text-[#c9a24b]">
-          Resumen de mis trabajos
-        </h2>
-        <div className="mx-auto flex max-w-2xl flex-col gap-4 text-left">
-          {resumenServicios.map((r) => (
-            <div key={r.titulo} className="rounded-xl border border-[#c9a24b]/20 bg-[#2b0d0d] p-4">
-              <div className="flex items-baseline justify-between gap-2">
-                <h3 className="font-semibold text-[#c9a24b]">{r.titulo}</h3>
-                <span className="whitespace-nowrap text-xs text-[#f5e6d3]/60">⏳ {r.duracion}</span>
+        <div className="mx-auto max-w-xl rounded-3xl border-2 border-[#c9a24b] bg-[#1a0505] px-6 py-10">
+          <h2 className="mb-8 text-2xl font-bold uppercase leading-snug text-[#c9a24b] sm:text-3xl">
+            ¡Haz tu consulta! Recupera a tu ser amado. Resultados que hablan por sí solos
+          </h2>
+
+          <div className="mx-auto flex max-w-sm flex-col gap-3 text-left">
+            {resumenServicios.map((r) => (
+              <div key={r.titulo} className="flex items-start gap-2">
+                <span className="mt-0.5 text-[#c9a24b]">✔</span>
+                <span className="text-[#f5e6d3]/90">
+                  <span className="font-semibold">{r.titulo}</span>
+                  <span className="text-xs text-[#f5e6d3]/60"> · {r.duracion}</span>
+                </span>
               </div>
-              <p className="mt-1 text-sm text-[#f5e6d3]/80">{r.texto}</p>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        <p className="mx-auto mt-8 max-w-md text-sm text-[#f5e6d3]/70">
-          🔒 100% Confidencial. Trabajo serio y con fe.
-          <br />
-          Para cualquier trabajo solo necesito: nombres completos, fechas de nacimiento y tu situación.
-        </p>
+          <p className="mx-auto mt-8 max-w-md text-sm text-[#f5e6d3]/70">
+            🔒 100% Confidencial. Trabajo serio y con fe.
+            <br />
+            Para cualquier trabajo solo necesito: nombres completos, fechas de nacimiento y tu situación.
+          </p>
 
-        <div className="mt-8 flex justify-center">
-          <WhatsAppButton
-            numero={NUMERO}
-            mensaje="Hola Maestro Juan Santiago, quiero empezar hoy mismo."
-            texto="Escríbeme ahora y empezamos hoy mismo"
-            className="text-base px-8 py-4"
-          />
+          <div className="mt-8 flex justify-center">
+            <WhatsAppButton
+              numero={NUMERO}
+              mensaje="Hola Maestro Juan Santiago, quiero empezar hoy mismo."
+              texto="Escríbeme ahora y empezamos hoy mismo"
+              className="text-base px-8 py-4"
+            />
+          </div>
         </div>
       </section>
 
