@@ -160,8 +160,8 @@ export default function Home() {
           />
         </div>
 
-        {/* Bandera de Bolivia, esquina superior izquierda, espejada, misma altura y tamano */}
-        <div className="absolute -left-6 -top-6 z-10 h-40 w-52 scale-x-[-1] opacity-50 drop-shadow-lg">
+        {/* Bandera de Bolivia, esquina superior izquierda, misma altura y tamano */}
+        <div className="absolute -left-6 -top-6 z-10 h-40 w-52 opacity-50 drop-shadow-lg">
           <Image
             src="https://res.cloudinary.com/dkq95jus0/image/upload/bandera-bolivia-2"
             alt="Bandera de Bolivia"
