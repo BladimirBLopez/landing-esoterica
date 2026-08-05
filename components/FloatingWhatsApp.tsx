@@ -34,16 +34,8 @@ export default function FloatingWhatsApp({
             </button>
           </div>
           <div className="bg-[#e5ddd5] px-4 py-4">
-            <div className="relative rounded-lg rounded-tl-none bg-white p-3 text-sm text-gray-800 shadow">
-              Hola, soy {nombre} 🙏
-              <br />
-              <br />
-              Estoy aquí para escuchar tu caso y brindarte orientación
-              personalizada y totalmente confidencial.
-              <br />
-              <br />
-              Cuéntame: ¿quieres recuperar a tu ex, fortalecer tu relación o
-              necesitas un amarre de amor?
+            <div className="relative whitespace-pre-line rounded-lg rounded-tl-none bg-white p-3 text-sm text-gray-800 shadow">
+              {mensaje}
             </div>
             <a
               href={url}
