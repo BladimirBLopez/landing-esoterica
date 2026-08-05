@@ -30,40 +30,65 @@ export default function ScrollVideo({
     const video = videoRef.current;
     if (!video) return;
 
+    const intentarReproducir = () => {
+      const p = video.play();
+      if (p !== undefined) {
+        p.catch(() => {});
+      }
+    };
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          if (autoPlayOnView) video.play().catch(() => {});
+          if (autoPlayOnView) intentarReproducir();
         } else {
           video.pause();
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.1 }
     );
 
     observer.observe(video);
-    return () => observer.disconnect();
-  }, [autoPlayOnView]);
+
+    // Reintentar cuando el video termine de cargar datos (ayuda en mobile)
+    video.addEventListener("loadeddata", () => {
+      if (autoPlayOnView && video.getBoundingClientRect().top < window.innerHeight) {
+        intentarReproducir();
+      }
+    });
+
+    // Reintentar si el navegador lo pausa solo (throttling, ahorro de datos, etc)
+    const onPause = () => {
+      if (autoPlayOnView) {
+        const rect = video.getBoundingClientRect();
+        const visible = rect.top < window.innerHeight && rect.bottom > 0;
+        if (visible) intentarReproducir();
+      }
+    };
+    if (!controls) {
+      video.addEventListener("pause", onPause);
+    }
+
+    return () => {
+      observer.disconnect();
+      video.removeEventListener("pause", onPause);
+    };
+  }, [autoPlayOnView, controls]);
 
   useEffect(() => {
     const video = videoRef.current;
-    if (!video) return;
+    if (!video || !controls) return;
 
     const onPlay = () => setIsPlaying(true);
-    const onPause = () => setIsPlaying(false);
-    const onTimeUpdate = () => {
-      if (video.duration) setProgreso((video.currentTime / video.duration) * 100);
-    };
+    const onPauseUi = () => setIsPlaying(false);
 
     video.addEventListener("play", onPlay);
-    video.addEventListener("pause", onPause);
-    video.addEventListener("timeupdate", onTimeUpdate);
+    video.addEventListener("pause", onPauseUi);
     return () => {
       video.removeEventListener("play", onPlay);
-      video.removeEventListener("pause", onPause);
-      video.removeEventListener("timeupdate", onTimeUpdate);
+      video.removeEventListener("pause", onPauseUi);
     };
-  }, []);
+  }, [controls]);
 
   const togglePlay = () => {
     const video = videoRef.current;
@@ -89,7 +114,15 @@ export default function ScrollVideo({
 
   if (!controls) {
     return (
-      <video ref={videoRef} muted={muted} loop={loop} playsInline className={className}>
+      <video
+        ref={videoRef}
+        muted
+        autoPlay
+        loop={loop}
+        playsInline
+        preload="auto"
+        className={className}
+      >
         <source src={src} type="video/mp4" />
       </video>
     );
