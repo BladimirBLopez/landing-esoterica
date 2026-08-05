@@ -145,7 +145,7 @@ export default function Home() {
       {/* Hero (pantalla completa, con video de fondo) */}
       <section className="relative flex min-h-screen flex-col items-center justify-center gap-4 overflow-hidden px-6 py-24 text-center">
         <ScrollVideo
-          src="https://assets.mixkit.co/videos/3461/3461-720.mp4"
+          src="https://assets.mixkit.co/videos/18802/18802-720.mp4"
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-[#1a0505]/80" />
