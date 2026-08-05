@@ -168,7 +168,7 @@ export default function Home() {
       {/* Sobre el Altar + Primero consultamos (fusionado, con imagen de fondo) */}
       <section className="relative min-h-[700px] overflow-hidden px-6 py-20 text-center">
         <Image
-          src="https://res.cloudinary.com/dkq95jus0/image/upload/altar-principal"
+          src="https://res.cloudinary.com/dkq95jus0/image/upload/altar-principal-2"
           alt="Altar del Tata Bombori"
           fill
           style={{ objectFit: "cover", objectPosition: "center 30%" }}
