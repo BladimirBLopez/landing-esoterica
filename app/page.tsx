@@ -62,7 +62,7 @@ export default function Home() {
         </h1>
         <p className="text-lg text-[#f5e6d3]/90">Heredero del Tatabombori</p>
 
-        <h2 className="mt-4 max-w-xl font-serif text-2xl font-bold sm:text-3xl">
+        <h2 className="mt-4 max-w-xl text-2xl font-bold sm:text-3xl">
           ¿Quieres que tu ex regrese a tu lado sin rogarle?
         </h2>
         <p className="max-w-md text-[#f5e6d3]/80">
@@ -87,7 +87,7 @@ export default function Home() {
 
       {/* Servicios */}
       <section id="servicios" className="px-6 py-16">
-        <h2 className="mb-12 text-center font-serif text-3xl font-bold text-[#c9a24b]">
+        <h2 className="mb-12 text-center text-3xl font-bold text-[#c9a24b]">
           Conoce mis servicios
         </h2>
         <div className="mx-auto flex max-w-4xl flex-col gap-16">
@@ -102,7 +102,7 @@ export default function Home() {
                 <Image src={s.imagen} alt={s.titulo} fill className="object-cover" />
               </div>
               <div className="flex flex-col gap-3 text-center sm:w-1/2 sm:text-left">
-                <h3 className="font-serif text-2xl font-bold text-[#c9a24b]">{s.titulo}</h3>
+                <h3 className="text-2xl font-bold text-[#c9a24b]">{s.titulo}</h3>
                 <p className="text-[#f5e6d3]/80">{s.descripcion}</p>
                 <div className="flex flex-col items-center gap-1 sm:items-start">
                   <WhatsAppButton numero={NUMERO} mensaje={s.mensaje} texto={s.cta} />
@@ -116,7 +116,7 @@ export default function Home() {
 
       {/* Cómo iniciar */}
       <section className="bg-[#2b0d0d] px-6 py-16 text-center">
-        <h2 className="mb-2 font-serif text-3xl font-bold text-[#c9a24b]">¿Cómo iniciar?</h2>
+        <h2 className="mb-2 text-3xl font-bold text-[#c9a24b]">¿Cómo iniciar?</h2>
         <p className="mb-10 text-[#f5e6d3]/70">Háblame por WhatsApp en 3 pasos</p>
         <div className="mx-auto grid max-w-3xl gap-8 sm:grid-cols-3">
           <div>
@@ -140,7 +140,7 @@ export default function Home() {
 
       {/* FAQ */}
       <section id="faq" className="px-6 py-16">
-        <h2 className="mb-10 text-center font-serif text-3xl font-bold text-[#c9a24b]">
+        <h2 className="mb-10 text-center text-3xl font-bold text-[#c9a24b]">
           Preguntas Frecuentes
         </h2>
         <FaqAccordion items={faq} />
@@ -148,7 +148,7 @@ export default function Home() {
 
       {/* Resultados / testimonios */}
       <section className="bg-[#2b0d0d] px-6 py-16 text-center">
-        <h2 className="mb-2 font-serif text-3xl font-bold text-[#c9a24b]">
+        <h2 className="mb-2 text-3xl font-bold text-[#c9a24b]">
           Resultados que hablan por sí solos
         </h2>
         <p className="mb-8 text-[#f5e6d3]/70">Más de [X] personas ya confiaron en mi trabajo</p>
@@ -167,7 +167,7 @@ export default function Home() {
 
       {/* Tags / cierre */}
       <section className="px-6 py-16 text-center">
-        <h2 className="mb-10 font-serif text-2xl font-bold text-[#c9a24b] sm:text-3xl">
+        <h2 className="mb-10 text-2xl font-bold text-[#c9a24b] sm:text-3xl">
           Recupera a tu ex pareja con la sabiduría del Tatabombori
         </h2>
         <div className="mx-auto flex max-w-md flex-col gap-2 text-sm text-[#f5e6d3]/80 sm:flex-row sm:justify-between">
