@@ -57,10 +57,10 @@ export default function Home() {
         <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#c9a24b]">
           Curanderismo ancestral · Norte de Potosí
         </p>
-        <h1 className="font-serif text-3xl font-bold uppercase tracking-wide text-[#c9a24b] sm:text-4xl">
+        <h1 className="font-serif text-5xl font-bold uppercase tracking-wide text-[#c9a24b] drop-shadow-lg sm:text-6xl">
           Maestro Juan Santiago
         </h1>
-        <p className="text-[#f5e6d3]/80">Heredero del Tatabombori</p>
+        <p className="text-lg text-[#f5e6d3]/90">Heredero del Tatabombori</p>
 
         <h2 className="mt-4 max-w-xl font-serif text-2xl font-bold sm:text-3xl">
           ¿Quieres que tu ex regrese a tu lado sin rogarle?
