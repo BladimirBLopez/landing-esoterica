@@ -311,10 +311,12 @@ export default function Home() {
         />
         <div className="absolute inset-0 bg-[#2a0a1a]/85" />
         <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-[#2a0a1a] to-transparent" />
-        <h2 className="mb-10 text-center text-4xl font-bold text-white" style={{ fontFamily: "var(--font-cinzel)" }}>
-          Preguntas Frecuentes
-        </h2>
-        <FaqAccordion items={faq} />
+        <div className="relative z-20">
+          <h2 className="mb-10 text-center text-4xl font-bold text-white" style={{ fontFamily: "var(--font-cinzel)" }}>
+            Preguntas Frecuentes
+          </h2>
+          <FaqAccordion items={faq} />
+        </div>
       </section>
 
       {/* Resumen final + CTA (estilo caja con borde) */}
