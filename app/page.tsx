@@ -172,7 +172,6 @@ export default function Home() {
               numero={NUMERO}
               mensaje={s.mensaje}
               cta={s.cta}
-              telefonoVisible={TELEFONO_VISIBLE}
             />
           ))}
         </div>
