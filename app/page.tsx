@@ -191,6 +191,7 @@ export default function Home() {
             <span className="rounded-full bg-[#3d1414] px-5 py-3 text-sm">🕯️ Trabajamos desde el Altar del Tata Bombori</span>
           </div>
         </div>
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-32 bg-gradient-to-b from-transparent to-[#2b0d0d]" />
       </section>
 
       {/* Servicios (con video de fondo) */}
@@ -232,10 +233,11 @@ export default function Home() {
           ))}
         </div>
         </div>
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-32 bg-gradient-to-b from-transparent to-[#141029]" />
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="bg-[#141029] px-6 py-16">
+      <section id="faq" className="relative bg-[#141029] px-6 py-16">
         <h2 className="mb-10 text-center text-3xl font-bold text-[#c9a24b]">
           Preguntas Frecuentes
         </h2>
