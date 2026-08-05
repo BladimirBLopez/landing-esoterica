@@ -144,6 +144,27 @@ export default function Home() {
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-[#1a0505]/80" />
+
+        {/* Bandera de Bolivia, esquina superior izquierda */}
+        <div className="absolute left-4 top-4 z-10 h-14 w-20 opacity-90 drop-shadow-lg">
+          <Image
+            src="https://res.cloudinary.com/dkq95jus0/image/upload/bandera-bolivia"
+            alt="Bandera de Bolivia"
+            fill
+            className="object-contain"
+          />
+        </div>
+
+        {/* Bandera de Potosi, esquina superior derecha */}
+        <div className="absolute right-4 top-4 z-10 h-14 w-20 opacity-90 drop-shadow-lg">
+          <Image
+            src="https://res.cloudinary.com/dkq95jus0/image/upload/bandera-potosi"
+            alt="Bandera de Potosí"
+            fill
+            className="object-contain"
+          />
+        </div>
+
         <div className="relative z-10 flex flex-col items-center gap-4">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#c9a24b]">
             Sabiduría Ancestral · Norte de Potosí
