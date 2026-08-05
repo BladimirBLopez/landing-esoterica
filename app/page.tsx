@@ -125,7 +125,7 @@ export default function Home() {
       </section>
 
       {/* Sobre el Altar */}
-      <section className="bg-[#2b0d0d] px-6 py-16 text-center">
+      <section className="bg-[#1e1030] px-6 py-16 text-center">
         <h2 className="mb-4 text-3xl font-bold text-[#c9a24b]">
           Bienvenido al Altar del Tata Bombori
         </h2>
@@ -138,7 +138,7 @@ export default function Home() {
       </section>
 
       {/* Primero consultamos */}
-      <section className="px-6 py-16 text-center">
+      <section className="bg-[#0f2027] px-6 py-16 text-center">
         <h2 className="mb-2 text-3xl font-bold text-[#c9a24b]">Primero consultamos, después trabajamos</h2>
         <p className="mx-auto mb-10 max-w-xl text-[#f5e6d3]/80">
           No se hace nada sin saber qué dicen las señales. Primero leemos tu caso en las Sagradas Hojas de Coca y en el Tarot para ver:
@@ -177,7 +177,7 @@ export default function Home() {
       </section>
 
       {/* Requisitos */}
-      <section className="px-6 py-16 text-center">
+      <section className="bg-[#2a1810] px-6 py-16 text-center">
         <h2 className="mb-6 text-3xl font-bold text-[#c9a24b]">
           Para tu consulta y trabajo solo necesito
         </h2>
@@ -201,7 +201,7 @@ export default function Home() {
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="bg-[#2b0d0d] px-6 py-16">
+      <section id="faq" className="bg-[#141029] px-6 py-16">
         <h2 className="mb-10 text-center text-3xl font-bold text-[#c9a24b]">
           Preguntas Frecuentes
         </h2>
