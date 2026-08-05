@@ -150,18 +150,8 @@ export default function Home() {
         />
         <div className="absolute inset-0 bg-[#1a0505]/80" />
 
-        {/* Bandera de Bolivia, esquina superior izquierda */}
-        <div className="absolute left-4 top-4 z-10 h-14 w-20 opacity-90 drop-shadow-lg">
-          <Image
-            src="https://res.cloudinary.com/dkq95jus0/image/upload/bandera-bolivia"
-            alt="Bandera de Bolivia"
-            fill
-            className="object-contain"
-          />
-        </div>
-
-        {/* Bandera de Potosi, esquina superior derecha */}
-        <div className="absolute right-4 top-4 z-10 h-14 w-20 opacity-90 drop-shadow-lg">
+        {/* Bandera de Potosi, esquina superior derecha, mas grande e inclinada */}
+        <div className="absolute -right-2 top-4 z-10 h-32 w-44 rotate-12 opacity-90 drop-shadow-lg">
           <Image
             src="https://res.cloudinary.com/dkq95jus0/image/upload/bandera-potosi"
             alt="Bandera de Potosí"
@@ -364,6 +354,14 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="border-t border-[#c9a24b]/20 px-6 py-6 text-center text-xs text-[#f5e6d3]/60">
+        <div className="relative mx-auto mb-4 h-10 w-16">
+          <Image
+            src="https://res.cloudinary.com/dkq95jus0/image/upload/bandera-bolivia"
+            alt="Bandera de Bolivia"
+            fill
+            className="object-contain"
+          />
+        </div>
         <a href={`tel:+${NUMERO}`} className="block text-sm font-semibold text-[#c9a24b]">
           📞 {TELEFONO_VISIBLE}
         </a>
