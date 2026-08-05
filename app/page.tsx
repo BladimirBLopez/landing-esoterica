@@ -6,6 +6,7 @@ import FaqAccordion from "@/components/FaqAccordion";
 import ServicioDetallado from "@/components/ServicioDetallado";
 
 const NUMERO = "59175928656";
+const TELEFONO_VISIBLE = "+591 75928656";
 
 const servicios = [
   {
@@ -162,6 +163,9 @@ export default function Home() {
             texto="Quiero recuperar a mi pareja"
             className="text-base px-8 py-4"
           />
+          <a href={`tel:+${NUMERO}`} className="text-sm font-semibold tracking-wide text-[#f5e6d3]/80 hover:text-[#c9a24b]">
+            📞 {TELEFONO_VISIBLE}
+          </a>
         </div>
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-40 bg-gradient-to-b from-transparent to-[#1a0505]" />
       </section>
@@ -326,6 +330,9 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="border-t border-[#c9a24b]/20 px-6 py-6 text-center text-xs text-[#f5e6d3]/60">
+        <a href={`tel:+${NUMERO}`} className="block text-sm font-semibold text-[#c9a24b]">
+          📞 {TELEFONO_VISIBLE}
+        </a>
         <p className="mt-4">© 2026 Altar del Tata Bombori · Maestro Juan Santiago</p>
       </footer>
 
