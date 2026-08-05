@@ -179,7 +179,7 @@ export default function Home() {
           fill
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-[#1e1030]/90" />
+        <div className="absolute inset-0 bg-[#2a1408]/70" />
 
         <div className="relative z-10">
           <h2 className="mb-4 text-3xl font-bold text-[#c9a24b]">
