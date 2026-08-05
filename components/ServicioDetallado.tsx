@@ -99,15 +99,12 @@ export default function ServicioDetallado({
           </>
         )}
 
-        <div className="relative mt-2">
-          <span className="absolute inset-0 animate-ping rounded-full bg-green-500 opacity-40" />
-          <WhatsAppButton
-            numero={numero}
-            mensaje={mensaje}
-            texto={cta}
-            className="relative text-base px-8 py-3"
-          />
-        </div>
+        <WhatsAppButton
+          numero={numero}
+          mensaje={mensaje}
+          texto={cta}
+          className="mt-2 text-base px-8 py-3"
+        />
         <p className="text-xs text-[#f5e6d3]/60">
           Toca para consultar directo por WhatsApp
         </p>
