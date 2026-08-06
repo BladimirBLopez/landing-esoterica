@@ -186,7 +186,6 @@ export default function Home() {
               fill
               className="object-contain drop-shadow-[0_10px_25px_rgba(0,0,0,0.6)]"
             />
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-[#1a0505]" />
           </div>
           <div className="flex items-center gap-2 text-[#c9a24b]">
             <span className="h-[1px] w-10 bg-[#c9a24b]/60" />
