@@ -12,7 +12,7 @@ const TELEFONO_VISIBLE = "+591 75928656";
 const servicios = [
   {
     titulo: "Amarre de Amor",
-    icono: "💜",
+    icono: "amor",
     descripcion: "¿Sientes que tu amor se está escapando? No dejes que se pierda lo tuyo. Hay momentos en que las energías se bloquean, aparecen dudas, celos, gente mala, y dos personas que se amaban empiezan a alejarse sin saber por qué. Eso no significa que se acabó — significa que necesita ayuda espiritual.",
     beneficios: [
       "Que piense solo en ti día y noche",
@@ -30,7 +30,7 @@ const servicios = [
   },
   {
     titulo: "Unión de Parejas",
-    icono: "🔗",
+    icono: "union",
     descripcion: "¿Se alejan sin razón? ¿Pelean por todo? ¿Sientes que se está rompiendo el vínculo? Este trabajo es para que nada ni nadie los separe.",
     beneficios: [
       "Une corazones y voluntades",
@@ -48,7 +48,7 @@ const servicios = [
   },
   {
     titulo: "Endulzamiento",
-    icono: "🍯",
+    icono: "miel",
     descripcion: "¿Todo se vuelve peleas y malas palabras? ¿Se volvió frío/a, cortante o indiferente? ¿El orgullo no deja que se arreglen las cosas? Este trabajo suaviza, reconcilia y endulza tu relación.",
     beneficios: [
       "Ablanda el corazón endurecido",
@@ -66,7 +66,7 @@ const servicios = [
   },
   {
     titulo: "Retorno del Ser Amado",
-    icono: "🔄",
+    icono: "retorno",
     descripcion: "¿Se fue y no da señales? ¿Dice que ya no vuelve? ¿Está con otra persona? ¿El orgullo no lo/la deja volver? Este trabajo es para que regrese arrepentido, enamorado y para siempre.",
     beneficios: [
       "Rompe barreras y orgullos",
@@ -84,7 +84,7 @@ const servicios = [
   },
   {
     titulo: "Alejamiento de Terceros",
-    icono: "⚔️",
+    icono: "escudo",
     descripcion: "¿Hay otra/o metiéndose? ¿Chismes, consejas o envidias dañando tu relación? ¿Alguien quiere separarlos? ¿Tu pareja se deja influenciar por otros? Este trabajo es para que se aleje quien se mete en tu amor, definitivamente.",
     beneficios: [
       "Alejar a rivales, pretendientes o amantes que se interponen",

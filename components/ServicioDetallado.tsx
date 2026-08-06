@@ -6,7 +6,7 @@ import WhatsAppButton from "./WhatsAppButton";
 
 interface ServicioDetalladoProps {
   titulo: string;
-  icono?: string;
+  icono?: "amor" | "union" | "miel" | "retorno" | "escudo";
   descripcion: string;
   beneficios?: string[];
   incluyeTitulo?: string;
@@ -18,6 +18,39 @@ interface ServicioDetalladoProps {
   mensaje: string;
   cta: string;
   colorFondo?: string;
+}
+
+function IconoServicio({ tipo }: { tipo: string }) {
+  const iconos: Record<string, { path: string; color: string }> = {
+    amor: {
+      color: "#e91e8c",
+      path: "M12 21s-6.7-4.35-9.3-8.1C1.1 10.6 1.6 7.4 4.2 5.9c2.2-1.3 4.9-.6 6.3 1.4l1.5 2 1.5-2c1.4-2 4.1-2.7 6.3-1.4 2.6 1.5 3.1 4.7 1.5 7-2.6 3.75-9.3 8.1-9.3 8.1z",
+    },
+    union: {
+      color: "#c9a24b",
+      path: "M8.5 12a4.5 4.5 0 0 1 4.5-4.5h3a4.5 4.5 0 0 1 0 9h-1.5v-2H16a2.5 2.5 0 0 0 0-5h-3a2.5 2.5 0 0 0-2.5 2.5v.5h-2v-.5zM15.5 12a4.5 4.5 0 0 1-4.5 4.5H8a4.5 4.5 0 0 1 0-9h1.5v2H8a2.5 2.5 0 0 0 0 5h3a2.5 2.5 0 0 0 2.5-2.5v-.5h2v.5z",
+    },
+    miel: {
+      color: "#e0a13c",
+      path: "M12 2c-1 2.5-3 4-3 7a3 3 0 0 0 6 0c0-3-2-4.5-3-7zM6 12h12a1 1 0 0 1 1 1v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7a1 1 0 0 1 1-1zm0 3h12v2H6v-2z",
+    },
+    retorno: {
+      color: "#d9534f",
+      path: "M17.65 6.35A8 8 0 1 0 19.5 13h-2.1a6 6 0 1 1-1.4-6.15L13 10h7V3l-2.35 3.35z",
+    },
+    escudo: {
+      color: "#6a5acd",
+      path: "M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z",
+    },
+  };
+
+  const icono = iconos[tipo] || iconos.amor;
+
+  return (
+    <svg viewBox="0 0 24 24" className="h-6 w-6" fill={icono.color}>
+      <path d={icono.path} />
+    </svg>
+  );
 }
 
 export default function ServicioDetallado({
@@ -40,13 +73,10 @@ export default function ServicioDetallado({
 
   return (
     <div className="group relative mx-auto w-full max-w-xl transition-transform duration-300 hover:-translate-y-1">
-      {/* Resplandor detras */}
       <div className="absolute -inset-3 rounded-[32px] bg-[#c9a24b]/25 blur-2xl transition-opacity duration-300 group-hover:opacity-80" />
 
-      {/* Marco degradado dorado */}
       <div className="relative rounded-[28px] bg-gradient-to-br from-[#f0d78c] via-[#c9a24b] to-[#8a651f] p-[3px] shadow-[0_15px_40px_-10px_rgba(0,0,0,0.7)]">
         <div className="overflow-hidden rounded-[25px]">
-          {/* Imagen con titulo */}
           <div className="relative aspect-video w-full">
             <Image src={imagen} alt={titulo} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
             <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/70" />
@@ -58,16 +88,14 @@ export default function ServicioDetallado({
             </div>
           </div>
 
-          {/* Joyero decorativo entre imagen y contenido */}
           <div className="relative flex justify-center" style={{ backgroundColor: colorFondo }}>
             {icono && (
-              <span className="absolute -top-6 flex h-12 w-12 items-center justify-center rounded-full border-2 border-[#c9a24b] bg-[#1a0505] text-2xl shadow-lg">
-                {icono}
+              <span className="absolute -top-6 flex h-12 w-12 items-center justify-center rounded-full border-2 border-[#c9a24b] bg-[#f5e6d3] shadow-lg">
+                <IconoServicio tipo={icono} />
               </span>
             )}
           </div>
 
-          {/* Contenido */}
           <div className="flex flex-col items-center gap-4 px-6 pb-8 pt-6 text-center" style={{ backgroundColor: colorFondo }}>
             <p className="text-[15px] font-medium leading-relaxed text-[#f5e6d3]">{descripcion}</p>
 
@@ -135,7 +163,6 @@ export default function ServicioDetallado({
         </div>
       </div>
 
-      {/* Destellos decorativos en las esquinas */}
       <span className="absolute -left-2 -top-2 text-xl text-[#f0d78c] drop-shadow-[0_0_6px_rgba(240,215,140,0.9)]">♥</span>
       <span className="absolute -right-2 -top-2 text-xl text-[#f0d78c] drop-shadow-[0_0_6px_rgba(240,215,140,0.9)]">♥</span>
       <span className="absolute -bottom-2 -left-2 text-xl text-[#f0d78c] drop-shadow-[0_0_6px_rgba(240,215,140,0.9)]">♥</span>
