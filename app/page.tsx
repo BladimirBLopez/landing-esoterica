@@ -375,36 +375,49 @@ export default function Home() {
         <svg viewBox="0 0 24 24" className="pointer-events-none absolute -right-8 bottom-16 h-40 w-40 text-[#c9a24b] opacity-[0.08]">
           <path fill="currentColor" d="M12 21s-6.7-4.35-9.3-8.1C1.1 10.6 1.6 7.4 4.2 5.9c2.2-1.3 4.9-.6 6.3 1.4l1.5 2 1.5-2c1.4-2 4.1-2.7 6.3-1.4 2.6 1.5 3.1 4.7 1.5 7-2.6 3.75-9.3 8.1-9.3 8.1z"/>
         </svg>
-        <div className="relative z-10 mx-auto max-w-xl rounded-3xl border-2 border-[#c9a24b] bg-[#1a0505] px-6 py-10">
-          <h2 className="mb-8 text-3xl font-bold uppercase leading-snug text-white sm:text-4xl" style={{ fontFamily: "var(--font-cinzel)" }}>
-            ¡Haz tu consulta! Recupera a tu ser amado. Resultados que hablan por sí solos
-          </h2>
+        <div className="relative z-10 mx-auto max-w-xl rounded-[28px] bg-gradient-to-br from-[#f0d78c] via-[#c9a24b] to-[#8a651f] p-[2.5px] shadow-[0_15px_40px_-10px_rgba(0,0,0,0.7)]">
+          <div className="relative rounded-[26px] bg-[#1a0505] px-6 py-10">
+            <div className="mx-auto mb-4 flex items-center justify-center gap-2 text-[#c9a24b]">
+              <span className="h-[1px] w-10 bg-[#c9a24b]/60" />
+              <span>♥</span>
+              <span className="h-[1px] w-10 bg-[#c9a24b]/60" />
+            </div>
 
-          <div className="mx-auto flex max-w-sm flex-col gap-3 text-left">
-            {resumenServicios.map((r) => (
-              <div key={r.titulo} className="flex items-start gap-2">
-                <span className="mt-0.5 text-[#c9a24b]">✔</span>
-                <span className="text-[#f5e6d3]/90">
-                  <span className="font-semibold">{r.titulo}</span>
-                  <span className="text-xs text-[#f5e6d3]/60"> · {r.duracion}</span>
-                </span>
-              </div>
-            ))}
-          </div>
+            <h2 className="mb-8 text-3xl font-bold uppercase leading-snug text-[#f0d78c] sm:text-4xl" style={{ fontFamily: "var(--font-cinzel)" }}>
+              ¡Haz tu consulta! Recupera a tu ser amado. Resultados que hablan por sí solos
+            </h2>
 
-          <p className="mx-auto mt-8 max-w-md text-sm text-[#f5e6d3]/70">
-            🔒 100% Confidencial. Trabajo serio y con fe.
-            <br />
-            Para cualquier trabajo solo necesito: nombres completos, fechas de nacimiento y tu situación.
-          </p>
+            <div className="mx-auto flex max-w-sm flex-col gap-3 text-left">
+              {resumenServicios.map((r) => (
+                <div key={r.titulo} className="flex items-start gap-2">
+                  <span className="mt-0.5 text-[#e91e8c]">♥</span>
+                  <span className="text-[#f5e6d3]/90">
+                    <span className="font-semibold">{r.titulo}</span>
+                    <span className="text-xs text-[#f5e6d3]/60"> · {r.duracion}</span>
+                  </span>
+                </div>
+              ))}
+            </div>
 
-          <div className="mt-8 flex justify-center">
-            <WhatsAppButton
-              numero={NUMERO}
-              mensaje="Hola Maestro Juan Santiago, quiero empezar hoy mismo."
-              texto="Escríbeme ahora y empezamos hoy mismo"
-              className="text-base px-8 py-4"
-            />
+            <p className="mx-auto mt-8 max-w-md text-sm text-[#f5e6d3]/70">
+              🔒 100% Confidencial. Trabajo serio y con fe.
+              <br />
+              Para cualquier trabajo solo necesito: nombres completos, fechas de nacimiento y tu situación.
+            </p>
+
+            <div className="mt-8 flex justify-center">
+              <WhatsAppButton
+                numero={NUMERO}
+                mensaje="Hola Maestro Juan Santiago, quiero empezar hoy mismo."
+                texto="Escríbeme ahora y empezamos hoy mismo"
+                className="text-base px-8 py-4"
+              />
+            </div>
+
+            <span className="absolute -left-2 -top-2 text-xl text-[#f0d78c] drop-shadow-[0_0_6px_rgba(240,215,140,0.9)]">♥</span>
+            <span className="absolute -right-2 -top-2 text-xl text-[#f0d78c] drop-shadow-[0_0_6px_rgba(240,215,140,0.9)]">♥</span>
+            <span className="absolute -bottom-2 -left-2 text-xl text-[#f0d78c] drop-shadow-[0_0_6px_rgba(240,215,140,0.9)]">♥</span>
+            <span className="absolute -bottom-2 -right-2 text-xl text-[#f0d78c] drop-shadow-[0_0_6px_rgba(240,215,140,0.9)]">♥</span>
           </div>
         </div>
       </section>
