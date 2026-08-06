@@ -51,11 +51,12 @@ export default function ScrollVideo({
     observer.observe(video);
 
     // Reintentar cuando el video termine de cargar datos (ayuda en mobile)
-    video.addEventListener("loadeddata", () => {
+    const onLoadedData = () => {
       if (autoPlayOnView && video.getBoundingClientRect().top < window.innerHeight) {
         intentarReproducir();
       }
-    });
+    };
+    video.addEventListener("loadeddata", onLoadedData);
 
     // Reintentar si el navegador lo pausa solo (throttling, ahorro de datos, etc)
     const onPause = () => {
@@ -71,6 +72,7 @@ export default function ScrollVideo({
 
     return () => {
       observer.disconnect();
+      video.removeEventListener("loadeddata", onLoadedData);
       video.removeEventListener("pause", onPause);
     };
   }, [autoPlayOnView, controls]);
