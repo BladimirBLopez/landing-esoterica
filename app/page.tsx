@@ -190,12 +190,14 @@ export default function Home() {
             ¿Sientes que tu amor se está escapando?
           </h2>
 
-          <WhatsAppButton
-            numero={NUMERO}
-            mensaje="Hola Maestro Juan Santiago, quiero recuperar a mi pareja."
-            texto="Quiero recuperar a mi pareja"
-            className="text-base px-8 py-4"
-          />
+          <div style={{ animation: "respirar-boton 3s ease-in-out infinite" }}>
+            <WhatsAppButton
+              numero={NUMERO}
+              mensaje="Hola Maestro Juan Santiago, quiero recuperar a mi pareja."
+              texto="Quiero recuperar a mi pareja"
+              className="text-base px-8 py-4"
+            />
+          </div>
           <a href={`tel:+${NUMERO}`} className="text-3xl font-bold tracking-wide text-[#c9a24b] drop-shadow-lg hover:text-[#f0d78c] sm:text-4xl" style={{ fontFamily: "var(--font-cinzel)" }}>
             📞 {TELEFONO_VISIBLE}
           </a>

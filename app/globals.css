@@ -35,3 +35,14 @@ body {
     transform: translateY(0) scale(1);
   }
 }
+
+@keyframes respirar-boton {
+  0%, 100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.04);
+    filter: brightness(1.15);
+  }
+}
