@@ -233,7 +233,7 @@ export default function Home() {
           <div className="absolute -inset-6 rounded-full bg-[#ff9d42]/20 blur-3xl" />
           <div className="relative h-full w-full overflow-hidden rounded-t-full border-2 border-[#c9a24b]/50 shadow-2xl">
             <Image
-              src="https://res.cloudinary.com/dkq95jus0/image/upload/altar-principal-2"
+              src="https://res.cloudinary.com/dkq95jus0/image/upload/altar-principal-3"
               alt="Altar del Tata Bombori"
               fill
               style={{ objectFit: "cover", objectPosition: "center 30%" }}
