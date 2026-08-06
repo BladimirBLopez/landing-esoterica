@@ -257,10 +257,10 @@ export default function Home() {
       <section id="servicios" className="relative overflow-hidden bg-[#4a0916] px-6 py-16">
         <ScrollVideo
           src="https://assets.mixkit.co/active_storage/video_items/99990/1718655073/99990-video-720.mp4"
-          className="absolute inset-0 h-full w-full object-cover opacity-30"
+          className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-[#4a0916]/70" />
-        <div className="relative z-10">
+        <div className="absolute inset-0 bg-[#4a0916]/40" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-[#4a0916] to-transparent" />
 
         <div className="relative z-10">
           <h2 className="mb-2 text-center text-4xl font-bold text-white" style={{ fontFamily: "var(--font-cinzel)" }}>
@@ -269,28 +269,28 @@ export default function Home() {
           <p className="mb-12 text-center text-[#f5e6d3]/70">
             Trabajo espiritual serio y personalizado
           </p>
-        <div className="mx-auto flex max-w-4xl flex-col gap-12">
-          {servicios.map((s) => (
-            <ServicioDetallado
-              key={s.titulo}
-              titulo={s.titulo}
-              icono={s.icono}
-              descripcion={s.descripcion}
-              beneficios={s.beneficios}
-              incluyeTitulo={s.incluyeTitulo}
-              incluye={s.incluye}
-              notaFinal={s.notaFinal}
-              duracion={s.duracion}
-              imagen={s.imagen}
-              numero={NUMERO}
-              mensaje={s.mensaje}
-              cta={s.cta}
-              colorFondo={s.color}
-            />
-          ))}
+          <div className="mx-auto flex max-w-4xl flex-col gap-12">
+            {servicios.map((s) => (
+              <ServicioDetallado
+                key={s.titulo}
+                titulo={s.titulo}
+                icono={s.icono}
+                descripcion={s.descripcion}
+                beneficios={s.beneficios}
+                incluyeTitulo={s.incluyeTitulo}
+                incluye={s.incluye}
+                notaFinal={s.notaFinal}
+                duracion={s.duracion}
+                imagen={s.imagen}
+                numero={NUMERO}
+                mensaje={s.mensaje}
+                cta={s.cta}
+                colorFondo={s.color}
+              />
+            ))}
+          </div>
         </div>
-        </div>
-        </div>
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-32 bg-gradient-to-b from-transparent to-[#4a0916]" />
       </section>
 
       {/* Video con sonido y controles */}
