@@ -173,12 +173,16 @@ export default function Home() {
         </div>
 
         <div className="relative z-10 flex flex-col items-center gap-4">
-          <div className="relative h-64 w-64 sm:h-72 sm:w-72">
+          <div className="relative h-80 w-80 sm:h-96 sm:w-96">
             <Image
               src="https://res.cloudinary.com/dkq95jus0/image/upload/maestro-juan"
               alt="Maestro Juan Santiago"
               fill
               className="object-contain drop-shadow-[0_10px_25px_rgba(0,0,0,0.6)]"
+              style={{
+                maskImage: "linear-gradient(to bottom, black 70%, transparent 100%)",
+                WebkitMaskImage: "linear-gradient(to bottom, black 70%, transparent 100%)",
+              }}
             />
           </div>
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#c9a24b]">
