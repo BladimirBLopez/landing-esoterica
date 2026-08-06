@@ -254,13 +254,7 @@ export default function Home() {
       </section>
 
       {/* Servicios (con video de fondo) */}
-      <section id="servicios" className="relative overflow-hidden px-6 py-16">
-        <ScrollVideo
-          src="https://assets.mixkit.co/active_storage/video_items/99990/1718655073/99990-video-720.mp4"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-[#4a1620]/40" />
-        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-[#2b0d0d] to-transparent" />
+      <section id="servicios" className="relative overflow-hidden bg-[#4a0916] px-6 py-16">
 
         <div className="relative z-10">
           <h2 className="mb-2 text-center text-4xl font-bold text-white" style={{ fontFamily: "var(--font-cinzel)" }}>
@@ -290,12 +284,15 @@ export default function Home() {
           ))}
         </div>
         </div>
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-32 bg-gradient-to-b from-transparent to-[#2a0a1a]" />
       </section>
 
       {/* Video con sonido y controles */}
-      <section className="relative bg-[#2b0d0d] px-6 py-16 text-center">
-        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-[#2b0d0d] to-transparent" />
+      <section className="bg-[#4a0916] px-6 py-16 text-center">
+        <div className="mx-auto mb-6 flex items-center justify-center gap-2 text-[#c9a24b]">
+          <span className="h-[1px] w-10 bg-[#c9a24b]/60" />
+          <span>♥</span>
+          <span className="h-[1px] w-10 bg-[#c9a24b]/60" />
+        </div>
         <h2 className="mb-2 text-4xl font-bold text-white" style={{ fontFamily: "var(--font-cinzel)" }}>
           Conoce al Maestro Juan Santiago
         </h2>
@@ -313,25 +310,20 @@ export default function Home() {
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="relative overflow-hidden bg-[#2a0a1a] px-6 py-16">
-        <Image
-          src="https://res.cloudinary.com/dkq95jus0/image/upload/aguayo-2"
-          alt="Aguayo andino"
-          fill
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-[#2a0a1a]/85" />
-        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-[#2a0a1a] to-transparent" />
-        <div className="relative z-20">
-          <h2 className="mb-10 text-center text-4xl font-bold text-white" style={{ fontFamily: "var(--font-cinzel)" }}>
-            Preguntas Frecuentes
-          </h2>
-          <FaqAccordion items={faq} />
+      <section id="faq" className="bg-[#4a0916] px-6 py-16">
+        <div className="mx-auto mb-6 flex items-center justify-center gap-2 text-[#c9a24b]">
+          <span className="h-[1px] w-10 bg-[#c9a24b]/60" />
+          <span>♥</span>
+          <span className="h-[1px] w-10 bg-[#c9a24b]/60" />
         </div>
+        <h2 className="mb-10 text-center text-4xl font-bold text-white" style={{ fontFamily: "var(--font-cinzel)" }}>
+          Preguntas Frecuentes
+        </h2>
+        <FaqAccordion items={faq} />
       </section>
 
       {/* Resumen final + CTA (estilo caja con borde) */}
-      <section className="px-6 py-16 text-center">
+      <section className="bg-[#4a0916] px-6 py-16 text-center">
         <div className="mx-auto max-w-xl rounded-3xl border-2 border-[#c9a24b] bg-[#1a0505] px-6 py-10">
           <h2 className="mb-8 text-3xl font-bold uppercase leading-snug text-white sm:text-4xl" style={{ fontFamily: "var(--font-cinzel)" }}>
             ¡Haz tu consulta! Recupera a tu ser amado. Resultados que hablan por sí solos
