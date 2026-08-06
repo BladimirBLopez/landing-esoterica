@@ -181,7 +181,10 @@ export default function Home() {
               src="https://res.cloudinary.com/dkq95jus0/image/upload/e_trim/maestro-juansantiago"
               alt="Maestro Juan Santiago"
               fill
-              className="object-contain drop-shadow-[0_10px_25px_rgba(0,0,0,0.6)]"
+              className="object-contain"
+              style={{
+                filter: "drop-shadow(0 0 18px rgba(0,0,0,0.85)) drop-shadow(0 10px 25px rgba(0,0,0,0.6))",
+              }}
             />
           </div>
           <h1 className="relative z-10 -mt-40 text-5xl leading-tight text-[#c9a24b] sm:text-7xl" style={{ fontFamily: "var(--font-script)", textShadow: "0 4px 20px rgba(0,0,0,0.9), 0 2px 8px rgba(0,0,0,0.9)" }}>
