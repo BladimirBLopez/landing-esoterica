@@ -178,7 +178,7 @@ export default function Home() {
           </p>
           <div className="relative h-[30rem] w-80 sm:h-[34rem] sm:w-96">
             <Image
-              src="https://res.cloudinary.com/dkq95jus0/image/upload/maestro-juansantiago"
+              src="https://res.cloudinary.com/dkq95jus0/image/upload/e_trim/maestro-juansantiago"
               alt="Maestro Juan Santiago"
               fill
               className="object-contain drop-shadow-[0_10px_25px_rgba(0,0,0,0.6)]"
