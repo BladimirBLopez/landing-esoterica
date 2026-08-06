@@ -153,7 +153,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-[#1a0505]/80" />
 
         {/* Bandera de Potosi, esquina superior derecha, mas grande e inclinada */}
-        <div className="absolute -right-6 -top-6 z-10 h-40 w-52 opacity-50 drop-shadow-lg">
+        <div className="absolute -right-3 -top-3 z-10 h-24 w-32 opacity-50 drop-shadow-lg sm:h-32 sm:w-44">
           <Image
             src="https://res.cloudinary.com/dkq95jus0/image/upload/bandera-potosi-2"
             alt="Bandera de Potosí"
@@ -163,7 +163,7 @@ export default function Home() {
         </div>
 
         {/* Bandera de Bolivia, esquina superior izquierda, misma altura y tamano */}
-        <div className="absolute -left-6 -top-6 z-10 h-40 w-52 opacity-50 drop-shadow-lg">
+        <div className="absolute -left-3 -top-3 z-10 h-24 w-32 opacity-50 drop-shadow-lg sm:h-32 sm:w-44">
           <Image
             src="https://res.cloudinary.com/dkq95jus0/image/upload/bandera-bolivia-2"
             alt="Bandera de Bolivia"
