@@ -1,5 +1,5 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: "https://CAMBIAR-DOMINIO-AQUI.online",
+  siteUrl: "https://juansantiagoamarres.online",
   generateRobotsTxt: true,
 };
