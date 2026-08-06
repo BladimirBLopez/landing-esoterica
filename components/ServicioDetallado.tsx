@@ -97,7 +97,7 @@ export default function ServicioDetallado({
           </div>
 
           <div className="flex flex-col items-center gap-4 px-6 pb-8 pt-6 text-center" style={{ backgroundColor: colorFondo }}>
-            <p className="text-[15px] font-medium leading-relaxed text-[#f5e6d3]">{descripcion}</p>
+            <p className="text-base leading-relaxed text-[#f5e6d3]" style={{ fontFamily: "var(--font-playfair)" }}>{descripcion}</p>
 
             <span className="rounded-full border-2 border-red-500 bg-red-500/10 px-4 py-1 text-sm font-bold text-red-400">
               Resultados en {duracion}
