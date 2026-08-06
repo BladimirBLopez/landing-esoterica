@@ -176,7 +176,10 @@ export default function Home() {
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#c9a24b]">
             Sabiduría Ancestral · Norte de Potosí
           </p>
-          <div className="relative -mb-16 h-72 w-72 sm:h-80 sm:w-80">
+          <h1 className="text-6xl leading-tight text-[#c9a24b] sm:text-7xl" style={{ fontFamily: "var(--font-script)", textShadow: "0 4px 20px rgba(0,0,0,0.9), 0 2px 8px rgba(0,0,0,0.9)" }}>
+            Maestro Juan Santiago
+          </h1>
+          <div className="relative -mt-2 h-72 w-56 sm:h-80 sm:w-64">
             <Image
               src="https://res.cloudinary.com/dkq95jus0/image/upload/maestro-juansantiago"
               alt="Maestro Juan Santiago"
@@ -185,9 +188,6 @@ export default function Home() {
             />
             <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-[#1a0505]" />
           </div>
-          <h1 className="text-6xl leading-tight text-[#c9a24b] sm:text-7xl" style={{ fontFamily: "var(--font-script)", textShadow: "0 4px 20px rgba(0,0,0,0.9), 0 2px 8px rgba(0,0,0,0.9)" }}>
-            Maestro Juan Santiago
-          </h1>
           <div className="flex items-center gap-2 text-[#c9a24b]">
             <span className="h-[1px] w-10 bg-[#c9a24b]/60" />
             <span>♥</span>
