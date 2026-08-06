@@ -186,7 +186,7 @@ export default function Home() {
                 filter: "drop-shadow(0 0 18px rgba(0,0,0,0.85)) drop-shadow(0 10px 25px rgba(0,0,0,0.6))",
               }}
             />
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent via-[#1a0505]/70 to-[#1a0505]" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-b from-transparent to-[#1a0505]/60" />
           </div>
           <h1 className="relative z-10 -mt-40 text-5xl leading-tight text-[#c9a24b] sm:text-7xl" style={{ fontFamily: "var(--font-script)", textShadow: "0 4px 20px rgba(0,0,0,0.9), 0 2px 8px rgba(0,0,0,0.9)" }}>
             Maestro Juan Santiago
