@@ -388,14 +388,6 @@ export default function Home() {
           }}
         />
         <div className="relative z-10">
-        <div className="relative mx-auto mb-4 h-10 w-16">
-          <Image
-            src="https://res.cloudinary.com/dkq95jus0/image/upload/bandera-bolivia"
-            alt="Bandera de Bolivia"
-            fill
-            className="object-contain"
-          />
-        </div>
         <a href={`tel:+${NUMERO}`} className="block text-sm font-semibold text-[#c9a24b]">
           📞 {TELEFONO_VISIBLE}
         </a>
