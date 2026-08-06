@@ -294,8 +294,14 @@ export default function Home() {
       </section>
 
       {/* Video con sonido y controles */}
-      <section className="bg-gradient-to-b from-[#4a0916] to-[#6b1330] px-6 py-16 text-center">
-        <div className="mx-auto mb-6 flex items-center justify-center gap-2 text-[#c9a24b]">
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#4a0916] to-[#6b1330] px-6 py-16 text-center">
+        <svg viewBox="0 0 24 24" className="pointer-events-none absolute -left-8 top-10 h-40 w-40 text-[#c9a24b] opacity-[0.08]">
+          <path fill="currentColor" d="M12 21s-6.7-4.35-9.3-8.1C1.1 10.6 1.6 7.4 4.2 5.9c2.2-1.3 4.9-.6 6.3 1.4l1.5 2 1.5-2c1.4-2 4.1-2.7 6.3-1.4 2.6 1.5 3.1 4.7 1.5 7-2.6 3.75-9.3 8.1-9.3 8.1z"/>
+        </svg>
+        <svg viewBox="0 0 24 24" className="pointer-events-none absolute -right-10 bottom-10 h-52 w-52 text-[#c9a24b] opacity-[0.08]">
+          <path fill="currentColor" d="M12 21s-6.7-4.35-9.3-8.1C1.1 10.6 1.6 7.4 4.2 5.9c2.2-1.3 4.9-.6 6.3 1.4l1.5 2 1.5-2c1.4-2 4.1-2.7 6.3-1.4 2.6 1.5 3.1 4.7 1.5 7-2.6 3.75-9.3 8.1-9.3 8.1z"/>
+        </svg>
+        <div className="relative z-10 mx-auto mb-6 flex items-center justify-center gap-2 text-[#c9a24b]">
           <span className="h-[1px] w-10 bg-[#c9a24b]/60" />
           <span>♥</span>
           <span className="h-[1px] w-10 bg-[#c9a24b]/60" />
@@ -317,8 +323,14 @@ export default function Home() {
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="bg-gradient-to-b from-[#6b1330] to-[#4a0916] px-6 py-16">
-        <div className="mx-auto mb-6 flex items-center justify-center gap-2 text-[#c9a24b]">
+      <section id="faq" className="relative overflow-hidden bg-gradient-to-b from-[#6b1330] to-[#4a0916] px-6 py-16">
+        <svg viewBox="0 0 24 24" className="pointer-events-none absolute -right-10 top-0 h-48 w-48 text-[#c9a24b] opacity-[0.08]">
+          <path fill="currentColor" d="M12 21s-6.7-4.35-9.3-8.1C1.1 10.6 1.6 7.4 4.2 5.9c2.2-1.3 4.9-.6 6.3 1.4l1.5 2 1.5-2c1.4-2 4.1-2.7 6.3-1.4 2.6 1.5 3.1 4.7 1.5 7-2.6 3.75-9.3 8.1-9.3 8.1z"/>
+        </svg>
+        <svg viewBox="0 0 24 24" className="pointer-events-none absolute -left-10 bottom-0 h-44 w-44 text-[#c9a24b] opacity-[0.08]">
+          <path fill="currentColor" d="M12 21s-6.7-4.35-9.3-8.1C1.1 10.6 1.6 7.4 4.2 5.9c2.2-1.3 4.9-.6 6.3 1.4l1.5 2 1.5-2c1.4-2 4.1-2.7 6.3-1.4 2.6 1.5 3.1 4.7 1.5 7-2.6 3.75-9.3 8.1-9.3 8.1z"/>
+        </svg>
+        <div className="relative z-10 mx-auto mb-6 flex items-center justify-center gap-2 text-[#c9a24b]">
           <span className="h-[1px] w-10 bg-[#c9a24b]/60" />
           <span>♥</span>
           <span className="h-[1px] w-10 bg-[#c9a24b]/60" />
@@ -330,8 +342,14 @@ export default function Home() {
       </section>
 
       {/* Resumen final + CTA (estilo caja con borde) */}
-      <section className="bg-gradient-to-b from-[#4a0916] to-[#2e0a1c] px-6 py-16 text-center">
-        <div className="mx-auto max-w-xl rounded-3xl border-2 border-[#c9a24b] bg-[#1a0505] px-6 py-10">
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#4a0916] to-[#2e0a1c] px-6 py-16 text-center">
+        <svg viewBox="0 0 24 24" className="pointer-events-none absolute -left-8 top-16 h-52 w-52 text-[#c9a24b] opacity-[0.08]">
+          <path fill="currentColor" d="M12 21s-6.7-4.35-9.3-8.1C1.1 10.6 1.6 7.4 4.2 5.9c2.2-1.3 4.9-.6 6.3 1.4l1.5 2 1.5-2c1.4-2 4.1-2.7 6.3-1.4 2.6 1.5 3.1 4.7 1.5 7-2.6 3.75-9.3 8.1-9.3 8.1z"/>
+        </svg>
+        <svg viewBox="0 0 24 24" className="pointer-events-none absolute -right-8 bottom-16 h-40 w-40 text-[#c9a24b] opacity-[0.08]">
+          <path fill="currentColor" d="M12 21s-6.7-4.35-9.3-8.1C1.1 10.6 1.6 7.4 4.2 5.9c2.2-1.3 4.9-.6 6.3 1.4l1.5 2 1.5-2c1.4-2 4.1-2.7 6.3-1.4 2.6 1.5 3.1 4.7 1.5 7-2.6 3.75-9.3 8.1-9.3 8.1z"/>
+        </svg>
+        <div className="relative z-10 mx-auto max-w-xl rounded-3xl border-2 border-[#c9a24b] bg-[#1a0505] px-6 py-10">
           <h2 className="mb-8 text-3xl font-bold uppercase leading-snug text-white sm:text-4xl" style={{ fontFamily: "var(--font-cinzel)" }}>
             ¡Haz tu consulta! Recupera a tu ser amado. Resultados que hablan por sí solos
           </h2>
