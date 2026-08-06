@@ -322,7 +322,6 @@ export default function Home() {
             autoPlayOnView={false}
           />
         </div>
-        </div>
       </section>
 
       {/* FAQ */}
