@@ -203,7 +203,7 @@ export default function Home() {
       </section>
 
       {/* Sobre el Altar: nicho con foto nitida + tarjeta solida con pasos tipo mecha */}
-      <section className="relative overflow-hidden bg-[#2a0a12] px-6 pb-10 pt-8">
+      <section className="relative overflow-hidden bg-[#2a0a12] px-6 pb-0 pt-8">
         <ScrollVideo
           src="https://assets.mixkit.co/videos/51082/51082-720.mp4"
           className="absolute inset-0 h-full w-full object-cover"
