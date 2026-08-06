@@ -204,11 +204,9 @@ export default function Home() {
 
       {/* Sobre el Altar: nicho con foto nitida + tarjeta solida con pasos tipo mecha */}
       <section className="relative overflow-hidden bg-[#2a0a12] px-6 pb-10 pt-8">
-        <Image
-          src="https://res.cloudinary.com/dkq95jus0/image/upload/aguayo-2"
-          alt="Aguayo andino"
-          fill
-          className="object-cover"
+        <ScrollVideo
+          src="https://assets.mixkit.co/videos/51082/51082-720.mp4"
+          className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-[#170a06]/85" />
         <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-[#1a0505] to-transparent" />
