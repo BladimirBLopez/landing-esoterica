@@ -301,9 +301,6 @@ export default function Home() {
         <h2 className="mb-2 text-4xl font-bold text-white" style={{ fontFamily: "var(--font-cinzel)" }}>
           Conoce al Maestro Juan Santiago
         </h2>
-        <p className="mb-8 text-[#f5e6d3]/70">
-          Toca play para ver y escuchar
-        </p>
         <div className="mx-auto max-w-xl overflow-hidden rounded-2xl border border-[#c9a24b]/30 shadow-2xl">
           <ScrollVideo
             src="https://res.cloudinary.com/dkq95jus0/video/upload/hero-video-1"
