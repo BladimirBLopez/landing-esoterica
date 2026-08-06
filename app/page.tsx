@@ -184,16 +184,19 @@ export default function Home() {
               className="object-contain"
             />
           </div>
-          <h1
-            className="relative z-10 -mt-40 text-5xl leading-tight text-[#f0d78c] sm:text-7xl"
-            style={{
-              fontFamily: "var(--font-script)",
-              textShadow:
-                "-2px 0 0 #1a0505, 2px 0 0 #1a0505, 0 -2px 0 #1a0505, 0 2px 0 #1a0505, -2px -2px 0 #1a0505, 2px -2px 0 #1a0505, -2px 2px 0 #1a0505, 2px 2px 0 #1a0505, 0 6px 18px rgba(0,0,0,0.9)",
-            }}
-          >
-            Maestro Juan Santiago
-          </h1>
+          <div className="relative -mt-40">
+            <div className="pointer-events-none absolute -inset-x-10 -inset-y-6 rounded-[50%] bg-[#1a0505]/70 blur-2xl" />
+            <h1
+              className="relative text-5xl leading-tight text-[#f0d78c] sm:text-7xl"
+              style={{
+                fontFamily: "var(--font-script)",
+                textShadow:
+                  "-2px 0 0 #1a0505, 2px 0 0 #1a0505, 0 -2px 0 #1a0505, 0 2px 0 #1a0505, -2px -2px 0 #1a0505, 2px -2px 0 #1a0505, -2px 2px 0 #1a0505, 2px 2px 0 #1a0505, 0 6px 18px rgba(0,0,0,0.9)",
+              }}
+            >
+              Maestro Juan Santiago
+            </h1>
+          </div>
           <p className="relative z-10 mt-2 text-lg font-semibold text-[#f5e6d3]" style={{ textShadow: "0 2px 10px rgba(0,0,0,0.9)" }}>Maestro Curandero · Heredero del Tatabombori</p>
 
           <h2 className="mt-4 max-w-xl text-2xl font-bold text-white sm:text-4xl" style={{ textShadow: "0 4px 16px rgba(0,0,0,0.9)" }}>
