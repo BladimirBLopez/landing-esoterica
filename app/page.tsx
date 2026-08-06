@@ -228,9 +228,11 @@ export default function Home() {
 
         {/* Tarjeta solida superpuesta */}
         <div className="relative z-20 mx-auto -mt-10 max-w-xl rounded-3xl border border-[#c9a24b]/30 bg-[#3d0f1a] px-6 py-10 text-center shadow-2xl">
+          <RevealOnScroll>
           <h2 className="mb-4 text-4xl font-bold text-white" style={{ fontFamily: "var(--font-cinzel)" }}>
             Bienvenido al Altar del Tata Bombori
           </h2>
+        </RevealOnScroll>
           <p className="mx-auto max-w-md text-[#f5e6d3]/90">
             Donde la sabiduría ancestral de las Sagradas Hojas de Coca y la verdad revelada por las Cartas del Tarot se unen para ver tu situación, orientarte y trabajar con justicia y fe verdadera.
           </p>
@@ -264,9 +266,11 @@ export default function Home() {
         <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-[#2b0d0d] to-transparent" />
 
         <div className="relative z-10">
+          <RevealOnScroll>
           <h2 className="mb-2 text-center text-4xl font-bold text-white" style={{ fontFamily: "var(--font-cinzel)" }}>
             Servicios del Altar del Tata Bombori
           </h2>
+        </RevealOnScroll>
           <p className="mb-12 text-center text-[#f5e6d3]/70">
             Trabajo espiritual serio y personalizado
           </p>
@@ -308,9 +312,11 @@ export default function Home() {
           <span>♥</span>
           <span className="h-[1px] w-10 bg-[#c9a24b]/60" />
         </div>
-        <h2 className="mb-2 text-4xl font-bold text-white" style={{ fontFamily: "var(--font-cinzel)" }}>
+        <RevealOnScroll>
+          <h2 className="mb-2 text-4xl font-bold text-white" style={{ fontFamily: "var(--font-cinzel)" }}>
           Conoce al Maestro Juan Santiago
         </h2>
+        </RevealOnScroll>
         <div className="mx-auto max-w-xl overflow-hidden rounded-2xl border border-[#c9a24b]/30 shadow-2xl">
           <ScrollVideo
             src="https://res.cloudinary.com/dkq95jus0/video/upload/hero-video-1"
@@ -337,9 +343,11 @@ export default function Home() {
           <span>♥</span>
           <span className="h-[1px] w-10 bg-[#c9a24b]/60" />
         </div>
-        <h2 className="mb-10 text-center text-4xl font-bold text-white" style={{ fontFamily: "var(--font-cinzel)" }}>
+        <RevealOnScroll>
+          <h2 className="mb-10 text-center text-4xl font-bold text-white" style={{ fontFamily: "var(--font-cinzel)" }}>
           Preguntas Frecuentes
         </h2>
+        </RevealOnScroll>
         <FaqAccordion items={faq} />
       </section>
 
