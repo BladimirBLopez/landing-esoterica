@@ -32,7 +32,10 @@ export default function FloatingWhatsApp({
             </button>
           </div>
           <div className="max-h-[45vh] overflow-y-auto bg-[#f0f0f0] px-4 py-5">
-            <div className="relative rounded-2xl rounded-tl-none bg-white p-4 text-sm leading-relaxed text-gray-800 shadow-sm">
+            <div
+              className="relative rounded-2xl rounded-tl-none bg-white p-4 text-sm leading-relaxed text-gray-800 shadow-sm"
+              style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
+            >
               <div className="whitespace-pre-line">{mensaje}</div>
             </div>
           </div>
