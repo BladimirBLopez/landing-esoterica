@@ -6,7 +6,7 @@ import WhatsAppButton from "./WhatsAppButton";
 
 interface ServicioDetalladoProps {
   titulo: string;
-  icono?: "amor" | "union" | "miel" | "retorno" | "escudo";
+  icono?: string;
   descripcion: string;
   beneficios?: string[];
   incluyeTitulo?: string;
