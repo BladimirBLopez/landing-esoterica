@@ -406,7 +406,7 @@ export default function Home() {
       </section>
 
       {/* Frase de garantia */}
-      <section className="px-6 pb-8 text-center">
+      <section className="bg-gradient-to-b from-[#2e0a1c] to-[#1a0505] px-6 pb-8 pt-8 text-center">
         <p className="mx-auto max-w-md text-sm italic text-[#c9a24b]" style={{ fontFamily: "var(--font-cinzel)" }}>
           &ldquo;Garantizo mi trabajo con la fuerza de la tierra y la verdad de mi espíritu.&rdquo;
         </p>
