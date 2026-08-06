@@ -178,7 +178,7 @@ export default function Home() {
           </p>
           <div className="relative -mt-16 h-[30rem] w-80 sm:h-[34rem] sm:w-96">
             <Image
-              src="https://res.cloudinary.com/dkq95jus0/image/upload/e_trim/maestro-juan2"
+              src="https://res.cloudinary.com/dkq95jus0/image/upload/maestro-juan3"
               alt="Maestro Juan Santiago"
               fill
               className="object-contain"
