@@ -184,7 +184,14 @@ export default function Home() {
               className="object-contain"
             />
           </div>
-          <h1 className="relative z-10 -mt-40 text-5xl leading-tight text-[#c9a24b] sm:text-7xl" style={{ fontFamily: "var(--font-script)", textShadow: "0 4px 20px rgba(0,0,0,0.9), 0 2px 8px rgba(0,0,0,0.9)" }}>
+          <h1
+            className="relative z-10 -mt-40 text-5xl leading-tight text-[#f0d78c] sm:text-7xl"
+            style={{
+              fontFamily: "var(--font-script)",
+              textShadow:
+                "-2px 0 0 #1a0505, 2px 0 0 #1a0505, 0 -2px 0 #1a0505, 0 2px 0 #1a0505, -2px -2px 0 #1a0505, 2px -2px 0 #1a0505, -2px 2px 0 #1a0505, 2px 2px 0 #1a0505, 0 6px 18px rgba(0,0,0,0.9)",
+            }}
+          >
             Maestro Juan Santiago
           </h1>
           <p className="relative z-10 mt-2 text-lg font-semibold text-[#f5e6d3]" style={{ textShadow: "0 2px 10px rgba(0,0,0,0.9)" }}>Maestro Curandero · Heredero del Tatabombori</p>
