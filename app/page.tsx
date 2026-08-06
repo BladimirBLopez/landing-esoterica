@@ -44,7 +44,7 @@ const servicios = [
     imagen: "https://res.cloudinary.com/dkq95jus0/image/upload/union-parejas",
     mensaje: "Hola Maestro, me interesa el trabajo de Unión de Parejas.",
     cta: "Consultar por Unión",
-    color: "#4a102b",
+    color: "#4a0916",
   },
   {
     titulo: "Endulzamiento",
@@ -62,7 +62,7 @@ const servicios = [
     imagen: "https://res.cloudinary.com/dkq95jus0/image/upload/endulzamiento-amor",
     mensaje: "Hola Maestro, quiero saber más sobre el Endulzamiento.",
     cta: "Consultar Endulzamiento",
-    color: "#4a1e10",
+    color: "#4a0916",
   },
   {
     titulo: "Retorno del Ser Amado",
@@ -80,7 +80,7 @@ const servicios = [
     imagen: "https://res.cloudinary.com/dkq95jus0/image/upload/retorno-ser-amado",
     mensaje: "Hola Maestro, me interesa el Retorno del Ser Amado.",
     cta: "Solicitar Retorno",
-    color: "#5c0a0a",
+    color: "#4a0916",
   },
   {
     titulo: "Alejamiento de Terceros",
@@ -105,7 +105,7 @@ const servicios = [
     imagen: "https://res.cloudinary.com/dkq95jus0/image/upload/alejamiento-tercero",
     mensaje: "Hola Maestro, me interesa el Alejamiento de Terceros.",
     cta: "Consultar Alejamiento",
-    color: "#26050e",
+    color: "#4a0916",
   },
 ];
 
