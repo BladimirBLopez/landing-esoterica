@@ -184,7 +184,7 @@ export default function Home() {
               className="object-contain drop-shadow-[0_10px_25px_rgba(0,0,0,0.6)]"
             />
           </div>
-          <h1 className="-mt-4 text-6xl leading-tight text-[#c9a24b] sm:text-7xl" style={{ fontFamily: "var(--font-script)", textShadow: "0 4px 20px rgba(0,0,0,0.9), 0 2px 8px rgba(0,0,0,0.9)" }}>
+          <h1 className="-mt-24 text-6xl leading-tight text-[#c9a24b] sm:text-7xl" style={{ fontFamily: "var(--font-script)", textShadow: "0 4px 20px rgba(0,0,0,0.9), 0 2px 8px rgba(0,0,0,0.9)" }}>
             Maestro Juan Santiago
           </h1>
           <div className="flex items-center gap-2 text-[#c9a24b]">
