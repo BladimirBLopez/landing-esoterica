@@ -255,6 +255,12 @@ export default function Home() {
 
       {/* Servicios (con video de fondo) */}
       <section id="servicios" className="relative overflow-hidden bg-[#4a0916] px-6 py-16">
+        <ScrollVideo
+          src="https://assets.mixkit.co/active_storage/video_items/99990/1718655073/99990-video-720.mp4"
+          className="absolute inset-0 h-full w-full object-cover opacity-30"
+        />
+        <div className="absolute inset-0 bg-[#4a0916]/70" />
+        <div className="relative z-10">
 
         <div className="relative z-10">
           <h2 className="mb-2 text-center text-4xl font-bold text-white" style={{ fontFamily: "var(--font-cinzel)" }}>
@@ -282,6 +288,7 @@ export default function Home() {
               colorFondo={s.color}
             />
           ))}
+        </div>
         </div>
         </div>
       </section>
