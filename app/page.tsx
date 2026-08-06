@@ -187,9 +187,10 @@ export default function Home() {
           <div className="relative -mt-40">
             <div className="pointer-events-none absolute -inset-x-10 -inset-y-6 rounded-[50%] bg-[#1a0505]/70 blur-2xl" />
             <h1
-              className="relative text-5xl leading-tight text-[#f0d78c] sm:text-7xl"
+              className="relative text-5xl text-[#f0d78c] sm:text-7xl"
               style={{
                 fontFamily: "var(--font-script)",
+                lineHeight: 0.75,
                 textShadow:
                   "-2px 0 0 #1a0505, 2px 0 0 #1a0505, 0 -2px 0 #1a0505, 0 2px 0 #1a0505, -2px -2px 0 #1a0505, 2px -2px 0 #1a0505, -2px 2px 0 #1a0505, 2px 2px 0 #1a0505, 0 6px 18px rgba(0,0,0,0.9)",
               }}
