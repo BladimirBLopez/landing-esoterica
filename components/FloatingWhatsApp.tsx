@@ -63,8 +63,9 @@ export default function FloatingWhatsApp({
           onClick={() => setAbierto(!abierto)}
           aria-label="Abrir WhatsApp"
           className="relative flex h-16 w-16 items-center justify-center rounded-full bg-[#25d366] shadow-lg transition-transform hover:scale-105 hover:bg-[#1fb855]"
+          style={{ animation: "rebote-whatsapp 3s ease-in-out infinite" }}
         >
-          <span className="absolute -right-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full bg-red-500 text-xs font-bold text-white">
+          <span className="absolute -right-1 -top-1 flex h-6 w-6 animate-pulse items-center justify-center rounded-full bg-red-500 text-xs font-bold text-white">
             1
           </span>
           <svg viewBox="0 0 32 32" className="h-9 w-9 fill-white">

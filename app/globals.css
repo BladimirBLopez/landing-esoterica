@@ -23,3 +23,15 @@ body {
   color: var(--foreground);
   font-family: var(--font-playfair), Georgia, serif;
 }
+
+@keyframes rebote-whatsapp {
+  0%, 85%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  90% {
+    transform: translateY(-8px) scale(1.05);
+  }
+  95% {
+    transform: translateY(0) scale(1);
+  }
+}
