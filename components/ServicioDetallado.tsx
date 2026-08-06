@@ -143,7 +143,7 @@ export default function ServicioDetallado({
                   onClick={() => setAbierto(!abierto)}
                   className="rounded-full border border-[#c9a24b]/50 px-5 py-1.5 text-sm text-[#c9a24b] transition-colors hover:bg-[#c9a24b]/10"
                 >
-                  {abierto ? "Ver menos" : "Ver más detalles"}
+                  {abierto ? "Ver menos" : "¿Qué incluye este trabajo?"}
                 </button>
               </>
             )}
