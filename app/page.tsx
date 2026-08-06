@@ -294,8 +294,16 @@ export default function Home() {
       </section>
 
       {/* Video con sonido y controles */}
-      <section className="bg-[#4a0916] px-6 py-16 text-center">
-        <div className="mx-auto mb-6 flex items-center justify-center gap-2 text-[#c9a24b]">
+      <section className="relative overflow-hidden bg-[#4a0916] px-6 py-16 text-center">
+        <Image
+          src="https://images.unsplash.com/photo-1559769697-23e044c5e0e5?w=1200&q=80"
+          alt="Silueta de pareja"
+          fill
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-[#4a0916]/80" />
+
+        <div className="relative z-10 mx-auto mb-6 flex items-center justify-center gap-2 text-[#c9a24b]">
           <span className="h-[1px] w-10 bg-[#c9a24b]/60" />
           <span>♥</span>
           <span className="h-[1px] w-10 bg-[#c9a24b]/60" />
@@ -313,6 +321,7 @@ export default function Home() {
             controls={true}
             autoPlayOnView={false}
           />
+        </div>
         </div>
       </section>
 
