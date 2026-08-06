@@ -145,7 +145,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#1a0505] text-[#f5e6d3]">
       {/* Hero (pantalla completa, con video de fondo) */}
-      <section className="relative flex min-h-screen flex-col items-center justify-start gap-1 overflow-hidden px-6 pt-20 pb-10 text-center">
+      <section className="relative flex min-h-screen flex-col items-center justify-start gap-1 overflow-hidden px-6 pt-12 pb-10 text-center">
         <ScrollVideo
           src="https://assets.mixkit.co/videos/3461/3461-720.mp4"
           className="absolute inset-0 h-full w-full object-cover"
@@ -187,7 +187,7 @@ export default function Home() {
               }}
             />
           </div>
-          <h1 className="relative z-10 -mt-40 text-6xl leading-tight text-[#f0d78c] sm:text-7xl" style={{ fontFamily: "var(--font-script)", textShadow: "0 0 25px rgba(240,215,140,0.6), 0 4px 20px rgba(0,0,0,0.95), 0 2px 8px rgba(0,0,0,0.95)" }}>
+          <h1 className="relative z-10 -mt-40 text-5xl leading-tight text-[#c9a24b] sm:text-7xl" style={{ fontFamily: "var(--font-script)", textShadow: "0 4px 20px rgba(0,0,0,0.9), 0 2px 8px rgba(0,0,0,0.9)" }}>
             Maestro Juan Santiago
           </h1>
           <p className="mt-2 text-lg text-[#f5e6d3]/90">Maestro Curandero · Heredero del Tatabombori</p>
