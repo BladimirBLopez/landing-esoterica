@@ -172,7 +172,7 @@ export default function Home() {
           />
         </div>
 
-        <div className="relative z-10 flex flex-col items-center gap-4">
+        <div className="relative z-10 flex flex-col items-center gap-1">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#c9a24b]">
             Sabiduría Ancestral · Norte de Potosí
           </p>
