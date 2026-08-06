@@ -39,6 +39,7 @@ export default function FloatingWhatsApp({
               className="relative rounded-2xl rounded-tl-none bg-white p-4 text-sm leading-relaxed text-gray-800 shadow-sm"
               style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
             >
+              <span className="absolute -left-2 top-0 h-0 w-0 border-t-[10px] border-r-[10px] border-t-white border-r-transparent" />
               <div className="whitespace-pre-line">{mensaje}</div>
             </div>
           </div>

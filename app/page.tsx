@@ -406,15 +406,13 @@ export default function Home() {
       <MusicaFondo src="https://res.cloudinary.com/dkq95jus0/video/upload/sonido-landing" />
       <FloatingWhatsApp
         numero={NUMERO}
-        mensaje={`🤝 Bienvenido de parte del Maestro Juan Santiago
-
-¡Hola! Gracias por contactarme. Soy el Maestro Juan Santiago, especialista en:
+        mensaje={`¡Hola! Gracias por contactarme. Soy el Maestro Juan Santiago, especialista en:
 ✨ Amarres de amor • Unión de parejas
 ✨ Retornos de seres amados
 ✨ Endulzamiento de relaciones
 ✨ Alejamiento de personas y terceros
 
-Con 25 años de experiencia y sabiduría tradicional, trabajo con respeto, seriedad y confidencialidad absoluta. Cuéntame con claridad tu situación y lo que deseas lograr. Estoy aquí para orientarte.
+Con más de 25 años de experiencia y sabiduría tradicional, trabajo con respeto, seriedad y confidencialidad absoluta. Cuéntame con claridad tu situación y lo que deseas lograr. Estoy aquí para orientarte.
 
 🙏 Bendiciones.`}
       />
