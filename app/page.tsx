@@ -173,21 +173,18 @@ export default function Home() {
         </div>
 
         <div className="relative z-10 flex flex-col items-center gap-4">
-          <div className="relative h-80 w-80 sm:h-96 sm:w-96">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#c9a24b]">
+            Sabiduría Ancestral · Norte de Potosí
+          </p>
+          <div className="relative -mb-6 h-72 w-72 sm:h-80 sm:w-80">
             <Image
               src="https://res.cloudinary.com/dkq95jus0/image/upload/maestro-juan"
               alt="Maestro Juan Santiago"
               fill
               className="object-contain drop-shadow-[0_10px_25px_rgba(0,0,0,0.6)]"
-              style={{
-                maskImage: "linear-gradient(to bottom, black 70%, transparent 100%)",
-                WebkitMaskImage: "linear-gradient(to bottom, black 70%, transparent 100%)",
-              }}
             />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-[#1a0505]" />
           </div>
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#c9a24b]">
-            Sabiduría Ancestral · Norte de Potosí
-          </p>
           <h1 className="text-6xl leading-tight text-[#c9a24b] sm:text-7xl" style={{ fontFamily: "var(--font-script)", textShadow: "0 4px 20px rgba(0,0,0,0.9), 0 2px 8px rgba(0,0,0,0.9)" }}>
             Maestro Juan Santiago
           </h1>
