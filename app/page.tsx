@@ -191,7 +191,7 @@ export default function Home() {
           <h1 className="relative z-10 -mt-40 text-5xl leading-tight text-[#c9a24b] sm:text-7xl" style={{ fontFamily: "var(--font-script)", textShadow: "0 4px 20px rgba(0,0,0,0.9), 0 2px 8px rgba(0,0,0,0.9)" }}>
             Maestro Juan Santiago
           </h1>
-          <p className="relative z-10 -mt-6 text-lg font-semibold text-[#f5e6d3]" style={{ textShadow: "0 2px 10px rgba(0,0,0,0.9)" }}>Maestro Curandero · Heredero del Tatabombori</p>
+          <p className="relative z-10 mt-2 text-lg font-semibold text-[#f5e6d3]" style={{ textShadow: "0 2px 10px rgba(0,0,0,0.9)" }}>Maestro Curandero · Heredero del Tatabombori</p>
 
           <h2 className="mt-4 max-w-xl text-2xl font-bold text-white sm:text-4xl" style={{ textShadow: "0 4px 16px rgba(0,0,0,0.9)" }}>
             ¿Sientes que tu amor se está escapando?
