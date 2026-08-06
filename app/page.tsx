@@ -376,21 +376,21 @@ export default function Home() {
           <path fill="currentColor" d="M12 21s-6.7-4.35-9.3-8.1C1.1 10.6 1.6 7.4 4.2 5.9c2.2-1.3 4.9-.6 6.3 1.4l1.5 2 1.5-2c1.4-2 4.1-2.7 6.3-1.4 2.6 1.5 3.1 4.7 1.5 7-2.6 3.75-9.3 8.1-9.3 8.1z"/>
         </svg>
         <div className="relative z-10 mx-auto max-w-xl rounded-[28px] bg-gradient-to-br from-[#f0d78c] via-[#c9a24b] to-[#8a651f] p-[2.5px] shadow-[0_15px_40px_-10px_rgba(0,0,0,0.7)]">
-          <div className="relative rounded-[26px] bg-[#1a0505] px-6 py-10">
-            <div className="mx-auto mb-4 flex items-center justify-center gap-2 text-[#c9a24b]">
+          <div className="relative rounded-[26px] bg-gradient-to-b from-[#6b1330] via-[#4a0916] to-[#3d0f1a] px-6 py-7">
+            <div className="mx-auto mb-3 flex items-center justify-center gap-2 text-[#c9a24b]">
               <span className="h-[1px] w-10 bg-[#c9a24b]/60" />
               <span>♥</span>
               <span className="h-[1px] w-10 bg-[#c9a24b]/60" />
             </div>
 
-            <h2 className="mb-8 text-3xl font-bold uppercase leading-snug text-[#f0d78c] sm:text-4xl" style={{ fontFamily: "var(--font-cinzel)" }}>
+            <h2 className="mb-5 text-2xl font-bold uppercase leading-snug text-[#f0d78c] sm:text-3xl" style={{ fontFamily: "var(--font-cinzel)" }}>
               ¡Haz tu consulta! Recupera a tu ser amado. Resultados que hablan por sí solos
             </h2>
 
-            <div className="mx-auto flex max-w-sm flex-col gap-3 text-left">
+            <div className="mx-auto flex max-w-sm flex-col gap-2 text-left">
               {resumenServicios.map((r) => (
                 <div key={r.titulo} className="flex items-start gap-2">
-                  <span className="mt-0.5 text-[#e91e8c]">♥</span>
+                  <span className="mt-0.5 text-[#f5a3c7]">♥</span>
                   <span className="text-[#f5e6d3]/90">
                     <span className="font-semibold">{r.titulo}</span>
                     <span className="text-xs text-[#f5e6d3]/60"> · {r.duracion}</span>
@@ -399,13 +399,13 @@ export default function Home() {
               ))}
             </div>
 
-            <p className="mx-auto mt-8 max-w-md text-sm text-[#f5e6d3]/70">
+            <p className="mx-auto mt-5 max-w-md text-sm text-[#f5e6d3]/70">
               🔒 100% Confidencial. Trabajo serio y con fe.
               <br />
               Para cualquier trabajo solo necesito: nombres completos, fechas de nacimiento y tu situación.
             </p>
 
-            <div className="mt-8 flex justify-center">
+            <div className="mt-6 flex justify-center">
               <WhatsAppButton
                 numero={NUMERO}
                 mensaje="Hola Maestro Juan Santiago, quiero empezar hoy mismo."
