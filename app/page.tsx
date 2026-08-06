@@ -5,6 +5,7 @@ import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import MusicaFondo from "@/components/MusicaFondo";
 import FaqAccordion from "@/components/FaqAccordion";
 import ServicioDetallado from "@/components/ServicioDetallado";
+import RevealOnScroll from "@/components/RevealOnScroll";
 
 const NUMERO = "59175928656";
 const TELEFONO_VISIBLE = "+591 75928656";
@@ -271,22 +272,23 @@ export default function Home() {
           </p>
           <div className="mx-auto flex max-w-4xl flex-col gap-12">
             {servicios.map((s) => (
-              <ServicioDetallado
-                key={s.titulo}
-                titulo={s.titulo}
-                icono={s.icono}
-                descripcion={s.descripcion}
-                beneficios={s.beneficios}
-                incluyeTitulo={s.incluyeTitulo}
-                incluye={s.incluye}
-                notaFinal={s.notaFinal}
-                duracion={s.duracion}
-                imagen={s.imagen}
-                numero={NUMERO}
-                mensaje={s.mensaje}
-                cta={s.cta}
-                colorFondo={s.color}
-              />
+              <RevealOnScroll key={s.titulo}>
+                <ServicioDetallado
+                  titulo={s.titulo}
+                  icono={s.icono}
+                  descripcion={s.descripcion}
+                  beneficios={s.beneficios}
+                  incluyeTitulo={s.incluyeTitulo}
+                  incluye={s.incluye}
+                  notaFinal={s.notaFinal}
+                  duracion={s.duracion}
+                  imagen={s.imagen}
+                  numero={NUMERO}
+                  mensaje={s.mensaje}
+                  cta={s.cta}
+                  colorFondo={s.color}
+                />
+              </RevealOnScroll>
             ))}
           </div>
         </div>
