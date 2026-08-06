@@ -141,9 +141,15 @@ export default function ServicioDetallado({
                 )}
                 <button
                   onClick={() => setAbierto(!abierto)}
-                  className="rounded-full border border-[#c9a24b]/50 px-5 py-1.5 text-sm text-[#c9a24b] transition-colors hover:bg-[#c9a24b]/10"
+                  className="flex items-center gap-2 rounded-full border-2 border-[#c9a24b] bg-[#c9a24b]/10 px-5 py-2 text-sm font-semibold text-[#f0d78c] shadow-[0_0_15px_-3px_rgba(201,162,75,0.6)] transition-colors hover:bg-[#c9a24b]/20"
                 >
-                  {abierto ? "Ver menos" : "¿Qué incluye este trabajo?"}
+                  {abierto ? "Ver menos" : "¿Qué incluye?"}
+                  <svg
+                    viewBox="0 0 24 24"
+                    className={`h-4 w-4 fill-current transition-transform duration-300 ${abierto ? "rotate-180" : "animate-bounce"}`}
+                  >
+                    <path d="M7 10l5 5 5-5z" />
+                  </svg>
                 </button>
               </>
             )}
