@@ -176,7 +176,7 @@ export default function Home() {
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#c9a24b]">
             Sabiduría Ancestral · Norte de Potosí
           </p>
-          <div className="relative -mt-6 h-[30rem] w-80 sm:h-[34rem] sm:w-96">
+          <div className="relative -mt-16 h-[30rem] w-80 sm:h-[34rem] sm:w-96">
             <Image
               src="https://res.cloudinary.com/dkq95jus0/image/upload/e_trim/maestro-juansantiago"
               alt="Maestro Juan Santiago"
