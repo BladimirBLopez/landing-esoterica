@@ -10,6 +10,8 @@ function horaActual() {
 }
 
 const SERVICIOS = [
+  { value: "CONSULTA_TAROT", label: "Consulta de Tarot" },
+  { value: "CONSULTA_COCA", label: "Consulta de Hojas de Coca" },
   { value: "AMARRE", label: "Amarre de Amor" },
   { value: "UNION_PAREJA", label: "Unión de Parejas" },
   { value: "ENDULZAMIENTO", label: "Endulzamiento" },
