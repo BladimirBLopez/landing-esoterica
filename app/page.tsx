@@ -215,9 +215,6 @@ export default function Home() {
           <a href={`tel:+${NUMERO}`} className="mt-3 text-3xl font-bold tracking-wide text-[#c9a24b] drop-shadow-lg hover:text-[#f0d78c] sm:text-4xl" style={{ fontFamily: "var(--font-cinzel)" }}>
             📞 {TELEFONO_VISIBLE}
           </a>
-          <a href="/consulta" className="relative z-10 mt-2 text-sm font-semibold text-[#f5e6d3]/80 underline underline-offset-4 hover:text-[#f0d78c]">
-            O cuéntame tu situación aquí
-          </a>
         </div>
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-40 bg-gradient-to-b from-transparent to-[#1a0505]" />
       </section>
