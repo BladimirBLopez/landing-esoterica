@@ -5,6 +5,10 @@ import { useState } from "react";
 const NUMERO = "59175928656";
 const API_URL = "https://juan-santiago-admin.vercel.app/api/leads";
 
+function horaActual() {
+  return new Date().toLocaleTimeString("es-BO", { hour: "2-digit", minute: "2-digit" });
+}
+
 const SERVICIOS = [
   { value: "AMARRE", label: "Amarre de Amor" },
   { value: "UNION_PAREJA", label: "Unión de Parejas" },
@@ -15,13 +19,13 @@ const SERVICIOS = [
 
 type Paso = "inicio" | "nombre" | "servicio" | "situacion" | "telefono" | "enviando" | "listo";
 
-type Mensaje = { de: "bot" | "usuario"; texto: string };
+type Mensaje = { de: "bot" | "usuario"; texto: string; hora: string };
 
 export default function ChatAsistente() {
   const [abierto, setAbierto] = useState(false);
   const [paso, setPaso] = useState<Paso>("inicio");
   const [mensajes, setMensajes] = useState<Mensaje[]>([
-    { de: "bot", texto: "Hola, soy el asistente del Maestro Juan Santiago 🙏 ¿Cuál es tu nombre completo?" },
+    { de: "bot", texto: "Hola, soy el asistente del Maestro Juan Santiago 🙏 ¿Cuál es tu nombre completo?", hora: horaActual() },
   ]);
   const [inputTexto, setInputTexto] = useState("");
   const [error, setError] = useState("");
@@ -33,7 +37,7 @@ export default function ChatAsistente() {
   });
 
   function agregarMensaje(de: "bot" | "usuario", texto: string) {
-    setMensajes((prev) => [...prev, { de, texto }]);
+    setMensajes((prev) => [...prev, { de, texto, hora: horaActual() }]);
   }
 
   function abrirChat() {
@@ -172,14 +176,22 @@ export default function ChatAsistente() {
         {mensajes.map((m, i) => (
           <div
             key={i}
-            className={`max-w-[85%] px-3 py-2 text-sm shadow-sm ${
+            className={`max-w-[85%] px-2.5 pt-1.5 pb-1 text-sm shadow-sm ${
               m.de === "bot"
                 ? "bg-[#202c33] text-[#e9edef] self-start rounded-r-lg rounded-bl-lg"
                 : "bg-[#005c4b] text-[#e9edef] self-end ml-auto rounded-l-lg rounded-br-lg"
             }`}
-            style={{ width: "fit-content" }}
+            style={{ width: "fit-content", fontFamily: "Helvetica, Arial, sans-serif" }}
           >
-            {m.texto}
+            <span>{m.texto}</span>
+            <span className="flex items-center justify-end gap-1 -mb-0.5 mt-0.5">
+              <span className="text-[10px] text-[#8696a0]">{m.hora}</span>
+              {m.de === "usuario" && (
+                <svg viewBox="0 0 16 15" width="14" height="14" className="fill-[#53bdeb]">
+                  <path d="M15.01 3.316l-.478-.372a.365.365 0 0 0-.51.063L8.666 9.879a.32.32 0 0 1-.484.033l-.358-.325a.319.319 0 0 0-.484.032l-.378.483a.418.418 0 0 0 .036.541l1.32 1.266c.143.14.361.125.484-.033l6.272-8.048a.366.366 0 0 0-.064-.512zm-4.1 0l-.478-.372a.365.365 0 0 0-.51.063L4.566 9.879a.32.32 0 0 1-.484.033L1.891 7.769a.366.366 0 0 0-.515.006l-.423.433a.364.364 0 0 0 .006.514l3.258 3.185c.143.14.361.125.484-.033l6.272-8.048a.365.365 0 0 0-.063-.51z" />
+                </svg>
+              )}
+            </span>
           </div>
         ))}
 
