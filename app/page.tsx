@@ -1,7 +1,7 @@
 import Image from "next/image";
 import ScrollVideo from "@/components/ScrollVideo";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import ChatAsistente from "@/components/ChatAsistente";
 import MusicaFondo from "@/components/MusicaFondo";
 import FaqAccordion from "@/components/FaqAccordion";
 import ServicioDetallado from "@/components/ServicioDetallado";
@@ -450,18 +450,7 @@ export default function Home() {
       </footer>
 
       <MusicaFondo src="https://res.cloudinary.com/dkq95jus0/video/upload/sonido-landing" />
-      <FloatingWhatsApp
-        numero={NUMERO}
-        mensaje={`¡Hola! Gracias por contactarme. Soy el Maestro Juan Santiago, especialista en:
-✨ Amarres de amor • Unión de parejas
-✨ Retornos de seres amados
-✨ Endulzamiento de relaciones
-✨ Alejamiento de personas y terceros
-
-Con más de 25 años de experiencia y sabiduría tradicional, trabajo con respeto, seriedad y confidencialidad absoluta. Cuéntame con claridad tu situación y lo que deseas lograr. Estoy aquí para orientarte.
-
-🙏 Bendiciones.`}
-      />
+      <ChatAsistente />
     </main>
   );
 }
