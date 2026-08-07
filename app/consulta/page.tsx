@@ -1,5 +1,8 @@
 "use client";
 
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 import { useState } from "react";
 
 const NUMERO = "59175928656";
@@ -14,18 +17,34 @@ const SERVICIOS = [
 
 const API_URL = "https://juan-santiago-admin.vercel.app/api/leads";
 
-export default function ConsultaPage() {
-  const [nombre, setNombre] = useState("");
-  const [fechaNacimiento, setFechaNacimiento] = useState("");
-  const [telefono, setTelefono] = useState("");
-  const [servicio, setServicio] = useState("AMARRE");
-  const [situacion, setSituacion] = useState("");
-  const [enviando, setEnviando] = useState(false);
-  const [error, setError] = useState("");
+const schema = z.object({
+  nombre: z.string().min(3, "Escribe tu nombre completo"),
+  fechaNacimiento: z.string().optional(),
+  telefono: z
+    .string()
+    .min(7, "El teléfono debe tener al menos 7 dígitos")
+    .regex(/^\d+$/, "Solo números, sin espacios ni guiones"),
+  servicio: z.string().min(1, "Elige un servicio"),
+  situacion: z.string().min(10, "Cuéntanos un poco más de tu situación"),
+});
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setError("");
+type FormData = z.infer<typeof schema>;
+
+export default function ConsultaPage() {
+  const [enviando, setEnviando] = useState(false);
+  const [errorEnvio, setErrorEnvio] = useState("");
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>({
+    resolver: zodResolver(schema),
+    defaultValues: { servicio: "AMARRE" },
+  });
+
+  async function onSubmit(data: FormData) {
+    setErrorEnvio("");
     setEnviando(true);
 
     try {
@@ -33,28 +52,26 @@ export default function ConsultaPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          nombre,
-          fechaNacimiento: fechaNacimiento || null,
-          telefono,
-          servicio,
-          situacion,
+          nombre: data.nombre,
+          fechaNacimiento: data.fechaNacimiento || null,
+          telefono: data.telefono,
+          servicio: data.servicio,
+          situacion: data.situacion,
         }),
       });
 
-      if (!res.ok) {
-        throw new Error("Error al enviar");
-      }
+      if (!res.ok) throw new Error("Error al enviar");
 
       const servicioLabel =
-        SERVICIOS.find((s) => s.value === servicio)?.label ?? servicio;
+        SERVICIOS.find((s) => s.value === data.servicio)?.label ?? data.servicio;
 
       const mensaje = encodeURIComponent(
-        `Hola Maestro Juan Santiago, soy ${nombre}. Ya envié mi consulta sobre ${servicioLabel}. Mi situación: ${situacion}`
+        `Hola Maestro Juan Santiago, soy ${data.nombre}. Ya envié mi consulta sobre ${servicioLabel}. Mi situación: ${data.situacion}`
       );
 
       window.location.href = `https://wa.me/${NUMERO}?text=${mensaje}`;
     } catch {
-      setError("Hubo un problema al enviar. Intenta de nuevo o escríbeme directo por WhatsApp.");
+      setErrorEnvio("Hubo un problema al enviar. Intenta de nuevo o escríbeme directo por WhatsApp.");
       setEnviando(false);
     }
   }
@@ -73,7 +90,7 @@ export default function ConsultaPage() {
         </p>
 
         <form
-          onSubmit={handleSubmit}
+          onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col gap-4 rounded-2xl border border-[#c9a24b]/30 bg-[#3d0f1a] p-6"
         >
           <div>
@@ -82,11 +99,12 @@ export default function ConsultaPage() {
             </label>
             <input
               type="text"
-              required
-              value={nombre}
-              onChange={(e) => setNombre(e.target.value)}
+              {...register("nombre")}
               className="w-full rounded-lg border border-[#c9a24b]/30 bg-[#2a0a12] px-3 py-2 text-[#f5e6d3] outline-none focus:border-[#c9a24b]"
             />
+            {errors.nombre && (
+              <p className="text-xs text-[#e8752c] mt-1">{errors.nombre.message}</p>
+            )}
           </div>
 
           <div>
@@ -95,8 +113,7 @@ export default function ConsultaPage() {
             </label>
             <input
               type="date"
-              value={fechaNacimiento}
-              onChange={(e) => setFechaNacimiento(e.target.value)}
+              {...register("fechaNacimiento")}
               className="w-full rounded-lg border border-[#c9a24b]/30 bg-[#2a0a12] px-3 py-2 text-[#f5e6d3] outline-none focus:border-[#c9a24b]"
             />
           </div>
@@ -107,12 +124,13 @@ export default function ConsultaPage() {
             </label>
             <input
               type="tel"
-              required
-              value={telefono}
-              onChange={(e) => setTelefono(e.target.value)}
+              {...register("telefono")}
               placeholder="70123456"
               className="w-full rounded-lg border border-[#c9a24b]/30 bg-[#2a0a12] px-3 py-2 text-[#f5e6d3] outline-none focus:border-[#c9a24b]"
             />
+            {errors.telefono && (
+              <p className="text-xs text-[#e8752c] mt-1">{errors.telefono.message}</p>
+            )}
           </div>
 
           <div>
@@ -120,8 +138,7 @@ export default function ConsultaPage() {
               Servicio que te interesa *
             </label>
             <select
-              value={servicio}
-              onChange={(e) => setServicio(e.target.value)}
+              {...register("servicio")}
               className="w-full rounded-lg border border-[#c9a24b]/30 bg-[#2a0a12] px-3 py-2 text-[#f5e6d3] outline-none focus:border-[#c9a24b]"
             >
               {SERVICIOS.map((s) => (
@@ -137,16 +154,16 @@ export default function ConsultaPage() {
               Cuéntame tu situación *
             </label>
             <textarea
-              required
-              minLength={5}
+              {...register("situacion")}
               rows={4}
-              value={situacion}
-              onChange={(e) => setSituacion(e.target.value)}
               className="w-full rounded-lg border border-[#c9a24b]/30 bg-[#2a0a12] px-3 py-2 text-[#f5e6d3] outline-none focus:border-[#c9a24b]"
             />
+            {errors.situacion && (
+              <p className="text-xs text-[#e8752c] mt-1">{errors.situacion.message}</p>
+            )}
           </div>
 
-          {error && <p className="text-sm text-red-400">{error}</p>}
+          {errorEnvio && <p className="text-sm text-red-400">{errorEnvio}</p>}
 
           <button
             type="submit"
