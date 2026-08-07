@@ -24,6 +24,7 @@ export default function ChatAsistente() {
     { de: "bot", texto: "Hola, soy el asistente del Maestro Juan Santiago 🙏 ¿Cuál es tu nombre completo?" },
   ]);
   const [inputTexto, setInputTexto] = useState("");
+  const [error, setError] = useState("");
   const [datos, setDatos] = useState({
     nombre: "",
     servicio: "",
@@ -41,7 +42,11 @@ export default function ChatAsistente() {
   }
 
   function enviarNombre() {
-    if (inputTexto.trim().length < 3) return;
+    if (inputTexto.trim().length < 3) {
+      setError("Escribe tu nombre completo (mínimo 3 letras)");
+      return;
+    }
+    setError("");
     agregarMensaje("usuario", inputTexto);
     setDatos((d) => ({ ...d, nombre: inputTexto }));
     setInputTexto("");
@@ -61,7 +66,11 @@ export default function ChatAsistente() {
   }
 
   function enviarSituacion() {
-    if (inputTexto.trim().length < 10) return;
+    if (inputTexto.trim().length < 10) {
+      setError("Cuéntame un poco más, al menos 10 caracteres");
+      return;
+    }
+    setError("");
     agregarMensaje("usuario", inputTexto);
     setDatos((d) => ({ ...d, situacion: inputTexto }));
     setInputTexto("");
@@ -72,7 +81,12 @@ export default function ChatAsistente() {
   }
 
   async function enviarTelefono() {
-    if (inputTexto.trim().length < 7) return;
+    const soloNumeros = inputTexto.replace(/\D/g, "");
+    if (soloNumeros.length < 8) {
+      setError("El número debe tener al menos 8 dígitos");
+      return;
+    }
+    setError("");
     agregarMensaje("usuario", inputTexto);
     const telefono = inputTexto;
     setInputTexto("");
@@ -183,6 +197,12 @@ export default function ChatAsistente() {
           </div>
         )}
       </div>
+
+      {error && ["nombre", "situacion", "telefono"].includes(paso) && (
+        <div className="px-3 py-1.5 bg-[#202c33] text-xs text-[#ff6b6b]">
+          {error}
+        </div>
+      )}
 
       {["nombre", "situacion", "telefono"].includes(paso) && (
         <div className="p-2 bg-[#202c33] flex gap-2 items-center">
