@@ -53,8 +53,9 @@ export default function ConsultaPage() {
       );
 
       window.location.href = `https://wa.me/${NUMERO}?text=${mensaje}`;
-    } catch {
-      setError("Hubo un problema al enviar. Intenta de nuevo o escríbeme directo por WhatsApp.");
+    } catch (err) {
+      const detalle = err instanceof Error ? err.message : String(err);
+      setError(`Error: ${detalle}`);
       setEnviando(false);
     }
   }
