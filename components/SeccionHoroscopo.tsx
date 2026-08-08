@@ -77,7 +77,20 @@ export default function SeccionHoroscopo() {
           {cargando ? (
             <p className="text-sm text-[#f5e6d3]/60">Consultando los astros...</p>
           ) : (
-            <p className="text-[#f5e6d3]/90 leading-relaxed">{texto}</p>
+            <>
+              <p className="text-[#f5e6d3]/90 leading-relaxed">{texto}</p>
+              <p className="mt-4 text-sm text-[#c9a24b]">
+                ¿Quieres saber qué dicen las cartas sobre tu situación de amor?
+              </p>
+              <a
+                href={`https://wa.me/59175928656?text=${encodeURIComponent("Hola Maestro Juan Santiago, vi mi horóscopo y quiero saber más sobre mi situación de amor")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-2.5 text-sm font-semibold text-white"
+              >
+                💬 Hablar con el Maestro
+              </a>
+            </>
           )}
         </div>
       )}
