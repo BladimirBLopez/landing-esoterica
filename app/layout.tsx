@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Sail, Cinzel } from "next/font/google";
 import "./globals.css";
+import MenuNav from "@/components/MenuNav";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -55,7 +56,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="es"
       className={`${playfair.variable} ${alexBrush.variable} ${cinzel.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <MenuNav />
+        {children}
+      </body>
     </html>
   );
 }
