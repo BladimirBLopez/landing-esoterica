@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const NUMERO = "59175928656";
 const API_URL = "https://juan-santiago-admin.vercel.app/api/leads";
@@ -37,6 +37,18 @@ export default function ChatAsistente() {
     situacion: "",
     telefono: "",
   });
+
+  useEffect(() => {
+    fetch("https://juan-santiago-admin.vercel.app/api/configuracion")
+      .then((res) => res.json())
+      .then((data) => {
+        const mensajeConfigurado = data?.config?.mensaje_bienvenida;
+        if (mensajeConfigurado) {
+          setMensajes([{ de: "bot", texto: mensajeConfigurado, hora: horaActual() }]);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   function agregarMensaje(de: "bot" | "usuario", texto: string) {
     setMensajes((prev) => [...prev, { de, texto, hora: horaActual() }]);
