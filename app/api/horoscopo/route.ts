@@ -18,8 +18,10 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: "Sin datos" }, { status: 500 });
     }
 
+    const textoParaTraducir = original.slice(0, 480);
+
     const traduccionRes = await fetch(
-      `https://api.mymemory.translated.net/get?q=${encodeURIComponent(original)}&langpair=en|es`
+      `https://api.mymemory.translated.net/get?q=${encodeURIComponent(textoParaTraducir)}&langpair=en|es`
     );
     const traduccionData = await traduccionRes.json();
     const traducido = traduccionData?.responseData?.translatedText ?? original;
