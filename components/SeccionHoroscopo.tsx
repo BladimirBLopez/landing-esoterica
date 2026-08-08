@@ -28,19 +28,9 @@ export default function SeccionHoroscopo() {
     setTexto("");
 
     try {
-      const res = await fetch(
-        `https://freehoroscopeapi.com/api/v1/get-horoscope/daily?sign=${signo}`
-      );
+      const res = await fetch(`/api/horoscopo?sign=${signo}`);
       const data = await res.json();
-      const original = data?.data?.horoscope ?? "";
-
-      const traduccionRes = await fetch(
-        `https://api.mymemory.translated.net/get?q=${encodeURIComponent(original)}&langpair=en|es`
-      );
-      const traduccionData = await traduccionRes.json();
-      const traducido = traduccionData?.responseData?.translatedText ?? original;
-
-      setTexto(traducido);
+      setTexto(data?.texto ?? "No pudimos cargar el horóscopo. Intenta de nuevo.");
     } catch {
       setTexto("No pudimos cargar el horóscopo. Intenta de nuevo.");
     } finally {
