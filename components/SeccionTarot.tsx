@@ -96,10 +96,9 @@ export default function SeccionTarot() {
 
   return (
     <section
-      className="relative overflow-hidden px-6 flex items-end justify-center pb-14"
+      className="relative overflow-hidden px-6 flex flex-col items-center justify-start pt-20 pb-56"
       style={{
         background: "radial-gradient(circle at 50% 15%, #3d0f2a 0%, #2a0a1a 35%, #1a0505 75%)",
-        minHeight: "720px",
       }}
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-[#1a0505] to-transparent" />
