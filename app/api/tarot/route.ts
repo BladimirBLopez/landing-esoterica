@@ -25,8 +25,8 @@ export async function GET() {
     const significadoCompleto = significadoData?.responseData?.translatedText ?? significadoOriginal;
 
     const partes = significadoCompleto.split(/(?<=[.;,])\s+/);
-    const pista = partes[0] ?? significadoCompleto;
-    const resto = partes.slice(1).join(" ");
+    const pista = partes.slice(0, 2).join(" ") || significadoCompleto;
+    const resto = partes.slice(2).join(" ");
 
     return NextResponse.json({ nombre, pista, resto });
   } catch {
