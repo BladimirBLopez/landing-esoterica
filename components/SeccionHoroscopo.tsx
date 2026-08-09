@@ -39,7 +39,14 @@ export default function SeccionHoroscopo() {
   }
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#2e0a1c] to-[#1a0505] px-6 py-16">
+    <section
+      className="relative overflow-hidden px-6 py-16"
+      style={{
+        backgroundImage: "linear-gradient(to bottom, rgba(46,10,28,0.85), rgba(26,5,5,0.9)), url(https://res.cloudinary.com/dkq95jus0/image/upload/fon-horoscopo)",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       <div className="relative z-10 mx-auto mb-8 flex items-center justify-center gap-2 text-[#c9a24b]">
         <span className="h-[1px] w-10 bg-[#c9a24b]/60" />
         <span>✦</span>
