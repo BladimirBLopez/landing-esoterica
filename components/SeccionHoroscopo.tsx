@@ -42,7 +42,7 @@ export default function SeccionHoroscopo() {
     <section
       className="relative overflow-hidden px-6 py-16"
       style={{
-        backgroundImage: "linear-gradient(to bottom, rgba(46,10,28,0.85), rgba(26,5,5,0.9)), url(https://res.cloudinary.com/dkq95jus0/image/upload/fon-horoscopo)",
+        backgroundImage: "linear-gradient(to bottom, rgba(46,10,28,0.35), rgba(26,5,5,0.55)), url(https://res.cloudinary.com/dkq95jus0/image/upload/fon-horoscopo)",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -57,7 +57,7 @@ export default function SeccionHoroscopo() {
             className={`flex flex-col items-center gap-1 rounded-xl border p-3 transition ${
               signoSeleccionado === s.valor
                 ? "border-[#c9a24b] bg-[#c9a24b]/10"
-                : "border-[#c9a24b]/20 bg-[#3d0f1a] hover:bg-[#4a0916]"
+                : "border-[#8b5cf6]/30 bg-[#2a1a4a]/60 hover:bg-[#3a2560]/70"
             }`}
           >
             <span className="text-2xl">{s.emoji}</span>
