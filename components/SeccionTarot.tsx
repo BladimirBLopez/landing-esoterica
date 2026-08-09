@@ -32,9 +32,7 @@ export default function SeccionTarot() {
     <section
       className="relative overflow-hidden px-6 flex items-end justify-center pb-14"
       style={{
-        backgroundImage: "linear-gradient(to bottom, rgba(26,5,5,0.8), rgba(26,5,5,0.93)), url(https://res.cloudinary.com/dkq95jus0/image/upload/fon-tarot)",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
+        background: "radial-gradient(circle at 50% 15%, #3d0f2a 0%, #2a0a1a 35%, #1a0505 75%)",
         minHeight: "680px",
       }}
     >
@@ -53,6 +51,17 @@ export default function SeccionTarot() {
             <p className="max-w-xs text-xs text-[#f5e6d3]/60">
               Concéntrate en tu pregunta y deja que las cartas te guíen
             </p>
+            <p className="text-[10px] uppercase tracking-widest text-[#c9a24b]/70">
+              Guiado por la sabiduría del Maestro Juan Santiago
+            </p>
+          </div>
+
+          <div className="flex items-center gap-2 text-[#c9a24b]/50 text-sm">
+            <span>🌘</span>
+            <span>🌗</span>
+            <span>🌑</span>
+            <span>🌓</span>
+            <span>🌒</span>
           </div>
 
           <div className="w-full">
