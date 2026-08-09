@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 export default function MenuNav() {
   const [abierto, setAbierto] = useState(false);
-  const [conScroll, setConScroll] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   const links = [
     { href: "/", label: "Inicio" },
@@ -16,7 +16,7 @@ export default function MenuNav() {
 
   useEffect(() => {
     function onScroll() {
-      setConScroll(window.scrollY > 80);
+      setVisible(window.scrollY > window.innerHeight * 0.8);
     }
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
@@ -24,11 +24,11 @@ export default function MenuNav() {
 
   return (
     <nav
-      className="sticky top-0 z-40 transition-colors duration-300"
+      className="fixed top-0 left-0 right-0 z-40 transition-all duration-300 bg-[#1a0505]/95 backdrop-blur border-b border-[#c9a24b]/20"
       style={{
-        backgroundColor: conScroll ? "rgba(26,5,5,0.95)" : "transparent",
-        backdropFilter: conScroll ? "blur(8px)" : "none",
-        borderBottom: conScroll ? "1px solid rgba(201,162,75,0.2)" : "1px solid transparent",
+        opacity: visible ? 1 : 0,
+        pointerEvents: visible ? "auto" : "none",
+        transform: visible ? "translateY(0)" : "translateY(-100%)",
       }}
     >
       <div className="mx-auto flex max-w-4xl items-center justify-between px-6 py-3">
