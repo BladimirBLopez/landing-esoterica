@@ -2,56 +2,66 @@
 
 import { useState } from "react";
 
-function AbanicoCartas({ onElegir, cargando }: { onElegir: () => void; cargando: boolean }) {
+function AbanicoCartas({
+  activo,
+  onElegir,
+  cargando,
+}: {
+  activo: boolean;
+  onElegir: () => void;
+  cargando: boolean;
+}) {
   const [indiceElegido, setIndiceElegido] = useState<number | null>(null);
   const total = 7;
   const centro = (total - 1) / 2;
 
   function elegir(i: number) {
-    if (indiceElegido !== null) return;
+    if (!activo || indiceElegido !== null) return;
     setIndiceElegido(i);
     onElegir();
   }
 
   return (
-    <div className="relative z-10 w-full max-w-sm flex flex-col items-center gap-8 text-center">
-      <p className="text-sm text-[#f5e6d3]/70">
-        {indiceElegido === null ? "Toca una carta cuando estés listo" : "Revelando tu carta..."}
-      </p>
-      <div className="relative flex items-end justify-center" style={{ width: "100%", height: "140px" }}>
-        {Array.from({ length: total }).map((_, i) => {
-          const offset = i - centro;
-          const angulo = offset * 10;
-          const desplazX = offset * 26;
-          const desplazY = Math.abs(offset) * 8;
-          const elegida = indiceElegido === i;
-          const otraElegida = indiceElegido !== null && !elegida;
+    <div
+      className={`absolute inset-x-0 bottom-0 flex items-end justify-center transition-all duration-700 ${
+        activo ? "opacity-100 blur-0 z-20" : "opacity-30 blur-[6px] z-0"
+      }`}
+      style={{ height: "180px" }}
+    >
+      {Array.from({ length: total }).map((_, i) => {
+        const offset = i - centro;
+        const angulo = offset * 11;
+        const desplazX = offset * 34;
+        const desplazY = Math.abs(offset) * 10;
+        const elegida = indiceElegido === i;
+        const otraElegida = indiceElegido !== null && !elegida;
 
-          return (
-            <button
-              key={i}
-              onClick={() => elegir(i)}
-              disabled={indiceElegido !== null}
-              className="absolute bottom-0 rounded-lg border shadow-lg transition-all duration-500 flex items-center justify-center"
-              style={{
-                width: "52px",
-                height: "84px",
-                transform: elegida
-                  ? "translate(0px, -22px) rotate(0deg) scale(1.3)"
-                  : `translate(${desplazX}px, ${desplazY}px) rotate(${angulo}deg)`,
-                opacity: otraElegida ? 0.2 : 1,
-                background: "repeating-linear-gradient(45deg, #3d0f1a, #3d0f1a 4px, #4a1420 4px, #4a1420 8px)",
-                borderColor: "rgba(201,162,75,0.5)",
-                zIndex: elegida ? 20 : i,
-              }}
-            >
-              <span className={`text-[#c9a24b] text-lg ${elegida && cargando ? "animate-spin" : ""}`}>
-                ✦
-              </span>
-            </button>
-          );
-        })}
-      </div>
+        return (
+          <button
+            key={i}
+            onClick={() => elegir(i)}
+            disabled={!activo || indiceElegido !== null}
+            className={`absolute bottom-0 rounded-lg border shadow-lg transition-all duration-500 flex items-center justify-center ${
+              activo ? "pointer-events-auto" : "pointer-events-none"
+            }`}
+            style={{
+              width: "70px",
+              height: "112px",
+              transform: elegida
+                ? "translate(0px, -30px) rotate(0deg) scale(1.3)"
+                : `translate(${desplazX}px, ${desplazY}px) rotate(${angulo}deg)`,
+              opacity: otraElegida ? 0.2 : 1,
+              background: "repeating-linear-gradient(45deg, #3d0f1a, #3d0f1a 6px, #4a1420 6px, #4a1420 12px)",
+              borderColor: "rgba(201,162,75,0.5)",
+              zIndex: elegida ? 30 : i,
+            }}
+          >
+            <span className={`text-[#c9a24b] text-xl ${elegida && cargando ? "animate-spin" : ""}`}>
+              ✦
+            </span>
+          </button>
+        );
+      })}
     </div>
   );
 }
@@ -93,25 +103,7 @@ export default function SeccionTarot() {
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-[#1a0505] to-transparent" />
 
-      <div
-        className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center opacity-30"
-        style={{ filter: "blur(6px)" }}
-      >
-        {[-22, -11, 0, 11, 22].map((angulo, i) => (
-          <div
-            key={i}
-            className="absolute rounded-lg border"
-            style={{
-              width: "110px",
-              height: "170px",
-              transform: `rotate(${angulo}deg) translateY(${Math.abs(angulo) * 1.5}px)`,
-              background: "repeating-linear-gradient(45deg, #3d0f1a, #3d0f1a 6px, #4a1420 6px, #4a1420 12px)",
-              borderColor: "rgba(201,162,75,0.4)",
-              zIndex: 5 - Math.abs(i - 2),
-            }}
-          />
-        ))}
-      </div>
+      <AbanicoCartas activo={mostrarAbanico && !carta} onElegir={sacarCarta} cargando={cargando} />
 
       {!carta && !mostrarAbanico && (
         <div className="relative z-10 w-full max-w-sm flex flex-col items-center gap-5 text-center">
@@ -160,7 +152,9 @@ export default function SeccionTarot() {
       )}
 
       {!carta && mostrarAbanico && (
-        <AbanicoCartas onElegir={sacarCarta} cargando={cargando} />
+        <p className="relative z-10 mb-40 text-sm text-[#f5e6d3]/70">
+          Toca una carta cuando estés listo
+        </p>
       )}
 
       {carta && (
