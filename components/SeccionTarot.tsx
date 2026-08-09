@@ -93,6 +93,26 @@ export default function SeccionTarot() {
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-[#1a0505] to-transparent" />
 
+      <div
+        className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center opacity-30"
+        style={{ filter: "blur(6px)" }}
+      >
+        {[-22, -11, 0, 11, 22].map((angulo, i) => (
+          <div
+            key={i}
+            className="absolute rounded-lg border"
+            style={{
+              width: "110px",
+              height: "170px",
+              transform: `rotate(${angulo}deg) translateY(${Math.abs(angulo) * 1.5}px)`,
+              background: "repeating-linear-gradient(45deg, #3d0f1a, #3d0f1a 6px, #4a1420 6px, #4a1420 12px)",
+              borderColor: "rgba(201,162,75,0.4)",
+              zIndex: 5 - Math.abs(i - 2),
+            }}
+          />
+        ))}
+      </div>
+
       {!carta && !mostrarAbanico && (
         <div className="relative z-10 w-full max-w-sm flex flex-col items-center gap-5 text-center">
           <div className="flex flex-col items-center gap-2">
