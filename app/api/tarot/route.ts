@@ -22,9 +22,13 @@ export async function GET() {
     const significadoData = await significadoRes.json();
 
     const nombre = nombreData?.responseData?.translatedText ?? nombreOriginal;
-    const significado = significadoData?.responseData?.translatedText ?? significadoOriginal;
+    const significadoCompleto = significadoData?.responseData?.translatedText ?? significadoOriginal;
 
-    return NextResponse.json({ nombre, significado });
+    const partes = significadoCompleto.split(/(?<=[.;,])\s+/);
+    const pista = partes[0] ?? significadoCompleto;
+    const resto = partes.slice(1).join(" ");
+
+    return NextResponse.json({ nombre, pista, resto });
   } catch {
     return NextResponse.json({ error: "Error al consultar" }, { status: 500 });
   }
