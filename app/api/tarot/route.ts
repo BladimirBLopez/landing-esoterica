@@ -52,7 +52,7 @@ No uses saltos de linea dentro de los valores. No prometas resultados garantizad
       pista: parsed.pista ?? "",
       resto: parsed.resto ?? "",
     });
-  } catch {
-    return NextResponse.json({ error: "Error al consultar" }, { status: 500 });
+  } catch (err) {
+    return NextResponse.json({ error: "Error al consultar", detalle: String(err) }, { status: 500 });
   }
 }
