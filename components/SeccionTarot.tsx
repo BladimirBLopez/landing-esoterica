@@ -2,10 +2,65 @@
 
 import { useState } from "react";
 
+function AbanicoCartas({ onElegir, cargando }: { onElegir: () => void; cargando: boolean }) {
+  const [indiceElegido, setIndiceElegido] = useState<number | null>(null);
+  const total = 7;
+  const centro = (total - 1) / 2;
+
+  function elegir(i: number) {
+    if (indiceElegido !== null) return;
+    setIndiceElegido(i);
+    onElegir();
+  }
+
+  return (
+    <div className="relative z-10 w-full max-w-sm flex flex-col items-center gap-8 text-center">
+      <p className="text-sm text-[#f5e6d3]/70">
+        {indiceElegido === null ? "Toca una carta cuando estés listo" : "Revelando tu carta..."}
+      </p>
+      <div className="relative flex items-end justify-center" style={{ width: "100%", height: "140px" }}>
+        {Array.from({ length: total }).map((_, i) => {
+          const offset = i - centro;
+          const angulo = offset * 10;
+          const desplazX = offset * 26;
+          const desplazY = Math.abs(offset) * 8;
+          const elegida = indiceElegido === i;
+          const otraElegida = indiceElegido !== null && !elegida;
+
+          return (
+            <button
+              key={i}
+              onClick={() => elegir(i)}
+              disabled={indiceElegido !== null}
+              className="absolute bottom-0 rounded-lg border shadow-lg transition-all duration-500 flex items-center justify-center"
+              style={{
+                width: "52px",
+                height: "84px",
+                transform: elegida
+                  ? "translate(0px, -22px) rotate(0deg) scale(1.3)"
+                  : `translate(${desplazX}px, ${desplazY}px) rotate(${angulo}deg)`,
+                opacity: otraElegida ? 0.2 : 1,
+                background: "repeating-linear-gradient(45deg, #3d0f1a, #3d0f1a 4px, #4a1420 4px, #4a1420 8px)",
+                borderColor: "rgba(201,162,75,0.5)",
+                zIndex: elegida ? 20 : i,
+              }}
+            >
+              <span className={`text-[#c9a24b] text-lg ${elegida && cargando ? "animate-spin" : ""}`}>
+                ✦
+              </span>
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 export default function SeccionTarot() {
   const [carta, setCarta] = useState<{ nombre: string; pista: string; resto: string } | null>(null);
   const [cargando, setCargando] = useState(false);
   const [pregunta, setPregunta] = useState("");
+  const [mostrarAbanico, setMostrarAbanico] = useState(false);
 
   async function sacarCarta() {
     setCargando(true);
@@ -38,7 +93,7 @@ export default function SeccionTarot() {
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-[#1a0505] to-transparent" />
 
-      {!carta && (
+      {!carta && !mostrarAbanico && (
         <div className="relative z-10 w-full max-w-sm flex flex-col items-center gap-5 text-center">
           <div className="flex flex-col items-center gap-2">
             <span className="text-xl text-[#c9a24b]">✦</span>
@@ -76,20 +131,23 @@ export default function SeccionTarot() {
           </div>
 
           <button
-            onClick={sacarCarta}
-            disabled={cargando}
-            className="w-full rounded-full border-2 border-[#c9a24b] px-8 py-3.5 text-sm font-bold uppercase tracking-widest text-[#f0d78c] transition hover:bg-[#c9a24b]/10 disabled:opacity-60"
+            onClick={() => setMostrarAbanico(true)}
+            className="w-full rounded-full border-2 border-[#c9a24b] px-8 py-3.5 text-sm font-bold uppercase tracking-widest text-[#f0d78c] transition hover:bg-[#c9a24b]/10"
           >
-            {cargando ? "Barajando las cartas..." : "Elegir carta"}
+            Elegir carta
           </button>
         </div>
+      )}
+
+      {!carta && mostrarAbanico && (
+        <AbanicoCartas onElegir={sacarCarta} cargando={cargando} />
       )}
 
       {carta && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 px-6 backdrop-blur-sm">
           <div className="relative w-full max-w-md rounded-2xl border border-[#c9a24b]/40 bg-gradient-to-b from-[#3d0f1a] to-[#2a0a12] p-7 text-center max-h-[85%] overflow-y-auto shadow-2xl">
             <button
-              onClick={() => setCarta(null)}
+              onClick={() => { setCarta(null); setMostrarAbanico(false); }}
               className="absolute right-4 top-4 flex h-7 w-7 items-center justify-center rounded-full bg-[#1a0505]/60 text-[#f5e6d3]/70 hover:text-[#f5e6d3] transition"
             >
               ✕
@@ -152,7 +210,7 @@ export default function SeccionTarot() {
             </div>
 
             <button
-              onClick={() => setCarta(null)}
+              onClick={() => { setCarta(null); setMostrarAbanico(false); }}
               className="mt-4 text-xs text-[#f5e6d3]/50 underline"
             >
               Sacar otra carta
