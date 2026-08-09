@@ -47,7 +47,7 @@ export default function SeccionHoroscopo() {
         backgroundImage: "linear-gradient(to bottom, rgba(46,10,28,0.2), rgba(26,5,5,0.35)), url(https://res.cloudinary.com/dkq95jus0/image/upload/fon-horoscopo)",
         backgroundSize: "cover",
         backgroundPosition: "center -5%",
-        height: "620px",
+        minHeight: "620px",
       }}
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-48 bg-gradient-to-b from-[#1a0505] via-[#1a0505]/60 to-transparent" />
