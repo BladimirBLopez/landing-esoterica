@@ -3,21 +3,35 @@
 import { useState, useEffect } from "react";
 
 const dorsoCartaSvg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 160'>
-  <rect width='100' height='160' rx='8' fill='%233a1a5c'/>
-  <rect x='4' y='4' width='92' height='152' rx='5' fill='none' stroke='%23e6c476' stroke-width='1.5'/>
-  <g fill='%23e6c476'>
-    <circle cx='15' cy='20' r='1.2'/>
-    <circle cx='85' cy='25' r='1'/>
-    <circle cx='20' cy='140' r='1'/>
-    <circle cx='80' cy='135' r='1.3'/>
-    <circle cx='50' cy='128' r='1'/>
-    <path d='M50 12 l2.2 5.5 5.5 2.2 -5.5 2.2 -2.2 5.5 -2.2 -5.5 -5.5 -2.2 5.5 -2.2 z'/>
+  <defs>
+    <radialGradient id='fondoCarta' cx='50%25' cy='35%25' r='75%25'>
+      <stop offset='0%25' stop-color='%233a2560'/>
+      <stop offset='100%25' stop-color='%23241040'/>
+    </radialGradient>
+  </defs>
+  <rect width='100' height='160' rx='8' fill='url(%23fondoCarta)'/>
+  <rect x='3' y='3' width='94' height='154' rx='6' fill='none' stroke='%23d9b978' stroke-width='1.2'/>
+  <g fill='none' stroke='%23d9b978' stroke-width='0.6' opacity='0.5'>
+    <circle cx='50' cy='80' r='40'/>
+    <circle cx='50' cy='80' r='34'/>
   </g>
-  <g transform='translate(50,82)'>
-    <circle r='24' fill='none' stroke='%23e6c476' stroke-width='1'/>
-    <path d='M-9 -7 A11 11 0 1 0 -9 7 A9 9 0 1 1 -9 -7 Z' fill='%23e6c476' opacity='0.9'/>
-    <ellipse cx='7' cy='0' rx='10' ry='4.5' fill='none' stroke='%23e6c476' stroke-width='1'/>
-    <circle cx='7' cy='0' r='2.2' fill='%23e6c476'/>
+  <g fill='%23d9b978' opacity='0.85'>
+    <circle cx='12' cy='14' r='1'/>
+    <circle cx='90' cy='18' r='1.1'/>
+    <circle cx='8' cy='90' r='0.9'/>
+    <circle cx='92' cy='95' r='1'/>
+    <circle cx='14' cy='150' r='1'/>
+    <circle cx='88' cy='146' r='1.1'/>
+    <path d='M50 8 l1.6 4 4 1.6 -4 1.6 -1.6 4 -1.6 -4 -4 -1.6 4 -1.6 z'/>
+    <path d='M20 30 l1 2.4 2.4 1 -2.4 1 -1 2.4 -1 -2.4 -2.4 -1 2.4 -1 z'/>
+    <path d='M80 34 l1 2.4 2.4 1 -2.4 1 -1 2.4 -1 -2.4 -2.4 -1 2.4 -1 z'/>
+    <path d='M78 125 l1 2.4 2.4 1 -2.4 1 -1 2.4 -1 -2.4 -2.4 -1 2.4 -1 z'/>
+    <path d='M22 128 l1 2.4 2.4 1 -2.4 1 -1 2.4 -1 -2.4 -2.4 -1 2.4 -1 z'/>
+  </g>
+  <g transform='translate(50,80)' fill='%23d9b978'>
+    <path d='M-16 -13 A19 19 0 1 0 -16 13 A15.5 15.5 0 1 1 -16 -13 Z'/>
+    <ellipse cx='0' cy='0' rx='7' ry='4' fill='%23241040' stroke='%23d9b978' stroke-width='0.8'/>
+    <circle cx='0' cy='0' r='1.6' fill='%23d9b978'/>
   </g>
 </svg>`;
 
