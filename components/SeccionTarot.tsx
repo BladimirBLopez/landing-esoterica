@@ -26,7 +26,7 @@ function AbanicoCartas({
       className={`absolute inset-x-0 bottom-0 flex items-end justify-center transition-all duration-700 ${
         activo ? "opacity-100 blur-0 z-20" : "opacity-60 blur-[4px] z-0"
       }`}
-      style={{ height: "260px", bottom: "40px" }}
+      style={{ height: "220px", bottom: "10px" }}
     >
       {Array.from({ length: total }).map((_, i) => {
         const offset = i - centro;
@@ -99,7 +99,7 @@ export default function SeccionTarot() {
       className="relative overflow-hidden px-6 flex items-end justify-center pb-14"
       style={{
         background: "radial-gradient(circle at 50% 15%, #3d0f2a 0%, #2a0a1a 35%, #1a0505 75%)",
-        minHeight: "820px",
+        minHeight: "720px",
       }}
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-[#1a0505] to-transparent" />
