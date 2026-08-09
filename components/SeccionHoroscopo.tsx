@@ -47,20 +47,7 @@ export default function SeccionHoroscopo() {
         backgroundPosition: "center",
       }}
     >
-      <div className="relative z-10 mx-auto mb-8 flex items-center justify-center gap-2 text-[#c9a24b]">
-        <span className="h-[1px] w-10 bg-[#c9a24b]/60" />
-        <span>✦</span>
-        <span className="h-[1px] w-10 bg-[#c9a24b]/60" />
-      </div>
-      <h2
-        className="mb-2 text-center text-4xl font-bold text-white"
-        style={{ fontFamily: "var(--font-cinzel)" }}
-      >
-        Horóscopo del Día
-      </h2>
-      <p className="mb-8 text-center text-sm text-[#f5e6d3]/70">
-        Elige tu signo y descubre qué dicen los astros hoy
-      </p>
+      <div className="mb-64" />
 
       <div className="mx-auto grid max-w-2xl grid-cols-4 gap-2 sm:grid-cols-6">
         {SIGNOS.map((s) => (
