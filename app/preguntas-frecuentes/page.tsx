@@ -1,15 +1,9 @@
 import type { Metadata } from "next";
-import type { Metadata } from "next";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import FaqAccordion from "@/components/FaqAccordion";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
 const NUMERO = "59175928656";
-
-export const metadata: Metadata = {
-  title: "Preguntas Frecuentes | Amarres de Amor Maestro Juan Santiago",
-  description: "Resuelve tus dudas sobre amarres de amor, consultas de Tarot y Hojas de Coca, tiempos de trabajo y confidencialidad con el Maestro Juan Santiago en Bolivia.",
-};
 
 export const metadata: Metadata = {
   title: "Preguntas Frecuentes | Amarres de Amor Maestro Juan Santiago",
