@@ -109,6 +109,9 @@ export default function SeccionTarot() {
       {!carta && !mostrarAbanico && (
         <div className="relative z-10 w-full max-w-sm flex flex-col items-center gap-5 text-center">
           <div className="flex flex-col items-center gap-2">
+            <p className="text-xs uppercase tracking-[0.3em] text-[#c9a24b]">
+              Tarot Gratis
+            </p>
             <span className="text-xl text-[#c9a24b]">✦</span>
             <h2
               className="text-3xl leading-tight text-[#f0d78c]"
