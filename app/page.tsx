@@ -5,6 +5,7 @@ import ChatAsistente from "@/components/ChatAsistente";
 import MusicaFondo from "@/components/MusicaFondo";
 import SeccionHoroscopo from "@/components/SeccionHoroscopo";
 import SeccionTarot from "@/components/SeccionTarot";
+import SeccionCitas from "@/components/SeccionCitas";
 import ServicioDetallado from "@/components/ServicioDetallado";
 import RevealOnScroll from "@/components/RevealOnScroll";
 
@@ -317,6 +318,8 @@ export default function Home() {
       <SeccionHoroscopo />
 
       <SeccionTarot />
+
+      <SeccionCitas />
 
       {/* Resumen final + CTA (estilo caja con borde) */}
       <section className="relative overflow-hidden bg-gradient-to-b from-[#4a0916] to-[#2e0a1c] px-6 py-16 text-center">
