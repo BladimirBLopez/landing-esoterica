@@ -22,6 +22,8 @@ export default function SeccionHoroscopo() {
   const [texto, setTexto] = useState("");
   const [cargando, setCargando] = useState(false);
 
+  const signoInfo = SIGNOS.find((s) => s.valor === signoSeleccionado);
+
   async function elegirSigno(signo: string) {
     setSignoSeleccionado(signo);
     setCargando(true);
@@ -69,30 +71,48 @@ export default function SeccionHoroscopo() {
       </div>
 
       {signoSeleccionado && (
-        <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/80 px-6">
-          <div className="max-w-xl rounded-2xl border border-[#c9a24b]/30 bg-[#3d0f1a] p-6 text-center max-h-[85%] overflow-y-auto">
+        <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/85 px-6 backdrop-blur-sm">
+          <div className="relative w-full max-w-md rounded-2xl border border-[#c9a24b]/40 bg-gradient-to-b from-[#3d0f1a] to-[#2a0a12] p-7 text-center max-h-[85%] overflow-y-auto shadow-2xl">
             <button
               onClick={() => setSignoSeleccionado(null)}
-              className="mb-2 text-xs text-[#f5e6d3]/50 underline"
+              className="absolute right-4 top-4 flex h-7 w-7 items-center justify-center rounded-full bg-[#1a0505]/60 text-[#f5e6d3]/70 hover:text-[#f5e6d3] transition"
             >
-              ✕ Cerrar
+              ✕
             </button>
+
+            <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-full border border-[#c9a24b]/50 bg-[#c9a24b]/10 text-3xl">
+              {signoInfo?.emoji}
+            </div>
+            <h3
+              className="mb-1 text-xl text-[#f0d78c]"
+              style={{ fontFamily: "var(--font-cinzel)" }}
+            >
+              {signoInfo?.label}
+            </h3>
+            <p className="mb-4 text-[10px] uppercase tracking-widest text-[#c9a24b]/70">
+              Horóscopo de hoy
+            </p>
+
             {cargando ? (
-              <p className="text-sm text-[#f5e6d3]/60">Consultando los astros...</p>
+              <p className="text-sm text-[#f5e6d3]/60 py-6">Consultando los astros...</p>
             ) : (
               <>
-                <p className="text-[#f5e6d3]/90 leading-relaxed">{texto}</p>
-                <p className="mt-4 text-sm text-[#c9a24b]">
-                  ¿Quieres saber qué dicen las cartas sobre tu situación de amor?
-                </p>
-                <a
-                  href={`https://wa.me/59175928656?text=${encodeURIComponent("Hola Maestro Juan Santiago, vi mi horóscopo y quiero saber más sobre mi situación de amor")}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-3 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-2.5 text-sm font-semibold text-white"
-                >
-                  💬 Hablar con el Maestro
-                </a>
+                <div className="h-[1px] w-16 mx-auto mb-4 bg-[#c9a24b]/40" />
+                <p className="text-[#f5e6d3]/90 leading-relaxed text-[15px]">{texto}</p>
+
+                <div className="mt-6 rounded-xl border border-[#c9a24b]/25 bg-[#1a0505]/40 p-4">
+                  <p className="text-sm text-[#c9a24b] mb-3">
+                    ¿Quieres saber qué dicen las cartas sobre tu situación de amor?
+                  </p>
+                  <a
+                    href={`https://wa.me/59175928656?text=${encodeURIComponent("Hola Maestro Juan Santiago, vi mi horóscopo y quiero saber más sobre mi situación de amor")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-6 py-2.5 text-sm font-semibold text-white shadow-lg"
+                  >
+                    💬 Hablar con el Maestro
+                  </a>
+                </div>
               </>
             )}
           </div>
