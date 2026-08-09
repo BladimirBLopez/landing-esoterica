@@ -124,6 +124,20 @@ export default function Home() {
     <main className="min-h-screen bg-[#1a0505] text-[#f5e6d3]">
       {/* Hero (pantalla completa, con video de fondo) */}
       <section className="relative flex min-h-screen flex-col items-center justify-start gap-1 overflow-hidden px-6 pt-12 pb-10 text-center">
+        <svg width="0" height="0" style={{ position: "absolute" }}>
+          <filter id="ondearBanderaIzq" x="-20%" y="-20%" width="140%" height="140%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.02 0.09" numOctaves="2" seed="3" result="noise">
+              <animate attributeName="baseFrequency" dur="1.8s" values="0.02 0.09;0.03 0.11;0.02 0.09" repeatCount="indefinite" />
+            </feTurbulence>
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+          <filter id="ondearBanderaDer" x="-20%" y="-20%" width="140%" height="140%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.025 0.085" numOctaves="2" seed="9" result="noise">
+              <animate attributeName="baseFrequency" dur="2.1s" values="0.025 0.085;0.035 0.1;0.025 0.085" repeatCount="indefinite" />
+            </feTurbulence>
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+        </svg>
         <ScrollVideo
           src="https://assets.mixkit.co/videos/3461/3461-720.mp4"
           className="absolute inset-0 h-full w-full object-cover"
@@ -131,7 +145,10 @@ export default function Home() {
         <div className="absolute inset-0 bg-[#1a0505]/80" />
 
         {/* Bandera de Potosi, esquina superior derecha, mas grande e inclinada */}
-        <div className="absolute -right-3 -top-3 z-10 h-24 w-32 opacity-50 drop-shadow-lg sm:h-32 sm:w-44">
+        <div
+          className="absolute -right-3 -top-3 z-10 h-24 w-32 opacity-50 drop-shadow-lg sm:h-32 sm:w-44"
+          style={{ filter: "url(#ondearBanderaIzq)" }}
+        >
           <Image
             src="https://res.cloudinary.com/dkq95jus0/image/upload/bandera-potosi-2"
             alt="Bandera de Potosí"
@@ -141,7 +158,10 @@ export default function Home() {
         </div>
 
         {/* Bandera de Bolivia, esquina superior izquierda, misma altura y tamano */}
-        <div className="absolute -left-3 -top-3 z-10 h-24 w-32 opacity-50 drop-shadow-lg sm:h-32 sm:w-44">
+        <div
+          className="absolute -left-3 -top-3 z-10 h-24 w-32 opacity-50 drop-shadow-lg sm:h-32 sm:w-44"
+          style={{ filter: "url(#ondearBanderaDer)" }}
+        >
           <Image
             src="https://res.cloudinary.com/dkq95jus0/image/upload/bandera-bolivia-2"
             alt="Bandera de Bolivia"
@@ -171,18 +191,19 @@ export default function Home() {
                 lineHeight: 0.75,
                 textShadow:
                   "-2px 0 0 #1a0505, 2px 0 0 #1a0505, 0 -2px 0 #1a0505, 0 2px 0 #1a0505, -2px -2px 0 #1a0505, 2px -2px 0 #1a0505, -2px 2px 0 #1a0505, 2px 2px 0 #1a0505, 0 6px 18px rgba(0,0,0,0.9)",
+                animation: "aparecer-subir 0.8s ease-out 0.1s both",
               }}
             >
               Maestro Juan Santiago
             </h1>
           </div>
-          <p className="relative z-10 mt-2 text-lg font-semibold text-[#f5e6d3]" style={{ textShadow: "0 2px 10px rgba(0,0,0,0.9)" }}>Maestro Curandero · Heredero del Tatabombori</p>
+          <p className="relative z-10 mt-2 text-lg font-semibold text-[#f5e6d3]" style={{ textShadow: "0 2px 10px rgba(0,0,0,0.9)", animation: "aparecer-subir 0.8s ease-out 0.3s both" }}>Maestro Curandero · Heredero del Tatabombori</p>
 
-          <h2 className="mt-4 max-w-xl text-2xl font-bold text-white sm:text-4xl" style={{ textShadow: "0 4px 16px rgba(0,0,0,0.9)" }}>
+          <h2 className="mt-4 max-w-xl text-2xl font-bold text-white sm:text-4xl" style={{ textShadow: "0 4px 16px rgba(0,0,0,0.9)", animation: "aparecer-subir 0.8s ease-out 0.5s both" }}>
             ¿Sientes que tu amor se está escapando?
           </h2>
 
-          <div className="mt-3" style={{ animation: "respirar-boton 3s ease-in-out infinite" }}>
+          <div className="mt-3" style={{ animation: "aparecer-subir 0.8s ease-out 0.7s both, respirar-boton 3s ease-in-out 1.5s infinite" }}>
             <WhatsAppButton
               numero={NUMERO}
               mensaje="Hola Maestro Juan Santiago, quiero recuperar a mi pareja."
