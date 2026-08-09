@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 export default function SeccionTarot() {
-  const [carta, setCarta] = useState<{ nombre: string; significado: string } | null>(null);
+  const [carta, setCarta] = useState<{ nombre: string; pista: string; resto: string } | null>(null);
   const [cargando, setCargando] = useState(false);
 
   async function sacarCarta() {
@@ -13,11 +13,11 @@ export default function SeccionTarot() {
     try {
       const res = await fetch("/api/tarot");
       const data = await res.json();
-      if (data.nombre && data.significado) {
-        setCarta({ nombre: data.nombre, significado: data.significado });
+      if (data.nombre) {
+        setCarta({ nombre: data.nombre, pista: data.pista ?? "", resto: data.resto ?? "" });
       }
     } catch {
-      setCarta({ nombre: "Error", significado: "No pudimos consultar las cartas. Intenta de nuevo." });
+      setCarta({ nombre: "Error", pista: "No pudimos consultar las cartas. Intenta de nuevo.", resto: "" });
     } finally {
       setCargando(false);
     }
@@ -59,19 +59,25 @@ export default function SeccionTarot() {
             {carta.nombre}
           </h3>
 
-          <div className="relative">
-            <p
-              className="text-[#f5e6d3]/90 leading-relaxed select-none"
-              style={{ filter: "blur(5px)" }}
-            >
-              {carta.significado}
-            </p>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <p className="rounded-full bg-[#1a0505]/80 px-4 py-2 text-sm font-semibold text-[#f0d78c] border border-[#c9a24b]/40">
-                🔒 Para más información contacta al Maestro
+          <p className="text-[#f5e6d3]/90 leading-relaxed mb-3">
+            {carta.pista}
+          </p>
+
+          {carta.resto && (
+            <div className="relative">
+              <p
+                className="text-[#f5e6d3]/90 leading-relaxed select-none"
+                style={{ filter: "blur(5px)" }}
+              >
+                {carta.resto}
               </p>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <p className="rounded-full bg-[#1a0505]/80 px-4 py-2 text-sm font-semibold text-[#f0d78c] border border-[#c9a24b]/40">
+                  🔒 Para más información contacta al Maestro
+                </p>
+              </div>
             </div>
-          </div>
+          )}
 
           <a
             href={`https://wa.me/59175928656?text=${encodeURIComponent(
