@@ -41,11 +41,27 @@ No uses saltos de linea dentro de los valores. No prometas resultados garantizad
       }
     );
 
-    const geminiData = await geminiRes.json();
+    const geminiTextoCrudo = await geminiRes.text();
+    let geminiData;
+    try {
+      geminiData = JSON.parse(geminiTextoCrudo);
+    } catch {
+      return NextResponse.json({ error: "Gemini no devolvio JSON", status: geminiRes.status, raw: geminiTextoCrudo.slice(0, 500) }, { status: 500 });
+    }
+
     const textoRaw: string = geminiData?.candidates?.[0]?.content?.parts?.[0]?.text ?? "";
 
+    if (!textoRaw) {
+      return NextResponse.json({ error: "Gemini sin texto", geminiData }, { status: 500 });
+    }
+
     const limpio = textoRaw.replace(/```json|```/g, "").trim();
-    const parsed = JSON.parse(limpio);
+    let parsed;
+    try {
+      parsed = JSON.parse(limpio);
+    } catch {
+      return NextResponse.json({ error: "No se pudo parsear la respuesta de Gemini", raw: limpio.slice(0, 500) }, { status: 500 });
+    }
 
     return NextResponse.json({
       nombre: parsed.nombre ?? nombreOriginal,
