@@ -44,11 +44,11 @@ export default function SeccionHoroscopo() {
       style={{
         backgroundImage: "linear-gradient(to bottom, rgba(46,10,28,0.35), rgba(26,5,5,0.55)), url(https://res.cloudinary.com/dkq95jus0/image/upload/fon-horoscopo)",
         backgroundSize: "cover",
-        backgroundPosition: "center 20%",
+        backgroundPosition: "center 5%",
       }}
     >
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-24 bg-gradient-to-b from-[#1a0505] to-transparent" />
-      <div className="mb-40" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-48 bg-gradient-to-b from-[#1a0505] via-[#1a0505]/60 to-transparent" />
+      <div className="mb-60" />
 
       <div className="mx-auto grid max-w-2xl grid-cols-4 gap-2 sm:grid-cols-6">
         {SIGNOS.map((s) => (
