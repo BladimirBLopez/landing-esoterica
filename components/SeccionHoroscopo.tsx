@@ -58,10 +58,10 @@ export default function SeccionHoroscopo() {
           <button
             key={s.valor}
             onClick={() => elegirSigno(s.valor)}
-            className={`flex flex-col items-center gap-1 rounded-xl border p-3 transition ${
+            className={`flex flex-col items-center gap-1 rounded-xl border p-3 shadow-[0_3px_10px_rgba(0,0,0,0.4)] transition-all duration-150 cursor-pointer active:scale-90 active:shadow-[0_1px_4px_rgba(0,0,0,0.4)] hover:-translate-y-0.5 hover:shadow-[0_5px_14px_rgba(139,92,246,0.35)] ${
               signoSeleccionado === s.valor
                 ? "border-[#c9a24b] bg-[#c9a24b]/10"
-                : "border-[#8b5cf6]/30 bg-[#2a1a4a]/60 hover:bg-[#3a2560]/70"
+                : "border-[#8b5cf6]/40 bg-[#2a1a4a]/70 hover:bg-[#3a2560]/80"
             }`}
           >
             <span className="text-2xl">{s.emoji}</span>
