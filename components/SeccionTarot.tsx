@@ -24,7 +24,7 @@ function AbanicoCartas({
   return (
     <div
       className={`absolute inset-x-0 bottom-0 flex items-end justify-center transition-all duration-700 ${
-        activo ? "opacity-100 blur-0 z-20" : "opacity-30 blur-[6px] z-0"
+        activo ? "opacity-100 blur-0 z-20" : "opacity-60 blur-[4px] z-0"
       }`}
       style={{ height: "180px" }}
     >
@@ -51,8 +51,9 @@ function AbanicoCartas({
                 ? "translate(0px, -30px) rotate(0deg) scale(1.3)"
                 : `translate(${desplazX}px, ${desplazY}px) rotate(${angulo}deg)`,
               opacity: otraElegida ? 0.2 : 1,
-              background: "repeating-linear-gradient(45deg, #3d0f1a, #3d0f1a 6px, #4a1420 6px, #4a1420 12px)",
-              borderColor: "rgba(201,162,75,0.5)",
+              background: "repeating-linear-gradient(45deg, #5b2a7a, #5b2a7a 6px, #7a3ea3 6px, #7a3ea3 12px)",
+              borderColor: "rgba(230,196,118,0.8)",
+              boxShadow: "0 0 14px rgba(201,162,75,0.3)",
               zIndex: elegida ? 30 : i,
             }}
           >
