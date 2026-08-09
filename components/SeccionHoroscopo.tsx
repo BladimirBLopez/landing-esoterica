@@ -1,6 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+const CLAVE_SIGNOS_VISTOS = "horoscopo_signos_vistos";
+const LIMITE_GRATIS = 3;
 
 const SIGNOS = [
   { valor: "aries", label: "Aries", emoji: "♈" },
@@ -21,11 +24,30 @@ export default function SeccionHoroscopo() {
   const [signoSeleccionado, setSignoSeleccionado] = useState<string | null>(null);
   const [texto, setTexto] = useState("");
   const [cargando, setCargando] = useState(false);
+  const [signosVistos, setSignosVistos] = useState<string[]>([]);
+  const [limiteAlcanzado, setLimiteAlcanzado] = useState(false);
+
+  useEffect(() => {
+    try {
+      const guardados = JSON.parse(localStorage.getItem(CLAVE_SIGNOS_VISTOS) ?? "[]");
+      if (Array.isArray(guardados)) setSignosVistos(guardados);
+    } catch {}
+  }, []);
 
   const signoInfo = SIGNOS.find((s) => s.valor === signoSeleccionado);
 
   async function elegirSigno(signo: string) {
     setSignoSeleccionado(signo);
+
+    const yaVisto = signosVistos.includes(signo);
+    const alcanzaLimite = !yaVisto && signosVistos.length >= LIMITE_GRATIS;
+
+    if (alcanzaLimite) {
+      setLimiteAlcanzado(true);
+      return;
+    }
+
+    setLimiteAlcanzado(false);
     setCargando(true);
     setTexto("");
 
@@ -33,6 +55,12 @@ export default function SeccionHoroscopo() {
       const res = await fetch(`/api/horoscopo?sign=${signo}`);
       const data = await res.json();
       setTexto(data?.texto ?? "No pudimos cargar el horóscopo. Intenta de nuevo.");
+
+      if (!yaVisto) {
+        const actualizados = [...signosVistos, signo];
+        setSignosVistos(actualizados);
+        localStorage.setItem(CLAVE_SIGNOS_VISTOS, JSON.stringify(actualizados));
+      }
     } catch {
       setTexto("No pudimos cargar el horóscopo. Intenta de nuevo.");
     } finally {
@@ -93,7 +121,31 @@ export default function SeccionHoroscopo() {
               Horóscopo de hoy
             </p>
 
-            {cargando ? (
+            {limiteAlcanzado ? (
+              <>
+                <div className="h-[1px] w-16 mx-auto mb-4 bg-[#c9a24b]/40" />
+                <p className="text-[#f5e6d3]/90 leading-relaxed text-[15px] mb-2">
+                  Ya viste tus {LIMITE_GRATIS} horóscopos gratis de hoy 🌙
+                </p>
+                <p className="text-[#f5e6d3]/60 text-xs mb-4">
+                  Para seguir consultando tu signo y saber qué dicen los astros sobre tu situación de amor, escríbele directo al Maestro.
+                </p>
+
+                <div className="mt-2 rounded-xl border border-[#c9a24b]/25 bg-[#1a0505]/40 p-4">
+                  <a
+                    href={`https://wa.me/59175928656?text=${encodeURIComponent("Hola Maestro Juan Santiago, estuve viendo mi horóscopo y quiero saber más sobre mi situación de amor")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-b from-[#2ee862] to-[#1fb851] px-6 py-3.5 text-sm font-bold text-white shadow-[0_4px_16px_rgba(37,211,102,0.4)] hover:shadow-[0_6px_20px_rgba(37,211,102,0.55)] transition-shadow"
+                  >
+                    <svg viewBox="0 0 32 32" className="h-5 w-5 fill-white shrink-0">
+                      <path d="M16.04 3C9.37 3 3.98 8.39 3.98 15.06c0 2.24.6 4.34 1.65 6.15L3 29l7.98-2.6a12.03 12.03 0 0 0 5.06 1.11h.01c6.67 0 12.06-5.39 12.06-12.06C28.11 8.79 22.71 3 16.04 3zm0 21.9h-.01a10 10 0 0 1-5.12-1.4l-.37-.22-3.8 1.24 1.26-3.71-.24-.38a9.9 9.9 0 0 1-1.52-5.27C6.24 9.5 10.7 5.04 16.05 5.04c2.63 0 5.1 1.03 6.96 2.9a9.78 9.78 0 0 1 2.88 6.96c0 5.35-4.46 9.8-9.85 9.8zm5.4-7.34c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.53.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.91-2.19-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37s-1.05 1.02-1.05 2.5 1.07 2.9 1.22 3.1c.15.2 2.1 3.2 5.1 4.49.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.75-.72 2-1.41.24-.7.24-1.29.17-1.41-.07-.13-.27-.2-.57-.35z"/>
+                    </svg>
+                    Hablar con el Maestro
+                  </a>
+                </div>
+              </>
+            ) : cargando ? (
               <p className="text-sm text-[#f5e6d3]/60 py-6">Consultando los astros...</p>
             ) : (
               <>
