@@ -1,8 +1,14 @@
+import type { Metadata } from "next";
 import ScrollVideo from "@/components/ScrollVideo";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
 const NUMERO = "59175928656";
+
+export const metadata: Metadata = {
+  title: "Conoce al Maestro Juan Santiago | Curandero Heredero del Tatabombori",
+  description: "Conoce la historia del Maestro Juan Santiago, curandero del Norte de Potosí, Bolivia, heredero del Tatabombori. Más de 25 años de experiencia en amarres de amor y trabajos espirituales.",
+};
 
 export default function ConoceAlMaestroPage() {
   return (

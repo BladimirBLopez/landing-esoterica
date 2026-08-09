@@ -1,7 +1,13 @@
+import type { Metadata } from "next";
 import SeccionTestimonios from "@/components/SeccionTestimonios";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
 const NUMERO = "59175928656";
+
+export const metadata: Metadata = {
+  title: "Testimonios | Amarres de Amor Maestro Juan Santiago Bolivia",
+  description: "Testimonios reales de clientes del Maestro Juan Santiago sobre amarres de amor, retorno del ser amado y trabajos espirituales exitosos en Bolivia.",
+};
 
 export default function TestimoniosPage() {
   return (
