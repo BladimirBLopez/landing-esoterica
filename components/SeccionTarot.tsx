@@ -5,6 +5,7 @@ import { useState } from "react";
 export default function SeccionTarot() {
   const [carta, setCarta] = useState<{ nombre: string; pista: string; resto: string } | null>(null);
   const [cargando, setCargando] = useState(false);
+  const [pregunta, setPregunta] = useState("");
 
   async function sacarCarta() {
     setCargando(true);
@@ -36,13 +37,25 @@ export default function SeccionTarot() {
       <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-[#1a0505] to-transparent" />
 
       {!carta && (
-        <button
-          onClick={sacarCarta}
-          disabled={cargando}
-          className="relative z-10 rounded-full bg-gradient-to-b from-[#e6c476] to-[#c9a24b] px-8 py-3 text-sm font-bold text-[#1a0505] shadow-lg disabled:opacity-60"
-        >
-          {cargando ? "Barajando las cartas..." : "🃏 Sacar una carta"}
-        </button>
+        <div className="relative z-10 w-full max-w-sm flex flex-col items-center gap-3">
+          <div className="w-full">
+            <textarea
+              value={pregunta}
+              onChange={(e) => setPregunta(e.target.value.slice(0, 150))}
+              placeholder="Escribe tu pregunta sobre el amor (opcional)"
+              rows={2}
+              className="w-full resize-none rounded-xl border border-[#c9a24b]/40 bg-[#1a0505]/60 px-4 py-3 text-sm text-[#f5e6d3] placeholder:text-[#f5e6d3]/40 focus:outline-none focus:border-[#c9a24b]"
+            />
+            <p className="mt-1 text-right text-[10px] text-[#f5e6d3]/40">{pregunta.length}/150</p>
+          </div>
+          <button
+            onClick={sacarCarta}
+            disabled={cargando}
+            className="rounded-full bg-gradient-to-b from-[#e6c476] to-[#c9a24b] px-8 py-3 text-sm font-bold text-[#1a0505] shadow-lg disabled:opacity-60"
+          >
+            {cargando ? "Barajando las cartas..." : "🃏 Sacar una carta"}
+          </button>
+        </div>
       )}
 
       {carta && (
@@ -96,7 +109,9 @@ export default function SeccionTarot() {
               </p>
               <a
                 href={`https://wa.me/59175928656?text=${encodeURIComponent(
-                  `Hola Maestro Juan Santiago, saqué la carta "${carta.nombre}" en el Tarot de la web y quiero saber qué significa para mi situación`
+                  pregunta.trim()
+                    ? `Hola Maestro Juan Santiago, mi pregunta era: "${pregunta.trim()}". Saqué la carta "${carta.nombre}" en el Tarot de la web y quiero saber qué significa para mi situación`
+                    : `Hola Maestro Juan Santiago, saqué la carta "${carta.nombre}" en el Tarot de la web y quiero saber qué significa para mi situación`
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
