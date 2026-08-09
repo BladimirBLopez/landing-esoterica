@@ -32,7 +32,7 @@ export default function SeccionTarot() {
     <section
       className="relative overflow-hidden px-6 flex items-end justify-center pb-14"
       style={{
-        backgroundImage: "linear-gradient(to bottom, rgba(26,5,5,0.45), rgba(26,5,5,0.75)), url(https://res.cloudinary.com/dkq95jus0/image/upload/fon-tarot)",
+        backgroundImage: "linear-gradient(to bottom, rgba(26,5,5,0.8), rgba(26,5,5,0.93)), url(https://res.cloudinary.com/dkq95jus0/image/upload/fon-tarot)",
         backgroundSize: "cover",
         backgroundPosition: "center",
         minHeight: "680px",
