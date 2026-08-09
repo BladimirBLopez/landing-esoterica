@@ -23,10 +23,10 @@ function AbanicoCartas({
 
   return (
     <div
-      className={`absolute inset-x-0 bottom-0 flex items-end justify-center transition-all duration-700 ${
+      className={`relative flex items-start justify-center overflow-hidden transition-all duration-700 ${
         activo ? "opacity-100 blur-0 z-20" : "opacity-60 blur-[4px] z-0"
       }`}
-      style={{ height: "220px", bottom: "70px" }}
+      style={{ height: activo ? "170px" : "90px", width: "100%" }}
     >
       {Array.from({ length: total }).map((_, i) => {
         const offset = i - centro;
@@ -96,14 +96,12 @@ export default function SeccionTarot() {
 
   return (
     <section
-      className="relative overflow-hidden px-6 flex flex-col items-center justify-start pt-20 pb-56"
+      className="relative overflow-hidden px-6 flex flex-col items-center justify-start pt-20 pb-10"
       style={{
         background: "radial-gradient(circle at 50% 15%, #3d0f2a 0%, #2a0a1a 35%, #1a0505 75%)",
       }}
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-[#1a0505] to-transparent" />
-
-      <AbanicoCartas activo={mostrarAbanico && !carta} onElegir={sacarCarta} cargando={cargando} />
 
       {!carta && !mostrarAbanico && (
         <div className="relative z-10 w-full max-w-sm flex flex-col items-center gap-5 text-center">
@@ -155,10 +153,12 @@ export default function SeccionTarot() {
       )}
 
       {!carta && mostrarAbanico && (
-        <p className="relative z-10 mb-40 text-sm text-[#f5e6d3]/70">
+        <p className="relative z-10 text-sm text-[#f5e6d3]/70">
           Toca una carta cuando estés listo
         </p>
       )}
+
+      <AbanicoCartas activo={mostrarAbanico && !carta} onElegir={sacarCarta} cargando={cargando} />
 
       {carta && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 px-6 backdrop-blur-sm">
