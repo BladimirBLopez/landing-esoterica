@@ -12,7 +12,11 @@ export default function SeccionTarot() {
     setCarta(null);
 
     try {
-      const res = await fetch("/api/tarot");
+      const res = await fetch("/api/tarot", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ pregunta }),
+      });
       const data = await res.json();
       if (data.nombre) {
         setCarta({ nombre: data.nombre, pista: data.pista ?? "", resto: data.resto ?? "" });
