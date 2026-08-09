@@ -35,29 +35,43 @@ export default function SeccionTarot() {
         backgroundImage: "linear-gradient(to bottom, rgba(26,5,5,0.45), rgba(26,5,5,0.75)), url(https://res.cloudinary.com/dkq95jus0/image/upload/fon-tarot)",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        height: "600px",
+        minHeight: "680px",
       }}
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-[#1a0505] to-transparent" />
 
       {!carta && (
-        <div className="relative z-10 w-full max-w-sm flex flex-col items-center gap-3">
+        <div className="relative z-10 w-full max-w-sm flex flex-col items-center gap-5 text-center">
+          <div className="flex flex-col items-center gap-2">
+            <span className="text-xl text-[#c9a24b]">✦</span>
+            <h2
+              className="text-3xl leading-tight text-[#f0d78c]"
+              style={{ fontFamily: "var(--font-cinzel)" }}
+            >
+              ¡Pregunta<br />lo que sea!
+            </h2>
+            <p className="max-w-xs text-xs text-[#f5e6d3]/60">
+              Concéntrate en tu pregunta y deja que las cartas te guíen
+            </p>
+          </div>
+
           <div className="w-full">
             <textarea
               value={pregunta}
               onChange={(e) => setPregunta(e.target.value.slice(0, 150))}
-              placeholder="Escribe tu pregunta sobre el amor (opcional)"
+              placeholder="Escriba su pregunta aquí..."
               rows={2}
-              className="w-full resize-none rounded-xl border border-[#c9a24b]/40 bg-[#1a0505]/60 px-4 py-3 text-sm text-[#f5e6d3] placeholder:text-[#f5e6d3]/40 focus:outline-none focus:border-[#c9a24b]"
+              className="w-full resize-none rounded-2xl border border-[#c9a24b]/40 bg-[#1a0505]/70 px-5 py-4 text-sm text-[#f5e6d3] placeholder:text-[#f5e6d3]/40 shadow-inner focus:outline-none focus:border-[#c9a24b]"
             />
             <p className="mt-1 text-right text-[10px] text-[#f5e6d3]/40">{pregunta.length}/150</p>
           </div>
+
           <button
             onClick={sacarCarta}
             disabled={cargando}
-            className="rounded-full bg-gradient-to-b from-[#e6c476] to-[#c9a24b] px-8 py-3 text-sm font-bold text-[#1a0505] shadow-lg disabled:opacity-60"
+            className="w-full rounded-full border-2 border-[#c9a24b] px-8 py-3.5 text-sm font-bold uppercase tracking-widest text-[#f0d78c] transition hover:bg-[#c9a24b]/10 disabled:opacity-60"
           >
-            {cargando ? "Barajando las cartas..." : "🃏 Sacar una carta"}
+            {cargando ? "Barajando las cartas..." : "Elegir carta"}
           </button>
         </div>
       )}
