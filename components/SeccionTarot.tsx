@@ -1,6 +1,27 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+const dorsoCartaSvg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 160'>
+  <rect width='100' height='160' rx='8' fill='%233a1a5c'/>
+  <rect x='4' y='4' width='92' height='152' rx='5' fill='none' stroke='%23e6c476' stroke-width='1.5'/>
+  <g fill='%23e6c476'>
+    <circle cx='15' cy='20' r='1.2'/>
+    <circle cx='85' cy='25' r='1'/>
+    <circle cx='20' cy='140' r='1'/>
+    <circle cx='80' cy='135' r='1.3'/>
+    <circle cx='50' cy='128' r='1'/>
+    <path d='M50 12 l2.2 5.5 5.5 2.2 -5.5 2.2 -2.2 5.5 -2.2 -5.5 -5.5 -2.2 5.5 -2.2 z'/>
+  </g>
+  <g transform='translate(50,82)'>
+    <circle r='24' fill='none' stroke='%23e6c476' stroke-width='1'/>
+    <path d='M-9 -7 A11 11 0 1 0 -9 7 A9 9 0 1 1 -9 -7 Z' fill='%23e6c476' opacity='0.9'/>
+    <ellipse cx='7' cy='0' rx='10' ry='4.5' fill='none' stroke='%23e6c476' stroke-width='1'/>
+    <circle cx='7' cy='0' r='2.2' fill='%23e6c476'/>
+  </g>
+</svg>`;
+
+const dorsoCartaUrl = `data:image/svg+xml,${dorsoCartaSvg.replace(/\n\s*/g, " ")}`;
 
 function AbanicoCartas({
   activo,
@@ -12,11 +33,23 @@ function AbanicoCartas({
   cargando: boolean;
 }) {
   const [indiceElegido, setIndiceElegido] = useState<number | null>(null);
+  const [asentado, setAsentado] = useState(false);
   const total = 7;
   const centro = (total - 1) / 2;
 
+  useEffect(() => {
+    if (activo) {
+      setAsentado(false);
+      const t = setTimeout(() => setAsentado(true), 450);
+      return () => clearTimeout(t);
+    } else {
+      setAsentado(false);
+      setIndiceElegido(null);
+    }
+  }, [activo]);
+
   function elegir(i: number) {
-    if (!activo || indiceElegido !== null) return;
+    if (!activo || !asentado || indiceElegido !== null) return;
     setIndiceElegido(i);
     onElegir();
   }
@@ -26,7 +59,7 @@ function AbanicoCartas({
       className={`relative flex items-start justify-center overflow-hidden transition-all duration-700 ${
         activo ? "opacity-100 blur-0 z-20" : "opacity-60 blur-[4px] z-0"
       }`}
-      style={{ height: activo ? "170px" : "90px", width: "100%" }}
+      style={{ height: activo ? "180px" : "90px", width: "100%", perspective: "800px" }}
     >
       {Array.from({ length: total }).map((_, i) => {
         const offset = i - centro;
@@ -36,30 +69,59 @@ function AbanicoCartas({
         const elegida = indiceElegido === i;
         const otraElegida = indiceElegido !== null && !elegida;
 
+        const transformBarajado = `translate(${(i % 2 === 0 ? -1 : 1) * 14}px, -18px) rotate(${(i % 2 === 0 ? -1 : 1) * 22}deg)`;
+        const transformAbanico = elegida
+          ? "translate(0px, -30px) rotate(0deg) scale(1.3)"
+          : `translate(${desplazX}px, ${desplazY}px) rotate(${angulo}deg)`;
+
         return (
           <button
             key={i}
             onClick={() => elegir(i)}
-            disabled={!activo || indiceElegido !== null}
-            className={`absolute bottom-0 rounded-lg border shadow-lg transition-all duration-500 flex items-center justify-center ${
-              activo ? "pointer-events-auto" : "pointer-events-none"
+            disabled={!activo || !asentado || indiceElegido !== null}
+            className={`absolute bottom-0 rounded-lg transition-all duration-500 ${
+              activo && asentado ? "pointer-events-auto" : "pointer-events-none"
             }`}
             style={{
               width: "70px",
               height: "112px",
-              transform: elegida
-                ? "translate(0px, -30px) rotate(0deg) scale(1.3)"
-                : `translate(${desplazX}px, ${desplazY}px) rotate(${angulo}deg)`,
+              transform: activo && !asentado ? transformBarajado : transformAbanico,
               opacity: otraElegida ? 0.2 : 1,
-              background: "repeating-linear-gradient(45deg, #5b2a7a, #5b2a7a 6px, #7a3ea3 6px, #7a3ea3 12px)",
-              borderColor: "rgba(230,196,118,0.8)",
-              boxShadow: "0 0 14px rgba(201,162,75,0.3)",
               zIndex: elegida ? 30 : i,
+              transformStyle: "preserve-3d",
+              transition: "transform 0.5s cubic-bezier(.2,.8,.2,1), opacity 0.4s",
             }}
           >
-            <span className={`text-[#c9a24b] text-xl ${elegida && cargando ? "animate-spin" : ""}`}>
-              ✦
-            </span>
+            <div
+              className="relative w-full h-full transition-transform duration-500"
+              style={{
+                transformStyle: "preserve-3d",
+                transform: elegida ? "rotateY(180deg)" : "rotateY(0deg)",
+              }}
+            >
+              <div
+                className="absolute inset-0 rounded-lg border shadow-lg bg-cover bg-center"
+                style={{
+                  backfaceVisibility: "hidden",
+                  backgroundImage: `url("${dorsoCartaUrl}")`,
+                  borderColor: "rgba(230,196,118,0.6)",
+                  boxShadow: "0 0 14px rgba(201,162,75,0.3)",
+                }}
+              />
+              <div
+                className="absolute inset-0 rounded-lg border flex items-center justify-center"
+                style={{
+                  backfaceVisibility: "hidden",
+                  transform: "rotateY(180deg)",
+                  background: "linear-gradient(160deg, #2a0a12, #1a0505)",
+                  borderColor: "rgba(230,196,118,0.7)",
+                }}
+              >
+                <span className={`text-[#e6c476] text-2xl ${elegida && cargando ? "animate-pulse" : ""}`}>
+                  ✦
+                </span>
+              </div>
+            </div>
           </button>
         );
       })}
