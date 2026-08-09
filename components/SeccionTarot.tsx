@@ -26,7 +26,7 @@ function AbanicoCartas({
       className={`absolute inset-x-0 bottom-0 flex items-end justify-center transition-all duration-700 ${
         activo ? "opacity-100 blur-0 z-20" : "opacity-60 blur-[4px] z-0"
       }`}
-      style={{ height: "220px", bottom: "10px" }}
+      style={{ height: "220px", bottom: "70px" }}
     >
       {Array.from({ length: total }).map((_, i) => {
         const offset = i - centro;
