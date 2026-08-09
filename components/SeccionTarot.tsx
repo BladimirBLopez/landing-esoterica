@@ -29,9 +29,9 @@ const dorsoCartaSvg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 
     <path d='M22 128 l1 2.4 2.4 1 -2.4 1 -1 2.4 -1 -2.4 -2.4 -1 2.4 -1 z'/>
   </g>
   <g transform='translate(50,80)' fill='%23d9b978'>
-    <path d='M-16 -13 A19 19 0 1 0 -16 13 A15.5 15.5 0 1 1 -16 -13 Z'/>
-    <ellipse cx='0' cy='0' rx='7' ry='4' fill='%23241040' stroke='%23d9b978' stroke-width='0.8'/>
-    <circle cx='0' cy='0' r='1.6' fill='%23d9b978'/>
+    <path d='M-12 -10 A14.5 14.5 0 1 0 -12 10 A11.5 11.5 0 1 1 -12 -10 Z'/>
+    <ellipse cx='-1' cy='0' rx='5.5' ry='3.2' fill='%23241040' stroke='%23d9b978' stroke-width='0.7'/>
+    <circle cx='-1' cy='0' r='1.3' fill='%23d9b978'/>
   </g>
 </svg>`;
 
@@ -114,7 +114,7 @@ function AbanicoCartas({
               }}
             >
               <div
-                className="absolute inset-0 rounded-lg border shadow-lg bg-cover bg-center"
+                className="absolute inset-0 rounded-lg border shadow-lg bg-cover bg-center overflow-hidden"
                 style={{
                   backfaceVisibility: "hidden",
                   backgroundImage: `url("${dorsoCartaUrl}")`,
