@@ -24,32 +24,30 @@ export default function SeccionTarot() {
   }
 
   return (
-    <div className="relative">
-      <section
-        className="relative overflow-hidden px-6 flex items-end justify-center pb-14"
-        style={{
-          backgroundImage: "linear-gradient(to bottom, rgba(26,5,5,0.45), rgba(26,5,5,0.75)), url(https://res.cloudinary.com/dkq95jus0/image/upload/fon-tarot)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          height: "600px",
-        }}
-      >
-        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-[#1a0505] to-transparent" />
+    <section
+      className="relative overflow-hidden px-6 flex items-end justify-center pb-14"
+      style={{
+        backgroundImage: "linear-gradient(to bottom, rgba(26,5,5,0.45), rgba(26,5,5,0.75)), url(https://res.cloudinary.com/dkq95jus0/image/upload/fon-tarot)",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        height: "600px",
+      }}
+    >
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-[#1a0505] to-transparent" />
 
-        {!carta && (
-          <button
-            onClick={sacarCarta}
-            disabled={cargando}
-            className="relative z-10 rounded-full bg-gradient-to-b from-[#e6c476] to-[#c9a24b] px-8 py-3 text-sm font-bold text-[#1a0505] shadow-lg disabled:opacity-60"
-          >
-            {cargando ? "Barajando las cartas..." : "🃏 Sacar una carta"}
-          </button>
-        )}
-      </section>
+      {!carta && (
+        <button
+          onClick={sacarCarta}
+          disabled={cargando}
+          className="relative z-10 rounded-full bg-gradient-to-b from-[#e6c476] to-[#c9a24b] px-8 py-3 text-sm font-bold text-[#1a0505] shadow-lg disabled:opacity-60"
+        >
+          {cargando ? "Barajando las cartas..." : "🃏 Sacar una carta"}
+        </button>
+      )}
 
       {carta && (
-        <div className="bg-gradient-to-b from-[#1a0505] to-[#2e0a1c] px-6 pb-12 pt-6">
-          <div className="mx-auto max-w-xl rounded-2xl border border-[#c9a24b]/30 bg-[#3d0f1a] p-6 text-center">
+        <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/80 px-6">
+          <div className="max-w-xl rounded-2xl border border-[#c9a24b]/30 bg-[#3d0f1a] p-6 text-center max-h-[85%] overflow-y-auto">
             <h3
               className="mb-3 text-2xl text-[#f0d78c]"
               style={{ fontFamily: "var(--font-cinzel)" }}
@@ -97,6 +95,6 @@ export default function SeccionTarot() {
           </div>
         </div>
       )}
-    </div>
+    </section>
   );
 }

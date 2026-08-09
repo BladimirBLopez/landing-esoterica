@@ -39,40 +39,44 @@ export default function SeccionHoroscopo() {
   }
 
   return (
-    <div className="relative">
-      <section
-        className="relative overflow-hidden px-6 pb-10"
-        style={{
-          backgroundImage: "linear-gradient(to bottom, rgba(46,10,28,0.35), rgba(26,5,5,0.55)), url(https://res.cloudinary.com/dkq95jus0/image/upload/fon-horoscopo)",
-          backgroundSize: "cover",
-          backgroundPosition: "center -5%",
-          height: "820px",
-        }}
-      >
-        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-48 bg-gradient-to-b from-[#1a0505] via-[#1a0505]/60 to-transparent" />
-        <div className="h-[560px]" />
+    <section
+      className="relative overflow-hidden px-6"
+      style={{
+        backgroundImage: "linear-gradient(to bottom, rgba(46,10,28,0.35), rgba(26,5,5,0.55)), url(https://res.cloudinary.com/dkq95jus0/image/upload/fon-horoscopo)",
+        backgroundSize: "cover",
+        backgroundPosition: "center -5%",
+        height: "820px",
+      }}
+    >
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-48 bg-gradient-to-b from-[#1a0505] via-[#1a0505]/60 to-transparent" />
+      <div className="h-[560px]" />
 
-        <div className="mx-auto grid max-w-2xl grid-cols-4 gap-2 sm:grid-cols-6">
-          {SIGNOS.map((s) => (
-            <button
-              key={s.valor}
-              onClick={() => elegirSigno(s.valor)}
-              className={`flex flex-col items-center gap-1 rounded-xl border p-3 transition ${
-                signoSeleccionado === s.valor
-                  ? "border-[#c9a24b] bg-[#c9a24b]/10"
-                  : "border-[#8b5cf6]/30 bg-[#2a1a4a]/60 hover:bg-[#3a2560]/70"
-              }`}
-            >
-              <span className="text-2xl">{s.emoji}</span>
-              <span className="text-[10px] text-[#f5e6d3]/80">{s.label}</span>
-            </button>
-          ))}
-        </div>
-      </section>
+      <div className="relative mx-auto grid max-w-2xl grid-cols-4 gap-2 sm:grid-cols-6">
+        {SIGNOS.map((s) => (
+          <button
+            key={s.valor}
+            onClick={() => elegirSigno(s.valor)}
+            className={`flex flex-col items-center gap-1 rounded-xl border p-3 transition ${
+              signoSeleccionado === s.valor
+                ? "border-[#c9a24b] bg-[#c9a24b]/10"
+                : "border-[#8b5cf6]/30 bg-[#2a1a4a]/60 hover:bg-[#3a2560]/70"
+            }`}
+          >
+            <span className="text-2xl">{s.emoji}</span>
+            <span className="text-[10px] text-[#f5e6d3]/80">{s.label}</span>
+          </button>
+        ))}
+      </div>
 
       {signoSeleccionado && (
-        <div className="bg-gradient-to-b from-[#1a0505] to-[#2e0a1c] px-6 pb-12 pt-2">
-          <div className="mx-auto max-w-xl rounded-2xl border border-[#c9a24b]/30 bg-[#3d0f1a] p-6 text-center">
+        <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/80 px-6">
+          <div className="max-w-xl rounded-2xl border border-[#c9a24b]/30 bg-[#3d0f1a] p-6 text-center max-h-[85%] overflow-y-auto">
+            <button
+              onClick={() => setSignoSeleccionado(null)}
+              className="mb-2 text-xs text-[#f5e6d3]/50 underline"
+            >
+              ✕ Cerrar
+            </button>
             {cargando ? (
               <p className="text-sm text-[#f5e6d3]/60">Consultando los astros...</p>
             ) : (
@@ -94,6 +98,6 @@ export default function SeccionHoroscopo() {
           </div>
         </div>
       )}
-    </div>
+    </section>
   );
 }
