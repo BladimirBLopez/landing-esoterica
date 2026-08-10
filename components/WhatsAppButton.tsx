@@ -1,3 +1,5 @@
+"use client";
+
 interface WhatsAppButtonProps {
   numero: string;
   mensaje: string;
