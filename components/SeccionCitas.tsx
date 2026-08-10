@@ -116,12 +116,20 @@ export default function SeccionCitas() {
           Elige tu servicio y el horario que más te acomode
         </p>
 
-        {/* Tarjeta blanca tipo herramienta de reservas */}
-        <div className="rounded-2xl bg-white shadow-[0_20px_50px_-12px_rgba(0,0,0,0.6)] overflow-hidden text-left">
+        {/* Tarjeta clara con la paleta vino/dorado del sitio */}
+        <div
+          className="rounded-2xl bg-[#fdfaf5] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.6)] overflow-hidden text-left border-t-4 border-[#c9a24b]"
+          style={{ fontFamily: "var(--font-playfair)" }}
+        >
 
           {paso === "servicio" && (
             <div className="p-5">
-              <p className="text-xs font-semibold uppercase tracking-wide text-[#6366f1] mb-3">Paso 1 · Servicio</p>
+              <p
+                className="text-xs font-semibold uppercase tracking-widest text-[#8a1f3f] mb-3"
+                style={{ fontFamily: "var(--font-cinzel)" }}
+              >
+                Paso 1 · Servicio
+              </p>
               <div className="flex flex-col gap-2.5">
                 {SERVICIOS_CITA.map((s) => (
                   <button
@@ -130,13 +138,13 @@ export default function SeccionCitas() {
                       setServicio(s.value);
                       setPaso("horario");
                     }}
-                    className="flex items-center justify-between rounded-xl border border-[#e5e5eb] px-4 py-3.5 text-left transition hover:border-[#6366f1] hover:bg-[#6366f1]/5"
+                    className="flex items-center justify-between rounded-xl border border-[#e8dfc8] px-4 py-3.5 text-left transition hover:border-[#8a1f3f] hover:bg-[#8a1f3f]/5"
                   >
                     <div>
-                      <p className="text-sm font-semibold text-[#0f0f14]">{s.label}</p>
-                      <p className="text-xs text-[#6b6b80] mt-0.5">{s.desc}</p>
+                      <p className="text-[15px] font-semibold text-[#2a0a12]">{s.label}</p>
+                      <p className="text-[13px] text-[#6b5d4f] mt-0.5">{s.desc}</p>
                     </div>
-                    <span className="text-[#6366f1] text-lg">→</span>
+                    <span className="text-[#8a1f3f] text-lg">→</span>
                   </button>
                 ))}
               </div>
@@ -148,11 +156,16 @@ export default function SeccionCitas() {
               <div className="flex items-center justify-between px-5 pt-4">
                 <button
                   onClick={() => setPaso("servicio")}
-                  className="text-xs text-[#6366f1] font-medium"
+                  className="text-[13px] text-[#8a1f3f] font-semibold"
                 >
                   ← Cambiar servicio
                 </button>
-                <p className="text-xs font-semibold uppercase tracking-wide text-[#6366f1]">Paso 2 · Horario</p>
+                <p
+                  className="text-xs font-semibold uppercase tracking-widest text-[#8a1f3f]"
+                  style={{ fontFamily: "var(--font-cinzel)" }}
+                >
+                  Paso 2 · Horario
+                </p>
               </div>
 
               <div className="flex gap-1.5 overflow-x-auto px-5 py-4">
@@ -165,13 +178,13 @@ export default function SeccionCitas() {
                       onClick={() => setDiaSeleccionado(d)}
                       className={`shrink-0 flex flex-col items-center rounded-xl px-3 py-2 min-w-[56px] transition ${
                         activo
-                          ? "bg-[#6366f1] text-white"
-                          : "bg-[#f5f5f7] text-[#0f0f14] hover:bg-[#ebebf0]"
+                          ? "bg-[#4a0916] text-white"
+                          : "bg-[#f3ede0] text-[#2a0a12] hover:bg-[#e8dfc8]"
                       }`}
                     >
-                      <span className={`text-[10px] uppercase ${activo ? "text-white/70" : "text-[#6b6b80]"}`}>{dia}</span>
+                      <span className={`text-[10px] uppercase ${activo ? "text-[#f0d78c]" : "text-[#6b5d4f]"}`}>{dia}</span>
                       <span className="text-base font-semibold leading-tight">{numero}</span>
-                      <span className={`text-[10px] uppercase ${activo ? "text-white/70" : "text-[#6b6b80]"}`}>{mes}</span>
+                      <span className={`text-[10px] uppercase ${activo ? "text-[#f0d78c]" : "text-[#6b5d4f]"}`}>{mes}</span>
                     </button>
                   );
                 })}
@@ -179,10 +192,10 @@ export default function SeccionCitas() {
 
               <div className="grid grid-cols-3 gap-2 px-5 pb-5 max-h-64 overflow-y-auto">
                 {cargandoSlots && (
-                  <p className="col-span-3 py-8 text-sm text-[#6b6b80] text-center">Cargando horarios...</p>
+                  <p className="col-span-3 py-8 text-sm text-[#6b5d4f] text-center">Cargando horarios...</p>
                 )}
                 {!cargandoSlots && slots.length === 0 && (
-                  <p className="col-span-3 py-8 text-sm text-[#6b6b80] text-center">No hay horarios libres este día</p>
+                  <p className="col-span-3 py-8 text-sm text-[#6b5d4f] text-center">No hay horarios libres este día</p>
                 )}
                 {!cargandoSlots &&
                   slots.map((s) => (
@@ -192,7 +205,7 @@ export default function SeccionCitas() {
                         setHorarioElegido(s);
                         setPaso("datos");
                       }}
-                      className="rounded-lg border border-[#e5e5eb] py-2.5 text-xs font-medium text-[#0f0f14] transition hover:border-[#6366f1] hover:bg-[#6366f1]/5"
+                      className="rounded-lg border border-[#e8dfc8] py-2.5 text-[13px] font-semibold text-[#2a0a12] transition hover:border-[#8a1f3f] hover:bg-[#8a1f3f]/5"
                     >
                       {formatearHora(s)}
                     </button>
@@ -206,53 +219,58 @@ export default function SeccionCitas() {
               <div className="flex items-center justify-between mb-4">
                 <button
                   onClick={() => setPaso("horario")}
-                  className="text-xs text-[#6366f1] font-medium"
+                  className="text-[13px] text-[#8a1f3f] font-semibold"
                 >
                   ← Cambiar horario
                 </button>
-                <p className="text-xs font-semibold uppercase tracking-wide text-[#6366f1]">Paso 3 · Tus datos</p>
+                <p
+                  className="text-xs font-semibold uppercase tracking-widest text-[#8a1f3f]"
+                  style={{ fontFamily: "var(--font-cinzel)" }}
+                >
+                  Paso 3 · Tus datos
+                </p>
               </div>
 
-              <div className="rounded-xl bg-[#6366f1]/8 border border-[#6366f1]/20 px-4 py-3 mb-4">
-                <p className="text-sm font-semibold text-[#0f0f14] capitalize">
+              <div className="rounded-xl bg-[#4a0916]/8 border border-[#4a0916]/20 px-4 py-3 mb-4">
+                <p className="text-[15px] font-semibold text-[#2a0a12] capitalize">
                   {formatearFechaLarga(new Date(horarioElegido))}
                 </p>
-                <p className="text-xs text-[#6366f1] font-medium mt-0.5">{formatearHora(horarioElegido)} · 30 min</p>
+                <p className="text-[13px] text-[#8a1f3f] font-semibold mt-0.5">{formatearHora(horarioElegido)} · 30 min</p>
               </div>
 
               <div className="flex flex-col gap-3">
                 <div>
-                  <label className="text-xs font-medium text-[#6b6b80]">Nombre completo</label>
+                  <label className="text-[13px] font-medium text-[#6b5d4f]">Nombre completo</label>
                   <input
                     value={nombre}
                     onChange={(e) => setNombre(e.target.value)}
                     placeholder="Ej: María Pérez"
-                    className="w-full mt-1 rounded-lg border border-[#e5e5eb] px-3.5 py-2.5 text-sm text-[#0f0f14] outline-none focus:border-[#6366f1]"
+                    className="w-full mt-1 rounded-lg border border-[#e8dfc8] px-3.5 py-2.5 text-[15px] text-[#2a0a12] outline-none focus:border-[#8a1f3f]"
                   />
                 </div>
                 <div>
-                  <label className="text-xs font-medium text-[#6b6b80]">Número de WhatsApp</label>
+                  <label className="text-[13px] font-medium text-[#6b5d4f]">Número de WhatsApp</label>
                   <input
                     value={telefono}
                     onChange={(e) => setTelefono(e.target.value)}
                     placeholder="Ej: 70000000"
                     type="tel"
-                    className="w-full mt-1 rounded-lg border border-[#e5e5eb] px-3.5 py-2.5 text-sm text-[#0f0f14] outline-none focus:border-[#6366f1]"
+                    className="w-full mt-1 rounded-lg border border-[#e8dfc8] px-3.5 py-2.5 text-[15px] text-[#2a0a12] outline-none focus:border-[#8a1f3f]"
                   />
                 </div>
               </div>
 
-              {error && <p className="mt-3 text-xs text-[#f97316]">{error}</p>}
+              {error && <p className="mt-3 text-[13px] text-[#c2410c]">{error}</p>}
 
               <button
                 onClick={confirmarReserva}
                 disabled={enviando}
-                className="mt-5 w-full rounded-lg bg-[#6366f1] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#4f46e5] disabled:opacity-60"
+                className="mt-5 w-full rounded-lg bg-[#4a0916] px-6 py-3 text-[15px] font-semibold text-[#f0d78c] transition hover:bg-[#3a0710] disabled:opacity-60"
               >
                 {enviando ? "Reservando..." : "Reservar y pagar Bs 50"}
               </button>
 
-              <p className="mt-3 text-center text-[10px] text-[#6b6b80]">
+              <p className="mt-3 text-center text-[11px] text-[#6b5d4f]">
                 Tu horario se guarda por 40 minutos mientras confirmas el pago
               </p>
             </div>
