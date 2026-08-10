@@ -1,54 +1,88 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import Tesseract from "tesseract.js";
 
 const NUMERO = "59175928656";
-const API_URL = "https://juan-santiago-admin.vercel.app/api/leads";
+const API_BASE = "https://juan-santiago-admin.vercel.app";
+const CLOUDINARY_CLOUD = "dkq95jus0";
+const CLOUDINARY_PRESET = "juan-santiago-comprobantes";
+const MONTO_CONSULTA = 50;
 
 function horaActual() {
   return new Date().toLocaleTimeString("es-BO", { hour: "2-digit", minute: "2-digit" });
 }
 
-const SERVICIOS = [
-  { value: "CONSULTA_TAROT", label: "Consulta de Tarot" },
-  { value: "CONSULTA_COCA", label: "Consulta de Hojas de Coca" },
-  { value: "AMARRE", label: "Amarre de Amor" },
-  { value: "UNION_PAREJA", label: "Unión de Parejas" },
-  { value: "ENDULZAMIENTO", label: "Endulzamiento" },
-  { value: "RETORNO", label: "Retorno del Ser Amado" },
-  { value: "ALEJAMIENTO", label: "Alejamiento de Terceros" },
-];
-
-type Paso = "inicio" | "nombre" | "servicio" | "situacion" | "telefono" | "enviando" | "listo";
+const SERVICIO_LABELS: Record<string, string> = {
+  CONSULTA_TAROT: "Consulta de Tarot",
+  CONSULTA_COCA: "Consulta de Hojas de Coca",
+  AMARRE: "Amarre de Amor",
+  UNION_PAREJA: "Unión de Parejas",
+  ENDULZAMIENTO: "Endulzamiento",
+  RETORNO: "Retorno del Ser Amado",
+  ALEJAMIENTO: "Alejamiento de Terceros",
+};
 
 type Mensaje = { de: "bot" | "usuario"; texto: string; hora: string };
+type Datos = { nombre: string | null; telefono: string | null; servicio: string | null; situacion: string | null };
+type Etapa = "conversando" | "pago" | "enviado";
 
 export default function ChatAsistente() {
   const [abierto, setAbierto] = useState(false);
-  const [paso, setPaso] = useState<Paso>("inicio");
+  const [etapa, setEtapa] = useState<Etapa>("conversando");
   const [mensajes, setMensajes] = useState<Mensaje[]>([
-    { de: "bot", texto: "Hola, soy el asistente del Maestro Juan Santiago 🙏 ¿Cuál es tu nombre completo?", hora: horaActual() },
+    { de: "bot", texto: "Hola, soy el asistente del Maestro Juan Santiago 🙏 ¿En qué puedo ayudarte hoy?", hora: horaActual() },
   ]);
   const [inputTexto, setInputTexto] = useState("");
-  const [error, setError] = useState("");
-  const [datos, setDatos] = useState({
-    nombre: "",
-    servicio: "",
-    situacion: "",
-    telefono: "",
-  });
+  const [pensando, setPensando] = useState(false);
+  const [datos, setDatos] = useState<Datos>({ nombre: null, telefono: null, servicio: null, situacion: null });
+  const [consultaId, setConsultaId] = useState<string | null>(null);
+
+  const [archivo, setArchivo] = useState<File | null>(null);
+  const [preview, setPreview] = useState<string | null>(null);
+  const [analizando, setAnalizando] = useState(false);
+  const [montoDetectado, setMontoDetectado] = useState<string | null>(null);
+  const [verificado, setVerificado] = useState<"si" | "no" | null>(null);
+  const [enviandoPago, setEnviandoPago] = useState(false);
+
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    fetch("https://juan-santiago-admin.vercel.app/api/configuracion")
-      .then((res) => res.json())
-      .then((data) => {
-        const mensajeConfigurado = data?.config?.mensaje_bienvenida;
-        if (mensajeConfigurado) {
-          setMensajes([{ de: "bot", texto: mensajeConfigurado, hora: horaActual() }]);
-        }
-      })
-      .catch(() => {});
-  }, []);
+    scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
+  }, [mensajes, etapa]);
+
+  useEffect(() => {
+    if (!archivo) {
+      setPreview(null);
+      return;
+    }
+    const url = URL.createObjectURL(archivo);
+    setPreview(url);
+    analizarComprobante(archivo);
+    return () => URL.revokeObjectURL(url);
+  }, [archivo]);
+
+  async function analizarComprobante(file: File) {
+    setAnalizando(true);
+    setMontoDetectado(null);
+    setVerificado(null);
+    try {
+      const { data } = await Tesseract.recognize(file, "spa");
+      const numeros = (data.text.match(/\d{1,4}[.,]?\d{0,2}/g) ?? [])
+        .map((n) => n.replace(",", "."))
+        .map(Number)
+        .filter((n) => n >= 10 && n <= 100000);
+      if (numeros.length > 0) {
+        const coincide = numeros.some((n) => Math.abs(n - MONTO_CONSULTA) < 1);
+        setMontoDetectado(numeros.join(", "));
+        setVerificado(coincide ? "si" : "no");
+      }
+    } catch {
+      setVerificado(null);
+    } finally {
+      setAnalizando(false);
+    }
+  }
 
   function agregarMensaje(de: "bot" | "usuario", texto: string) {
     setMensajes((prev) => [...prev, { de, texto, hora: horaActual() }]);
@@ -56,96 +90,124 @@ export default function ChatAsistente() {
 
   function abrirChat() {
     setAbierto(true);
-    setPaso("nombre");
   }
 
-  function enviarNombre() {
-    if (inputTexto.trim().length < 3) {
-      setError("Escribe tu nombre completo (mínimo 3 letras)");
-      return;
-    }
-    setError("");
-    agregarMensaje("usuario", inputTexto);
-    setDatos((d) => ({ ...d, nombre: inputTexto }));
+  async function enviarMensaje() {
+    const texto = inputTexto.trim();
+    if (!texto || pensando) return;
+
+    agregarMensaje("usuario", texto);
     setInputTexto("");
-    setTimeout(() => {
-      agregarMensaje("bot", "¿Qué servicio te interesa?");
-      setPaso("servicio");
-    }, 400);
-  }
+    setPensando(true);
 
-  function elegirServicio(servicio: string, label: string) {
-    agregarMensaje("usuario", label);
-    setDatos((d) => ({ ...d, servicio }));
-    setTimeout(() => {
-      agregarMensaje("bot", "Cuéntame un poco de tu situación 💭");
-      setPaso("situacion");
-    }, 400);
-  }
-
-  function enviarSituacion() {
-    if (inputTexto.trim().length < 10) {
-      setError("Cuéntame un poco más, al menos 10 caracteres");
-      return;
-    }
-    setError("");
-    agregarMensaje("usuario", inputTexto);
-    setDatos((d) => ({ ...d, situacion: inputTexto }));
-    setInputTexto("");
-    setTimeout(() => {
-      agregarMensaje("bot", "¿Cuál es tu número de WhatsApp?");
-      setPaso("telefono");
-    }, 400);
-  }
-
-  async function enviarTelefono() {
-    const soloNumeros = inputTexto.replace(/\D/g, "");
-    if (soloNumeros.length < 8) {
-      setError("El número debe tener al menos 8 dígitos");
-      return;
-    }
-    setError("");
-    agregarMensaje("usuario", inputTexto);
-    const telefono = inputTexto;
-    setInputTexto("");
-    setPaso("enviando");
-
-    const datosFinales = { ...datos, telefono };
+    const historial = mensajes.map((m) => ({
+      rol: m.de === "usuario" ? ("usuario" as const) : ("asistente" as const),
+      texto: m.texto,
+    }));
 
     try {
-      await fetch(API_URL, {
+      const res = await fetch(`${API_BASE}/api/chat-ia`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          nombre: datosFinales.nombre,
-          telefono: datosFinales.telefono,
-          servicio: datosFinales.servicio,
-          situacion: datosFinales.situacion,
-        }),
+        body: JSON.stringify({ historial, mensaje: texto }),
       });
+      const data = await res.json();
 
-      agregarMensaje("bot", "Listo 🙏 Te voy a llevar a WhatsApp para continuar la conversación con el Maestro.");
-      setPaso("listo");
+      agregarMensaje("bot", data.respuesta ?? "Disculpa, ¿puedes repetirlo?");
 
-      const servicioLabel = SERVICIOS.find((s) => s.value === datosFinales.servicio)?.label ?? "";
-      const mensaje = encodeURIComponent(
-        `Hola Maestro Juan Santiago, soy ${datosFinales.nombre}. Ya envié mi consulta sobre ${servicioLabel}. Mi situación: ${datosFinales.situacion}`
-      );
+      if (data.datos) {
+        setDatos((prev) => ({
+          nombre: data.datos.nombre ?? prev.nombre,
+          telefono: data.datos.telefono ?? prev.telefono,
+          servicio: data.datos.servicio ?? prev.servicio,
+          situacion: data.datos.situacion ?? prev.situacion,
+        }));
+      }
 
-      setTimeout(() => {
-        window.location.href = `https://wa.me/${NUMERO}?text=${mensaje}`;
-      }, 1500);
+      if (data.completo) {
+        const datosFinales = {
+          nombre: data.datos.nombre ?? datos.nombre,
+          telefono: data.datos.telefono ?? datos.telefono,
+          servicio: data.datos.servicio ?? datos.servicio,
+          situacion: data.datos.situacion ?? datos.situacion,
+        };
+        await crearConsulta(datosFinales);
+      }
     } catch {
-      agregarMensaje("bot", "Hubo un problema, mejor escríbeme directo por WhatsApp 🙏");
-      setPaso("listo");
+      agregarMensaje("bot", "Hubo un problema de conexión. ¿Puedes escribirme de nuevo? 🙏");
+    } finally {
+      setPensando(false);
+    }
+  }
+
+  async function crearConsulta(datosFinales: Datos) {
+    try {
+      const res = await fetch(`${API_BASE}/api/chat-ia/crear-consulta`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(datosFinales),
+      });
+      const data = await res.json();
+
+      if (res.ok && data.consultaId) {
+        setConsultaId(data.consultaId);
+        setTimeout(() => {
+          agregarMensaje("bot", `Perfecto ${datosFinales.nombre ?? ""} 🙏 Ya casi terminamos. Para confirmar tu consulta, te pido el pago de Bs ${MONTO_CONSULTA}. Escanea el QR y sube tu comprobante aquí abajo.`);
+          setEtapa("pago");
+        }, 400);
+      }
+    } catch {
+      agregarMensaje("bot", "Hubo un problema al registrar tus datos. Intenta de nuevo en un momento 🙏");
     }
   }
 
   function handleEnter(e: React.KeyboardEvent) {
-    if (e.key !== "Enter") return;
-    if (paso === "nombre") enviarNombre();
-    if (paso === "situacion") enviarSituacion();
-    if (paso === "telefono") enviarTelefono();
+    if (e.key === "Enter") enviarMensaje();
+  }
+
+  async function enviarComprobante() {
+    if (!archivo || !consultaId) return;
+    setEnviandoPago(true);
+
+    try {
+      const formData = new FormData();
+      formData.append("file", archivo);
+      formData.append("upload_preset", CLOUDINARY_PRESET);
+
+      const uploadRes = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD}/image/upload`, {
+        method: "POST",
+        body: formData,
+      });
+      if (!uploadRes.ok) throw new Error();
+      const uploadData = await uploadRes.json();
+
+      const res = await fetch(`${API_BASE}/api/pagos`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          consultaId,
+          monto: MONTO_CONSULTA,
+          comprobanteUrl: uploadData.secure_url,
+          verificadoOcr: verificado === "si",
+        }),
+      });
+      if (!res.ok) throw new Error();
+
+      setEtapa("enviado");
+      agregarMensaje("bot", "Listo 🙏 Recibí tu comprobante, el Maestro lo revisará y te confirmará por WhatsApp. Te voy a llevar allá para que sigan en contacto.");
+
+      const servicioLabel = SERVICIO_LABELS[datos.servicio ?? ""] ?? "";
+      const mensaje = encodeURIComponent(
+        `Hola Maestro Juan Santiago, soy ${datos.nombre}. Ya envié mi consulta sobre ${servicioLabel} y subí mi comprobante de pago. Mi situación: ${datos.situacion}`
+      );
+      setTimeout(() => {
+        window.location.href = `https://wa.me/${NUMERO}?text=${mensaje}`;
+      }, 1800);
+    } catch {
+      agregarMensaje("bot", "Hubo un problema al enviar tu comprobante. Intenta de nuevo 🙏");
+    } finally {
+      setEnviandoPago(false);
+    }
   }
 
   if (!abierto) {
@@ -162,16 +224,16 @@ export default function ChatAsistente() {
   }
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 w-[90vw] max-w-sm rounded-2xl overflow-hidden shadow-2xl flex flex-col max-h-[75vh] border border-[#2a2f32]">
+    <div className="fixed bottom-6 right-6 z-50 w-[90vw] max-w-sm rounded-2xl overflow-hidden shadow-2xl flex flex-col max-h-[80vh] border border-[#2a2f32]">
       <div className="flex items-center gap-3 p-3 bg-[#005e54]">
         <div className="h-9 w-9 rounded-full bg-[#c9a24b] flex items-center justify-center text-xs font-bold text-[#1a0505] shrink-0">
           JS
         </div>
         <div className="flex-1">
-          <p className="text-sm font-semibold text-white leading-tight">
-            Maestro Juan Santiago
+          <p className="text-sm font-semibold text-white leading-tight">Maestro Juan Santiago</p>
+          <p className="text-[11px] text-white/70 leading-tight">
+            {pensando ? "escribiendo..." : "en línea"}
           </p>
-          <p className="text-[11px] text-white/70 leading-tight">en línea</p>
         </div>
         <button onClick={() => setAbierto(false)} className="text-white/80 text-lg leading-none px-1">
           ✕
@@ -179,6 +241,7 @@ export default function ChatAsistente() {
       </div>
 
       <div
+        ref={scrollRef}
         className="flex-1 overflow-y-auto p-4 space-y-2"
         style={{
           backgroundColor: "#0b141a",
@@ -200,62 +263,85 @@ export default function ChatAsistente() {
             <span>{m.texto}</span>
             <span className="flex items-center justify-end gap-1 -mb-0.5 mt-0.5">
               <span className="text-[10px] text-[#8696a0]">{m.hora}</span>
-              {m.de === "usuario" && (
-                <svg viewBox="0 0 16 15" width="14" height="14" className="fill-[#53bdeb]">
-                  <path d="M15.01 3.316l-.478-.372a.365.365 0 0 0-.51.063L8.666 9.879a.32.32 0 0 1-.484.033l-.358-.325a.319.319 0 0 0-.484.032l-.378.483a.418.418 0 0 0 .036.541l1.32 1.266c.143.14.361.125.484-.033l6.272-8.048a.366.366 0 0 0-.064-.512zm-4.1 0l-.478-.372a.365.365 0 0 0-.51.063L4.566 9.879a.32.32 0 0 1-.484.033L1.891 7.769a.366.366 0 0 0-.515.006l-.423.433a.364.364 0 0 0 .006.514l3.258 3.185c.143.14.361.125.484-.033l6.272-8.048a.365.365 0 0 0-.063-.51z" />
-                </svg>
-              )}
             </span>
           </div>
         ))}
 
-        {paso === "servicio" && (
-          <div className="flex flex-col gap-2">
-            {SERVICIOS.map((s) => (
-              <button
-                key={s.value}
-                onClick={() => elegirServicio(s.value, s.label)}
-                className="text-left text-sm rounded-lg border border-[#2a3942] bg-[#202c33] px-3 py-2 text-[#e9edef] hover:bg-[#2a3942]"
-              >
-                {s.label}
-              </button>
-            ))}
+        {pensando && (
+          <div className="bg-[#202c33] text-[#8696a0] self-start rounded-r-lg rounded-bl-lg px-3 py-2 text-xs" style={{ width: "fit-content" }}>
+            escribiendo...
+          </div>
+        )}
+
+        {etapa === "pago" && (
+          <div className="mt-3 rounded-xl border border-[#2a3942] bg-[#111b21] p-3 space-y-3">
+            <div className="grid grid-cols-2 gap-2">
+              <div className="rounded-lg border border-[#2a3942] bg-[#0b141a] p-2 text-center">
+                <img
+                  src="https://res.cloudinary.com/dkq95jus0/image/upload/qr-union"
+                  alt="QR Union"
+                  className="mx-auto rounded w-full"
+                />
+                <p className="text-[10px] text-[#8696a0] mt-1">Unión</p>
+              </div>
+              <div className="rounded-lg border border-[#2a3942] bg-[#0b141a] p-2 text-center">
+                <img
+                  src="https://res.cloudinary.com/dkq95jus0/image/upload/qr-tigomoney"
+                  alt="QR Tigo Money"
+                  className="mx-auto rounded w-full"
+                />
+                <p className="text-[10px] text-[#8696a0] mt-1">Tigo Money</p>
+              </div>
+            </div>
+
+            <input
+              type="file"
+              accept="image/*"
+              onChange={(e) => setArchivo(e.target.files?.[0] ?? null)}
+              className="w-full text-[11px] text-[#8696a0] file:mr-2 file:py-1.5 file:px-2.5 file:rounded-md file:border-0 file:bg-[#c9a24b] file:text-[#0f1115] file:text-[11px] file:font-medium"
+            />
+
+            {preview && <img src={preview} alt="Vista previa" className="rounded-lg max-h-32 mx-auto" />}
+
+            {analizando && <p className="text-[11px] text-[#8696a0] text-center">Analizando comprobante...</p>}
+            {!analizando && verificado === "si" && (
+              <p className="text-[11px] text-[#22c55e] text-center">✓ Monto detectado coincide ({montoDetectado})</p>
+            )}
+            {!analizando && verificado === "no" && (
+              <p className="text-[11px] text-[#f97316] text-center">⚠️ No pudimos confirmar el monto ({montoDetectado}). El Maestro lo revisará igual.</p>
+            )}
+
+            <button
+              onClick={enviarComprobante}
+              disabled={!archivo || enviandoPago}
+              className="w-full rounded-lg bg-[#c9a24b] text-[#0f1115] font-medium text-xs py-2.5 disabled:opacity-50"
+            >
+              {enviandoPago ? "Enviando..." : "Enviar comprobante"}
+            </button>
           </div>
         )}
       </div>
 
-      {error && ["nombre", "situacion", "telefono"].includes(paso) && (
-        <div className="px-3 py-1.5 bg-[#202c33] text-xs text-[#ff6b6b]">
-          {error}
-        </div>
-      )}
-
-      {["nombre", "situacion", "telefono"].includes(paso) && (
+      {etapa === "conversando" && (
         <div className="p-2 bg-[#202c33] flex gap-2 items-center">
           <input
-            type={paso === "telefono" ? "tel" : "text"}
+            type="text"
             value={inputTexto}
             onChange={(e) => setInputTexto(e.target.value)}
             onKeyDown={handleEnter}
-            className="flex-1 rounded-full border-0 bg-[#2a3942] px-4 py-2.5 text-sm text-[#e9edef] outline-none placeholder:text-[#8696a0]"
+            disabled={pensando}
+            className="flex-1 rounded-full border-0 bg-[#2a3942] px-4 py-2.5 text-sm text-[#e9edef] outline-none placeholder:text-[#8696a0] disabled:opacity-60"
             placeholder="Escribe un mensaje"
             autoFocus
           />
           <button
-            onClick={() => {
-              if (paso === "nombre") enviarNombre();
-              if (paso === "situacion") enviarSituacion();
-              if (paso === "telefono") enviarTelefono();
-            }}
-            className="flex items-center justify-center h-10 w-10 rounded-full bg-[#00a884] text-white shrink-0"
+            onClick={enviarMensaje}
+            disabled={pensando}
+            className="flex items-center justify-center h-10 w-10 rounded-full bg-[#00a884] text-white shrink-0 disabled:opacity-60"
           >
             ➤
           </button>
         </div>
-      )}
-
-      {paso === "enviando" && (
-        <div className="p-4 text-center text-xs text-[#8696a0] bg-[#0b141a]">Enviando...</div>
       )}
     </div>
   );
