@@ -395,7 +395,10 @@ export default function ChatAsistente() {
               Para tu consulta de {SERVICIO_LABELS[datos.servicio ?? ""] ?? ""}, ¿quieres elegir un horario para videollamada, o prefieres coordinar directamente con el Maestro?
             </p>
             <button
-              onClick={() => setEtapa("horario")}
+              onClick={() => {
+                agregarMensaje("usuario", "Elegir horario y pagar");
+                setEtapa("horario");
+              }}
               className="w-full text-center text-[#00a884] font-medium text-sm py-3 border-t border-[#e9edef] active:bg-[#f0f2f5]"
             >
               Elegir horario y pagar
@@ -406,6 +409,7 @@ export default function ChatAsistente() {
               )}`}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => agregarMensaje("usuario", "Prefiero hablar con el Maestro")}
               className="block w-full text-center text-[#00a884] font-medium text-sm py-3 border-t border-[#e9edef] active:bg-[#f0f2f5]"
             >
               Prefiero hablar con el Maestro
