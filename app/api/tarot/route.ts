@@ -28,7 +28,7 @@ Responde UNICAMENTE con un JSON valido, sin texto adicional, sin markdown, con e
 No uses saltos de linea dentro de los valores. No prometas resultados garantizados. Manten un tono calido, mistico y cercano.`;
 
     const geminiRes = await fetch(
-      "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent",
+      "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite:generateContent",
       {
         method: "POST",
         headers: {
