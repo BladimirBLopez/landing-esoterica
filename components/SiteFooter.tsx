@@ -1,5 +1,4 @@
-const NUMERO = "59175928656";
-const TELEFONO_VISIBLE = "+591 75928656";
+import { NUMERO, TELEFONO_VISIBLE } from "@/lib/constantes";
 
 export default function SiteFooter() {
   return (

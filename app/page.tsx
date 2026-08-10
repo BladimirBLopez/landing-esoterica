@@ -10,8 +10,7 @@ import ServicioDetallado from "@/components/ServicioDetallado";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import SiteFooter from "@/components/SiteFooter";
 
-const NUMERO = "59175928656";
-const TELEFONO_VISIBLE = "+591 75928656";
+import { NUMERO, TELEFONO_VISIBLE } from "@/lib/constantes";
 
 const servicios = [
   {

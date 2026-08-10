@@ -4,7 +4,7 @@ import RevealOnScroll from "@/components/RevealOnScroll";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import SiteFooter from "@/components/SiteFooter";
 
-const NUMERO = "59175928656";
+import { NUMERO } from "@/lib/constantes";
 
 export const metadata: Metadata = {
   title: "Conoce al Maestro Juan Santiago | Curandero Heredero del Tatabombori",

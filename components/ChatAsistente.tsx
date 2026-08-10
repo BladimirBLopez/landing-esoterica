@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Tesseract from "tesseract.js";
 
-const NUMERO = "59175928656";
+import { NUMERO } from "@/lib/constantes";
 const API_BASE = "https://juan-santiago-admin.vercel.app";
 const CLOUDINARY_CLOUD = "dkq95jus0";
 const CLOUDINARY_PRESET = "juan-santiago-comprobantes";

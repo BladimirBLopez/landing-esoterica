@@ -4,7 +4,7 @@ import FaqAccordion from "@/components/FaqAccordion";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import SiteFooter from "@/components/SiteFooter";
 
-const NUMERO = "59175928656";
+import { NUMERO } from "@/lib/constantes";
 
 export const metadata: Metadata = {
   title: "Preguntas Frecuentes | Amarres de Amor Maestro Juan Santiago",
