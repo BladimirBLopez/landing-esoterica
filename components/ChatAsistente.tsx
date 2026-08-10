@@ -177,7 +177,9 @@ export default function ChatAsistente() {
         }));
       }
 
-      if (data.completo) {
+      const respuestaEsPregunta = (data.respuesta ?? "").trim().endsWith("?");
+
+      if (data.completo && !respuestaEsPregunta) {
         const datosFinales = {
           nombre: data.datos.nombre ?? datos.nombre,
           telefono: data.datos.telefono ?? datos.telefono,
