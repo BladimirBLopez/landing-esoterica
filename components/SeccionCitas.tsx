@@ -44,6 +44,7 @@ export default function SeccionCitas() {
   const [telefono, setTelefono] = useState("");
   const [enviando, setEnviando] = useState(false);
   const [error, setError] = useState("");
+  const [conteoPorDia, setConteoPorDia] = useState<Record<string, number>>({});
 
   const dias = Array.from({ length: 7 }).map((_, i) => {
     const d = new Date();
@@ -61,6 +62,20 @@ export default function SeccionCitas() {
       .catch(() => setSlots([]))
       .finally(() => setCargandoSlots(false));
   }, [paso, diaSeleccionado]);
+
+  useEffect(() => {
+    if (paso !== "horario") return;
+    dias.forEach((d) => {
+      const clave = fechaISOSinHora(d);
+      if (conteoPorDia[clave] !== undefined) return;
+      fetch(`${API_BASE}/api/citas/disponibilidad?fecha=${clave}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setConteoPorDia((prev) => ({ ...prev, [clave]: (data.slots ?? []).length }));
+        })
+        .catch(() => {});
+    });
+  }, [paso]);
 
   async function confirmarReserva() {
     if (nombre.trim().length < 3) {
@@ -172,11 +187,13 @@ export default function SeccionCitas() {
                 {dias.map((d) => {
                   const { dia, numero, mes } = formatearDiaChip(d);
                   const activo = fechaISOSinHora(d) === fechaISOSinHora(diaSeleccionado);
+                  const clave = fechaISOSinHora(d);
+                  const libres = conteoPorDia[clave];
                   return (
                     <button
                       key={d.toISOString()}
                       onClick={() => setDiaSeleccionado(d)}
-                      className={`shrink-0 flex flex-col items-center rounded-xl px-3 py-2 min-w-[56px] transition ${
+                      className={`shrink-0 flex flex-col items-center rounded-xl px-3 py-2 min-w-[60px] transition ${
                         activo
                           ? "bg-[#4a0916] text-white"
                           : "bg-[#f3ede0] text-[#2a0a12] hover:bg-[#e8dfc8]"
@@ -185,6 +202,9 @@ export default function SeccionCitas() {
                       <span className={`text-[10px] uppercase ${activo ? "text-[#f0d78c]" : "text-[#6b5d4f]"}`}>{dia}</span>
                       <span className="text-base font-semibold leading-tight">{numero}</span>
                       <span className={`text-[10px] uppercase ${activo ? "text-[#f0d78c]" : "text-[#6b5d4f]"}`}>{mes}</span>
+                      <span className={`text-[9px] mt-0.5 ${activo ? "text-[#f0d78c]/80" : "text-[#8a1f3f]"}`}>
+                        {libres === undefined ? "..." : `${libres} libres`}
+                      </span>
                     </button>
                   );
                 })}
@@ -231,11 +251,14 @@ export default function SeccionCitas() {
                 </p>
               </div>
 
-              <div className="rounded-xl bg-[#4a0916]/8 border border-[#4a0916]/20 px-4 py-3 mb-4">
-                <p className="text-[15px] font-semibold text-[#2a0a12] capitalize">
-                  {formatearFechaLarga(new Date(horarioElegido))}
-                </p>
-                <p className="text-[13px] text-[#8a1f3f] font-semibold mt-0.5">{formatearHora(horarioElegido)} · 30 min</p>
+              <div className="rounded-xl bg-[#4a0916]/8 border border-[#4a0916]/20 px-4 py-3 mb-4 flex items-center gap-3">
+                <span className="text-2xl">📹</span>
+                <div>
+                  <p className="text-[15px] font-semibold text-[#2a0a12] capitalize">
+                    {formatearFechaLarga(new Date(horarioElegido))}
+                  </p>
+                  <p className="text-[13px] text-[#8a1f3f] font-semibold mt-0.5">{formatearHora(horarioElegido)} · 30 min · Videollamada</p>
+                </div>
               </div>
 
               <div className="flex flex-col gap-3">
