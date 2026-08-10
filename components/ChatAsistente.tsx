@@ -475,6 +475,17 @@ export default function ChatAsistente() {
             >
               {enviandoPago ? "Enviando..." : "Enviar comprobante"}
             </button>
+
+            <a
+              href={`https://wa.me/${NUMERO}?text=${encodeURIComponent(
+                `Hola Maestro Juan Santiago, soy ${datos.nombre ?? ""}. Quiero consultar sobre ${SERVICIO_LABELS[datos.servicio ?? ""] ?? "una consulta"} pero prefiero hablar directamente antes de pagar. Mi situación: ${datos.situacion ?? ""}`
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full text-center text-[11px] text-[#8696a0] underline pt-1"
+            >
+              Prefiero llamar al Maestro
+            </a>
           </div>
         )}
       </div>

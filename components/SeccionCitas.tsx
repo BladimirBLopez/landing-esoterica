@@ -293,6 +293,17 @@ export default function SeccionCitas() {
                 {enviando ? "Reservando..." : "Reservar y pagar Bs 50"}
               </button>
 
+              <a
+                href={`https://wa.me/59175928656?text=${encodeURIComponent(
+                  `Hola Maestro Juan Santiago, quiero agendar una ${SERVICIOS_CITA.find((s) => s.value === servicio)?.label ?? "consulta"} para el ${formatearFechaLarga(new Date(horarioElegido))} a las ${formatearHora(horarioElegido)}, pero prefiero coordinar directamente antes de pagar.`
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block mt-2 text-center text-[11px] text-[#6b5d4f] underline"
+              >
+                Prefiero llamar al Maestro
+              </a>
+
               <p className="mt-3 text-center text-[11px] text-[#6b5d4f]">
                 Tu horario se guarda por 40 minutos mientras confirmas el pago
               </p>
