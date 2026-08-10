@@ -1,11 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 
 export default function MenuNav() {
   const [abierto, setAbierto] = useState(false);
   const [visible, setVisible] = useState(false);
+  const pathname = usePathname();
+  const esHome = pathname === "/";
 
   const links = [
     { href: "/", label: "Inicio" },
@@ -15,12 +18,16 @@ export default function MenuNav() {
   ];
 
   useEffect(() => {
+    if (!esHome) {
+      setVisible(true);
+      return;
+    }
     function onScroll() {
       setVisible(window.scrollY > window.innerHeight * 0.8);
     }
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [esHome]);
 
   return (
     <nav

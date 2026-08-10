@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import ScrollVideo from "@/components/ScrollVideo";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import SiteFooter from "@/components/SiteFooter";
 
 const NUMERO = "59175928656";
 
@@ -42,6 +43,8 @@ export default function ConoceAlMaestroPage() {
           />
         </div>
       </section>
+
+      <SiteFooter />
 
       <FloatingWhatsApp
         numero={NUMERO}

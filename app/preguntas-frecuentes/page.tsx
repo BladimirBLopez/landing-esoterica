@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import FaqAccordion from "@/components/FaqAccordion";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import SiteFooter from "@/components/SiteFooter";
 
 const NUMERO = "59175928656";
 
@@ -55,6 +56,8 @@ export default function PreguntasFrecuentesPage() {
         </RevealOnScroll>
         <FaqAccordion items={faq} />
       </section>
+
+      <SiteFooter />
 
       <FloatingWhatsApp
         numero={NUMERO}
