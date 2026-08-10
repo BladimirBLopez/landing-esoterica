@@ -3,21 +3,40 @@ interface WhatsAppButtonProps {
   mensaje: string;
   texto: string;
   className?: string;
+  servicio?: string;
 }
+
+const API_ADMIN = "https://juan-santiago-admin.vercel.app";
 
 export default function WhatsAppButton({
   numero,
   mensaje,
   texto,
   className = "",
+  servicio,
 }: WhatsAppButtonProps) {
   const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+
+  function registrarLead() {
+    if (!servicio) return;
+    fetch(`${API_ADMIN}/api/leads`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        nombre: "Visitante Web",
+        telefono: null,
+        servicio,
+        situacion: `Contacto directo desde botón de la landing (${texto})`,
+      }),
+    }).catch(() => {});
+  }
 
   return (
     <a
       href={url}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={registrarLead}
       className={`group relative inline-flex items-center gap-3 rounded-full bg-gradient-to-b from-[#e6c476] to-[#c9a24b] pl-2 pr-6 py-2 text-sm font-bold uppercase tracking-wider text-[#1a0505] shadow-[0_4px_20px_rgba(0,0,0,0.5),0_0_35px_-6px_rgba(230,196,118,0.9),0_0_25px_-4px_rgba(233,60,90,0.5)] ring-2 ring-[#f5e6d3]/40 transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_4px_25px_rgba(0,0,0,0.5),0_0_45px_-4px_rgba(230,196,118,1),0_0_30px_-2px_rgba(233,60,90,0.6)] ${className}`}
     >
       <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#1a0505] transition-transform duration-300 group-hover:scale-105">

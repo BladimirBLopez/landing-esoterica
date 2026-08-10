@@ -18,6 +18,7 @@ interface ServicioDetalladoProps {
   mensaje: string;
   cta: string;
   colorFondo?: string;
+  servicio?: string;
 }
 
 function IconoServicio({ tipo }: { tipo: string }) {
@@ -67,6 +68,7 @@ export default function ServicioDetallado({
   mensaje,
   cta,
   colorFondo = "#3d1414",
+  servicio,
 }: ServicioDetalladoProps) {
   const [abierto, setAbierto] = useState(false);
   const tieneDetalle = beneficios && beneficios.length > 0;
@@ -161,6 +163,7 @@ export default function ServicioDetallado({
               mensaje={mensaje}
               texto={cta}
               className="text-base px-8 py-3"
+              servicio={servicio}
             />
             <p className="text-xs text-[#f5e6d3]/60">
               Toca para consultar directo por WhatsApp
