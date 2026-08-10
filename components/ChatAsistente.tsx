@@ -341,7 +341,7 @@ export default function ChatAsistente() {
 
   return (
     <div className="fixed bottom-6 right-6 z-50 w-[90vw] max-w-sm rounded-2xl overflow-hidden shadow-2xl flex flex-col max-h-[80vh] border border-[#d1d7db]">
-      <div className="flex items-center gap-3 p-3 bg-[#075e54]">
+      <div className="flex items-center gap-3 p-3 bg-[#075e54]" style={{ fontFamily: "Helvetica, Arial, sans-serif" }}>
         <div className="h-9 w-9 rounded-full bg-[#c9a24b] flex items-center justify-center text-xs font-bold text-[#1a0505] shrink-0">
           JS
         </div>
@@ -360,6 +360,7 @@ export default function ChatAsistente() {
         ref={scrollRef}
         className="flex-1 overflow-y-auto p-4 space-y-2"
         style={{
+          fontFamily: "Helvetica, Arial, sans-serif",
           backgroundColor: "#e5ddd5",
           backgroundImage:
             "radial-gradient(circle at 15% 20%, rgba(0,0,0,0.035) 1.5px, transparent 1.5px), radial-gradient(circle at 55% 65%, rgba(0,0,0,0.035) 1.5px, transparent 1.5px), radial-gradient(circle at 85% 35%, rgba(0,0,0,0.035) 1.5px, transparent 1.5px), radial-gradient(circle at 35% 85%, rgba(0,0,0,0.035) 1.5px, transparent 1.5px)",
