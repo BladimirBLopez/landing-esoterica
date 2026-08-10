@@ -86,6 +86,18 @@ export default function ChatAsistente() {
   }, [etapa, diaSeleccionado]);
 
   useEffect(() => {
+    fetch(`${API_BASE}/api/configuracion`)
+      .then((res) => res.json())
+      .then((data) => {
+        const mensajeConfigurado = data?.config?.mensaje_bienvenida;
+        if (mensajeConfigurado) {
+          setMensajes([{ de: "bot", texto: mensajeConfigurado, hora: horaActual() }]);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
   }, [mensajes, etapa]);
 
