@@ -19,6 +19,13 @@ export default function WhatsAppButton({
 
   function registrarLead() {
     if (!servicio) return;
+
+    const clave = `lead_enviado_${servicio}`;
+    try {
+      if (localStorage.getItem(clave)) return;
+      localStorage.setItem(clave, "1");
+    } catch {}
+
     fetch(`${API_ADMIN}/api/leads`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
