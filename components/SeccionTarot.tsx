@@ -177,7 +177,7 @@ export default function SeccionTarot() {
         background: "radial-gradient(circle at 50% 15%, #3d0f2a 0%, #2a0a1a 35%, #1a0505 75%)",
       }}
     >
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 bg-gradient-to-b from-[#1a0505] to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-56 bg-gradient-to-b from-[#1a0505] via-[#1a0505]/50 to-transparent" />
 
       {!carta && !mostrarAbanico && (
         <div className="relative z-10 w-full max-w-sm flex flex-col items-center gap-5 text-center">
