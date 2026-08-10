@@ -540,7 +540,6 @@ export default function ChatAsistente() {
             disabled={pensando}
             className="flex-1 rounded-full border-0 bg-[#2a3942] px-4 py-2.5 text-sm text-[#e9edef] outline-none placeholder:text-[#8696a0] disabled:opacity-60"
             placeholder="Escribe un mensaje"
-            autoFocus
           />
           <button
             onClick={enviarMensaje}
