@@ -338,8 +338,8 @@ export default function ChatAsistente() {
   }
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 w-[90vw] max-w-sm rounded-2xl overflow-hidden shadow-2xl flex flex-col max-h-[80vh] border border-[#2a2f32]">
-      <div className="flex items-center gap-3 p-3 bg-[#005e54]">
+    <div className="fixed bottom-6 right-6 z-50 w-[90vw] max-w-sm rounded-2xl overflow-hidden shadow-2xl flex flex-col max-h-[80vh] border border-[#d1d7db]">
+      <div className="flex items-center gap-3 p-3 bg-[#075e54]">
         <div className="h-9 w-9 rounded-full bg-[#c9a24b] flex items-center justify-center text-xs font-bold text-[#1a0505] shrink-0">
           JS
         </div>
@@ -358,10 +358,10 @@ export default function ChatAsistente() {
         ref={scrollRef}
         className="flex-1 overflow-y-auto p-4 space-y-2"
         style={{
-          backgroundColor: "#0b141a",
+          backgroundColor: "#e5ddd5",
           backgroundImage:
-            "radial-gradient(circle at 20% 30%, rgba(255,255,255,0.02) 1px, transparent 1px), radial-gradient(circle at 70% 60%, rgba(255,255,255,0.02) 1px, transparent 1px)",
-          backgroundSize: "40px 40px",
+            "radial-gradient(circle at 15% 20%, rgba(0,0,0,0.035) 1.5px, transparent 1.5px), radial-gradient(circle at 55% 65%, rgba(0,0,0,0.035) 1.5px, transparent 1.5px), radial-gradient(circle at 85% 35%, rgba(0,0,0,0.035) 1.5px, transparent 1.5px), radial-gradient(circle at 35% 85%, rgba(0,0,0,0.035) 1.5px, transparent 1.5px)",
+          backgroundSize: "60px 60px, 80px 80px, 70px 70px, 90px 90px",
         }}
       >
         {mensajes.map((m, i) => (
@@ -369,26 +369,26 @@ export default function ChatAsistente() {
             key={i}
             className={`max-w-[85%] px-2.5 pt-1.5 pb-1 text-sm shadow-sm ${
               m.de === "bot"
-                ? "bg-[#202c33] text-[#e9edef] self-start rounded-r-lg rounded-bl-lg"
-                : "bg-[#005c4b] text-[#e9edef] self-end ml-auto rounded-l-lg rounded-br-lg"
+                ? "bg-white text-[#111b21] self-start rounded-r-lg rounded-bl-lg"
+                : "bg-[#dcf8c6] text-[#111b21] self-end ml-auto rounded-l-lg rounded-br-lg"
             }`}
             style={{ width: "fit-content", fontFamily: "Helvetica, Arial, sans-serif" }}
           >
             <span>{m.texto}</span>
             <span className="flex items-center justify-end gap-1 -mb-0.5 mt-0.5">
-              <span className="text-[10px] text-[#8696a0]">{m.hora}</span>
+              <span className="text-[10px] text-[#667781]">{m.hora}</span>
             </span>
           </div>
         ))}
 
         {pensando && (
-          <div className="bg-[#202c33] text-[#8696a0] self-start rounded-r-lg rounded-bl-lg px-3 py-2 text-xs" style={{ width: "fit-content" }}>
+          <div className="bg-white text-[#667781] self-start rounded-r-lg rounded-bl-lg px-3 py-2 text-xs shadow-sm" style={{ width: "fit-content" }}>
             escribiendo...
           </div>
         )}
 
         {etapa === "horario" && (
-          <div className="mt-3 rounded-xl border border-[#2a3942] bg-[#111b21] p-3 space-y-3">
+          <div className="mt-3 rounded-xl border border-[#d1d7db] bg-white p-3 space-y-3 shadow-sm">
             <div className="flex gap-2 overflow-x-auto pb-1">
               {dias.map((d) => {
                 const activo = fechaISOSinHora(d) === fechaISOSinHora(diaSeleccionado);
@@ -398,8 +398,8 @@ export default function ChatAsistente() {
                     onClick={() => setDiaSeleccionado(d)}
                     className={`shrink-0 rounded-lg border px-2.5 py-1.5 text-[10px] capitalize transition ${
                       activo
-                        ? "border-[#c9a24b] bg-[#c9a24b]/20 text-[#f0d78c]"
-                        : "border-[#2a3942] text-[#8696a0]"
+                        ? "border-[#075e54] bg-[#075e54] text-white"
+                        : "border-[#d1d7db] text-[#54656f]"
                     }`}
                   >
                     {formatearDiaCorto(d)}
@@ -410,10 +410,10 @@ export default function ChatAsistente() {
 
             <div className="grid grid-cols-3 gap-1.5 max-h-40 overflow-y-auto">
               {cargandoSlots && (
-                <p className="col-span-3 py-3 text-[11px] text-[#8696a0] text-center">Cargando horarios...</p>
+                <p className="col-span-3 py-3 text-[11px] text-[#54656f] text-center">Cargando horarios...</p>
               )}
               {!cargandoSlots && slots.length === 0 && (
-                <p className="col-span-3 py-3 text-[11px] text-[#8696a0] text-center">No hay horarios libres este día</p>
+                <p className="col-span-3 py-3 text-[11px] text-[#54656f] text-center">No hay horarios libres este día</p>
               )}
               {!cargandoSlots &&
                 slots.map((s) => (
@@ -422,8 +422,8 @@ export default function ChatAsistente() {
                     onClick={() => setHorarioElegido(s)}
                     className={`rounded-md border py-1.5 text-[11px] transition ${
                       horarioElegido === s
-                        ? "border-[#c9a24b] bg-[#c9a24b]/20 text-[#f0d78c]"
-                        : "border-[#2a3942] text-[#e9edef] hover:border-[#c9a24b]/50"
+                        ? "border-[#075e54] bg-[#075e54]/10 text-[#075e54] font-semibold"
+                        : "border-[#d1d7db] text-[#111b21] hover:border-[#075e54]/50"
                     }`}
                   >
                     {formatearHoraSlot(s)}
@@ -431,12 +431,12 @@ export default function ChatAsistente() {
                 ))}
             </div>
 
-            {errorHorario && <p className="text-[11px] text-[#f97316] text-center">{errorHorario}</p>}
+            {errorHorario && <p className="text-[11px] text-[#e64a19] text-center">{errorHorario}</p>}
 
             <button
               onClick={reservarHorario}
               disabled={!horarioElegido || reservando}
-              className="w-full rounded-lg bg-[#c9a24b] text-[#0f1115] font-medium text-xs py-2.5 disabled:opacity-50"
+              className="w-full rounded-lg bg-[#25D366] text-white font-medium text-xs py-2.5 disabled:opacity-50"
             >
               {reservando ? "Reservando..." : "Confirmar horario"}
             </button>
@@ -444,34 +444,34 @@ export default function ChatAsistente() {
         )}
 
         {etapa === "pago" && (
-          <div className="mt-3 rounded-xl border border-[#2a3942] bg-[#111b21] p-3 space-y-3">
+          <div className="mt-3 rounded-xl border border-[#d1d7db] bg-white p-3 space-y-3 shadow-sm">
             <div className="grid grid-cols-2 gap-2">
-              <div className="rounded-lg border border-[#2a3942] bg-[#0b141a] p-2 text-center">
+              <div className="rounded-lg border border-[#d1d7db] bg-[#f0f2f5] p-2 text-center">
                 <img
                   src="https://res.cloudinary.com/dkq95jus0/image/upload/qr-union"
                   alt="QR Union"
                   className="mx-auto rounded w-full"
                 />
-                <p className="text-[10px] text-[#8696a0] mt-1">Unión</p>
+                <p className="text-[10px] text-[#54656f] mt-1">Unión</p>
               </div>
-              <div className="rounded-lg border border-[#2a3942] bg-[#0b141a] p-2 text-center">
+              <div className="rounded-lg border border-[#d1d7db] bg-[#f0f2f5] p-2 text-center">
                 <img
                   src="https://res.cloudinary.com/dkq95jus0/image/upload/qr-tigomoney"
                   alt="QR Tigo Money"
                   className="mx-auto rounded w-full"
                 />
-                <p className="text-[10px] text-[#8696a0] mt-1">Tigo Money</p>
+                <p className="text-[10px] text-[#54656f] mt-1">Tigo Money</p>
               </div>
             </div>
 
             <div className="flex items-center justify-center gap-6">
               <label className="flex flex-col items-center gap-1 cursor-pointer">
-                <span className="flex items-center justify-center h-11 w-11 rounded-full bg-[#2a3942] text-[#c9a24b]">
+                <span className="flex items-center justify-center h-11 w-11 rounded-full bg-[#f0f2f5] text-[#54656f]">
                   <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current">
                     <path d="M16.5 6v11.5a4 4 0 0 1-8 0V5a2.5 2.5 0 0 1 5 0v10.5a1 1 0 0 1-2 0V6H10v9.5a2.5 2.5 0 0 0 5 0V5a4 4 0 0 0-8 0v12.5a5.5 5.5 0 0 0 11 0V6h-1.5z"/>
                   </svg>
                 </span>
-                <span className="text-[10px] text-[#8696a0]">Galería</span>
+                <span className="text-[10px] text-[#54656f]">Galería</span>
                 <input
                   type="file"
                   accept="image/*"
@@ -481,12 +481,12 @@ export default function ChatAsistente() {
               </label>
 
               <label className="flex flex-col items-center gap-1 cursor-pointer">
-                <span className="flex items-center justify-center h-11 w-11 rounded-full bg-[#2a3942] text-[#c9a24b]">
+                <span className="flex items-center justify-center h-11 w-11 rounded-full bg-[#f0f2f5] text-[#54656f]">
                   <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current">
                     <path d="M9 3l-1.5 2H4a1 1 0 0 0-1 1v13a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-3.5L15 3H9zm3 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
                   </svg>
                 </span>
-                <span className="text-[10px] text-[#8696a0]">Cámara</span>
+                <span className="text-[10px] text-[#54656f]">Cámara</span>
                 <input
                   type="file"
                   accept="image/*"
@@ -498,23 +498,23 @@ export default function ChatAsistente() {
             </div>
 
             {archivo && (
-              <p className="text-[11px] text-[#8696a0] text-center">📎 {archivo.name}</p>
+              <p className="text-[11px] text-[#54656f] text-center">📎 {archivo.name}</p>
             )}
 
             {preview && <img src={preview} alt="Vista previa" className="rounded-lg max-h-32 mx-auto" />}
 
-            {analizando && <p className="text-[11px] text-[#8696a0] text-center">Analizando comprobante...</p>}
+            {analizando && <p className="text-[11px] text-[#54656f] text-center">Analizando comprobante...</p>}
             {!analizando && verificado === "si" && (
-              <p className="text-[11px] text-[#22c55e] text-center">✓ Monto detectado coincide ({montoDetectado})</p>
+              <p className="text-[11px] text-[#25D366] text-center">✓ Monto detectado coincide ({montoDetectado})</p>
             )}
             {!analizando && verificado === "no" && (
-              <p className="text-[11px] text-[#f97316] text-center">⚠️ No pudimos confirmar el monto ({montoDetectado}). El Maestro lo revisará igual.</p>
+              <p className="text-[11px] text-[#e64a19] text-center">⚠️ No pudimos confirmar el monto ({montoDetectado}). El Maestro lo revisará igual.</p>
             )}
 
             <button
               onClick={enviarComprobante}
               disabled={!archivo || enviandoPago}
-              className="w-full rounded-lg bg-[#c9a24b] text-[#0f1115] font-medium text-xs py-2.5 disabled:opacity-50"
+              className="w-full rounded-lg bg-[#25D366] text-white font-medium text-xs py-2.5 disabled:opacity-50"
             >
               {enviandoPago ? "Enviando..." : "Enviar comprobante"}
             </button>
@@ -525,7 +525,7 @@ export default function ChatAsistente() {
               )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="block w-full text-center text-[11px] text-[#8696a0] underline pt-1"
+              className="block w-full text-center text-[11px] text-[#54656f] underline pt-1"
             >
               Prefiero llamar al Maestro
             </a>
@@ -534,7 +534,7 @@ export default function ChatAsistente() {
       </div>
 
       {etapa === "conversando" && (
-        <div className="p-2 bg-[#202c33] flex gap-2 items-center">
+        <div className="p-2 bg-[#f0f2f5] flex gap-2 items-center">
           <input
             type={pidiendoTelefono ? "tel" : "text"}
             inputMode={pidiendoTelefono ? "numeric" : "text"}
@@ -545,7 +545,7 @@ export default function ChatAsistente() {
             }}
             onKeyDown={handleEnter}
             disabled={pensando}
-            className="flex-1 rounded-full border-0 bg-[#2a3942] px-4 py-2.5 text-sm text-[#e9edef] outline-none placeholder:text-[#8696a0] disabled:opacity-60"
+            className="flex-1 rounded-full border-0 bg-white px-4 py-2.5 text-sm text-[#111b21] outline-none placeholder:text-[#8696a0] disabled:opacity-60"
             style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
             placeholder={pidiendoTelefono ? "Tu número de WhatsApp" : "Escribe un mensaje"}
           />
