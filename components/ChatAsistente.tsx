@@ -45,7 +45,7 @@ export default function ChatAsistente() {
   const [abierto, setAbierto] = useState(false);
   const [etapa, setEtapa] = useState<Etapa>("conversando");
   const [mensajes, setMensajes] = useState<Mensaje[]>([
-    { de: "bot", texto: "Hola, soy el asistente del Maestro Juan Santiago 🙏 ¿En qué puedo ayudarte hoy?", hora: horaActual() },
+    { de: "bot", texto: "Hola, soy Sofía, la asistente del Maestro Juan Santiago 🙏 ¿En qué puedo ayudarte hoy?", hora: horaActual() },
   ]);
   const [inputTexto, setInputTexto] = useState("");
   const [pensando, setPensando] = useState(false);
@@ -319,7 +319,7 @@ export default function ChatAsistente() {
           JS
         </div>
         <div className="flex-1">
-          <p className="text-sm font-semibold text-white leading-tight">Maestro Juan Santiago</p>
+          <p className="text-sm font-semibold text-white leading-tight">Sofía · Asistente del Maestro</p>
           <p className="text-[11px] text-white/70 leading-tight">
             {pensando ? "escribiendo..." : "en línea"}
           </p>
