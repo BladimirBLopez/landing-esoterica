@@ -50,12 +50,37 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Altar del Tata Bombori - Maestro Juan Santiago",
+  image: OG_IMAGE,
+  url: SITE_URL,
+  telephone: "+59175928656",
+  priceRange: "Bs 50 - Bs 450",
+  description: "Amarres de amor, unión de parejas, endulzamiento, retorno del ser amado, alejamiento de terceros y consultas de Tarot y Hojas de Coca con el Maestro Juan Santiago, heredero del Tatabombori.",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Norte de Potosí",
+    addressRegion: "Potosí",
+    addressCountry: "BO",
+  },
+  areaServed: "BO",
+  sameAs: [],
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="es"
       className={`${playfair.variable} ${alexBrush.variable} ${cinzel.variable} h-full antialiased`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="min-h-full flex flex-col">
         <MenuNav />
         {children}
