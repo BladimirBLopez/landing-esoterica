@@ -224,6 +224,16 @@ export default function ChatAsistente() {
     setReservando(true);
     setErrorHorario("");
 
+    const fechaElegidaTexto = new Date(horarioElegido).toLocaleString("es-BO", {
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+    });
+    agregarMensaje("usuario", fechaElegidaTexto);
+
     try {
       const res = await fetch(`${API_BASE}/api/citas/reservar`, {
         method: "POST",
