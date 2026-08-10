@@ -68,6 +68,9 @@ export default function ChatAsistente() {
 
   const scrollRef = useRef<HTMLDivElement>(null);
 
+  const ultimoMensajeBot = [...mensajes].reverse().find((m) => m.de === "bot")?.texto.toLowerCase() ?? "";
+  const pidiendoTelefono = !datos.telefono && (ultimoMensajeBot.includes("whatsapp") || ultimoMensajeBot.includes("número") || ultimoMensajeBot.includes("numero"));
+
   const dias = Array.from({ length: 7 }).map((_, i) => {
     const d = new Date();
     d.setDate(d.getDate() + i);
@@ -533,14 +536,18 @@ export default function ChatAsistente() {
       {etapa === "conversando" && (
         <div className="p-2 bg-[#202c33] flex gap-2 items-center">
           <input
-            type="text"
+            type={pidiendoTelefono ? "tel" : "text"}
+            inputMode={pidiendoTelefono ? "numeric" : "text"}
             value={inputTexto}
-            onChange={(e) => setInputTexto(e.target.value)}
+            onChange={(e) => {
+              const valor = pidiendoTelefono ? e.target.value.replace(/[^\d]/g, "") : e.target.value;
+              setInputTexto(valor);
+            }}
             onKeyDown={handleEnter}
             disabled={pensando}
             className="flex-1 rounded-full border-0 bg-[#2a3942] px-4 py-2.5 text-sm text-[#e9edef] outline-none placeholder:text-[#8696a0] disabled:opacity-60"
             style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
-            placeholder="Escribe un mensaje"
+            placeholder={pidiendoTelefono ? "Tu número de WhatsApp" : "Escribe un mensaje"}
           />
           <button
             onClick={enviarMensaje}
