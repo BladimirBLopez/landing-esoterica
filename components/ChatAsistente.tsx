@@ -461,12 +461,42 @@ export default function ChatAsistente() {
               </div>
             </div>
 
-            <input
-              type="file"
-              accept="image/*"
-              onChange={(e) => setArchivo(e.target.files?.[0] ?? null)}
-              className="w-full text-[11px] text-[#8696a0] file:mr-2 file:py-1.5 file:px-2.5 file:rounded-md file:border-0 file:bg-[#c9a24b] file:text-[#0f1115] file:text-[11px] file:font-medium"
-            />
+            <div className="flex items-center justify-center gap-6">
+              <label className="flex flex-col items-center gap-1 cursor-pointer">
+                <span className="flex items-center justify-center h-11 w-11 rounded-full bg-[#2a3942] text-[#c9a24b]">
+                  <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current">
+                    <path d="M16.5 6v11.5a4 4 0 0 1-8 0V5a2.5 2.5 0 0 1 5 0v10.5a1 1 0 0 1-2 0V6H10v9.5a2.5 2.5 0 0 0 5 0V5a4 4 0 0 0-8 0v12.5a5.5 5.5 0 0 0 11 0V6h-1.5z"/>
+                  </svg>
+                </span>
+                <span className="text-[10px] text-[#8696a0]">Galería</span>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => setArchivo(e.target.files?.[0] ?? null)}
+                  className="hidden"
+                />
+              </label>
+
+              <label className="flex flex-col items-center gap-1 cursor-pointer">
+                <span className="flex items-center justify-center h-11 w-11 rounded-full bg-[#2a3942] text-[#c9a24b]">
+                  <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current">
+                    <path d="M9 3l-1.5 2H4a1 1 0 0 0-1 1v13a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-3.5L15 3H9zm3 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
+                  </svg>
+                </span>
+                <span className="text-[10px] text-[#8696a0]">Cámara</span>
+                <input
+                  type="file"
+                  accept="image/*"
+                  capture="environment"
+                  onChange={(e) => setArchivo(e.target.files?.[0] ?? null)}
+                  className="hidden"
+                />
+              </label>
+            </div>
+
+            {archivo && (
+              <p className="text-[11px] text-[#8696a0] text-center">📎 {archivo.name}</p>
+            )}
 
             {preview && <img src={preview} alt="Vista previa" className="rounded-lg max-h-32 mx-auto" />}
 
