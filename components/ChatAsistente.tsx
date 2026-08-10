@@ -390,7 +390,7 @@ export default function ChatAsistente() {
         )}
 
         {etapa === "confirmarCita" && (
-          <div className="mt-3 rounded-xl border border-[#d1d7db] bg-white shadow-sm overflow-hidden">
+          <div className="max-w-[85%] rounded-r-lg rounded-bl-lg bg-white shadow-sm overflow-hidden">
             <p className="text-sm text-[#111b21] px-4 pt-4 pb-3">
               Para tu consulta de {SERVICIO_LABELS[datos.servicio ?? ""] ?? ""}, ¿quieres elegir un horario para videollamada, o prefieres coordinar directamente con el Maestro?
             </p>
