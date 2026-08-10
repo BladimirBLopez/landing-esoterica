@@ -25,7 +25,21 @@ const SERVICIO_LABELS: Record<string, string> = {
 
 type Mensaje = { de: "bot" | "usuario"; texto: string; hora: string };
 type Datos = { nombre: string | null; telefono: string | null; servicio: string | null; situacion: string | null };
-type Etapa = "conversando" | "pago" | "enviado";
+type Etapa = "conversando" | "horario" | "pago" | "enviado";
+
+const SERVICIOS_CON_CITA = ["CONSULTA_TAROT", "CONSULTA_COCA"];
+
+function formatearHoraSlot(iso: string) {
+  return new Date(iso).toLocaleTimeString("es-BO", { hour: "2-digit", minute: "2-digit", hour12: true });
+}
+
+function formatearDiaCorto(date: Date) {
+  return date.toLocaleDateString("es-BO", { weekday: "short", day: "numeric", month: "short" });
+}
+
+function fechaISOSinHora(date: Date) {
+  return date.toISOString().slice(0, 10);
+}
 
 export default function ChatAsistente() {
   const [abierto, setAbierto] = useState(false);
@@ -45,7 +59,31 @@ export default function ChatAsistente() {
   const [verificado, setVerificado] = useState<"si" | "no" | null>(null);
   const [enviandoPago, setEnviandoPago] = useState(false);
 
+  const [diaSeleccionado, setDiaSeleccionado] = useState<Date>(new Date());
+  const [slots, setSlots] = useState<string[]>([]);
+  const [cargandoSlots, setCargandoSlots] = useState(false);
+  const [horarioElegido, setHorarioElegido] = useState<string | null>(null);
+  const [reservando, setReservando] = useState(false);
+  const [errorHorario, setErrorHorario] = useState("");
+
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  const dias = Array.from({ length: 7 }).map((_, i) => {
+    const d = new Date();
+    d.setDate(d.getDate() + i);
+    return d;
+  });
+
+  useEffect(() => {
+    if (etapa !== "horario") return;
+    setCargandoSlots(true);
+    setSlots([]);
+    fetch(`${API_BASE}/api/citas/disponibilidad?fecha=${fechaISOSinHora(diaSeleccionado)}`)
+      .then((res) => res.json())
+      .then((data) => setSlots(data.slots ?? []))
+      .catch(() => setSlots([]))
+      .finally(() => setCargandoSlots(false));
+  }, [etapa, diaSeleccionado]);
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
@@ -141,6 +179,14 @@ export default function ChatAsistente() {
   }
 
   async function crearConsulta(datosFinales: Datos) {
+    if (datosFinales.servicio && SERVICIOS_CON_CITA.includes(datosFinales.servicio)) {
+      setTimeout(() => {
+        agregarMensaje("bot", `Perfecto ${datosFinales.nombre ?? ""} 🙏 Elige el día y horario que más te acomode para tu videollamada.`);
+        setEtapa("horario");
+      }, 400);
+      return;
+    }
+
     try {
       const res = await fetch(`${API_BASE}/api/chat-ia/crear-consulta`, {
         method: "POST",
@@ -158,6 +204,49 @@ export default function ChatAsistente() {
       }
     } catch {
       agregarMensaje("bot", "Hubo un problema al registrar tus datos. Intenta de nuevo en un momento 🙏");
+    }
+  }
+
+  async function reservarHorario() {
+    if (!horarioElegido) return;
+    setReservando(true);
+    setErrorHorario("");
+
+    try {
+      const res = await fetch(`${API_BASE}/api/citas/reservar`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          nombre: datos.nombre,
+          telefono: datos.telefono,
+          servicio: datos.servicio,
+          fechaCita: horarioElegido,
+        }),
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        setErrorHorario(data.error ?? "Ese horario ya no está disponible, elige otro.");
+        setHorarioElegido(null);
+        setReservando(false);
+        return;
+      }
+
+      setConsultaId(data.consultaId);
+      const fechaTexto = new Date(horarioElegido).toLocaleString("es-BO", {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true,
+      });
+      agregarMensaje("bot", `Quedó reservado para el ${fechaTexto} 🙏 Tienes 40 minutos para confirmar el pago de Bs ${MONTO_CONSULTA}. Escanea el QR y sube tu comprobante.`);
+      setEtapa("pago");
+    } catch {
+      setErrorHorario("Hubo un problema. Intenta de nuevo.");
+    } finally {
+      setReservando(false);
     }
   }
 
@@ -270,6 +359,62 @@ export default function ChatAsistente() {
         {pensando && (
           <div className="bg-[#202c33] text-[#8696a0] self-start rounded-r-lg rounded-bl-lg px-3 py-2 text-xs" style={{ width: "fit-content" }}>
             escribiendo...
+          </div>
+        )}
+
+        {etapa === "horario" && (
+          <div className="mt-3 rounded-xl border border-[#2a3942] bg-[#111b21] p-3 space-y-3">
+            <div className="flex gap-2 overflow-x-auto pb-1">
+              {dias.map((d) => {
+                const activo = fechaISOSinHora(d) === fechaISOSinHora(diaSeleccionado);
+                return (
+                  <button
+                    key={d.toISOString()}
+                    onClick={() => setDiaSeleccionado(d)}
+                    className={`shrink-0 rounded-lg border px-2.5 py-1.5 text-[10px] capitalize transition ${
+                      activo
+                        ? "border-[#c9a24b] bg-[#c9a24b]/20 text-[#f0d78c]"
+                        : "border-[#2a3942] text-[#8696a0]"
+                    }`}
+                  >
+                    {formatearDiaCorto(d)}
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="grid grid-cols-3 gap-1.5 max-h-40 overflow-y-auto">
+              {cargandoSlots && (
+                <p className="col-span-3 py-3 text-[11px] text-[#8696a0] text-center">Cargando horarios...</p>
+              )}
+              {!cargandoSlots && slots.length === 0 && (
+                <p className="col-span-3 py-3 text-[11px] text-[#8696a0] text-center">No hay horarios libres este día</p>
+              )}
+              {!cargandoSlots &&
+                slots.map((s) => (
+                  <button
+                    key={s}
+                    onClick={() => setHorarioElegido(s)}
+                    className={`rounded-md border py-1.5 text-[11px] transition ${
+                      horarioElegido === s
+                        ? "border-[#c9a24b] bg-[#c9a24b]/20 text-[#f0d78c]"
+                        : "border-[#2a3942] text-[#e9edef] hover:border-[#c9a24b]/50"
+                    }`}
+                  >
+                    {formatearHoraSlot(s)}
+                  </button>
+                ))}
+            </div>
+
+            {errorHorario && <p className="text-[11px] text-[#f97316] text-center">{errorHorario}</p>}
+
+            <button
+              onClick={reservarHorario}
+              disabled={!horarioElegido || reservando}
+              className="w-full rounded-lg bg-[#c9a24b] text-[#0f1115] font-medium text-xs py-2.5 disabled:opacity-50"
+            >
+              {reservando ? "Reservando..." : "Confirmar horario"}
+            </button>
           </div>
         )}
 
