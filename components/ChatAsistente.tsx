@@ -390,13 +390,13 @@ export default function ChatAsistente() {
         )}
 
         {etapa === "confirmarCita" && (
-          <div className="mt-3 rounded-xl border border-[#d1d7db] bg-white p-4 space-y-3 shadow-sm text-center">
-            <p className="text-sm text-[#111b21]">
+          <div className="mt-3 rounded-xl border border-[#d1d7db] bg-white shadow-sm overflow-hidden">
+            <p className="text-sm text-[#111b21] px-4 pt-4 pb-3">
               Para tu consulta de {SERVICIO_LABELS[datos.servicio ?? ""] ?? ""}, ¿quieres elegir un horario para videollamada, o prefieres coordinar directamente con el Maestro?
             </p>
             <button
               onClick={() => setEtapa("horario")}
-              className="w-full rounded-lg bg-[#25D366] text-white font-medium text-sm py-2.5"
+              className="w-full text-center text-[#00a884] font-medium text-sm py-3 border-t border-[#e9edef] active:bg-[#f0f2f5]"
             >
               Elegir horario y pagar
             </button>
@@ -406,7 +406,7 @@ export default function ChatAsistente() {
               )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="block w-full text-center text-[13px] text-[#54656f] underline pt-1"
+              className="block w-full text-center text-[#00a884] font-medium text-sm py-3 border-t border-[#e9edef] active:bg-[#f0f2f5]"
             >
               Prefiero hablar con el Maestro
             </a>
