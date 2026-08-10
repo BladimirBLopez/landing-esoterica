@@ -25,7 +25,7 @@ const SERVICIO_LABELS: Record<string, string> = {
 
 type Mensaje = { de: "bot" | "usuario"; texto: string; hora: string };
 type Datos = { nombre: string | null; telefono: string | null; servicio: string | null; situacion: string | null };
-type Etapa = "conversando" | "horario" | "pago" | "enviado";
+type Etapa = "conversando" | "confirmarCita" | "horario" | "pago" | "enviado";
 
 const SERVICIOS_CON_CITA = ["CONSULTA_TAROT", "CONSULTA_COCA"];
 
@@ -197,9 +197,9 @@ export default function ChatAsistente() {
 
   async function crearConsulta(datosFinales: Datos) {
     if (datosFinales.servicio && SERVICIOS_CON_CITA.includes(datosFinales.servicio)) {
+      setDatos(datosFinales);
       setTimeout(() => {
-        agregarMensaje("bot", `Perfecto ${datosFinales.nombre ?? ""} 🙏 Elige el día y horario que más te acomode para tu videollamada.`);
-        setEtapa("horario");
+        setEtapa("confirmarCita");
       }, 400);
       return;
     }
@@ -386,6 +386,30 @@ export default function ChatAsistente() {
         {pensando && (
           <div className="bg-white text-[#667781] self-start rounded-r-lg rounded-bl-lg px-3 py-2 text-xs shadow-sm" style={{ width: "fit-content" }}>
             escribiendo...
+          </div>
+        )}
+
+        {etapa === "confirmarCita" && (
+          <div className="mt-3 rounded-xl border border-[#d1d7db] bg-white p-4 space-y-3 shadow-sm text-center">
+            <p className="text-sm text-[#111b21]">
+              Para tu consulta de {SERVICIO_LABELS[datos.servicio ?? ""] ?? ""}, ¿quieres elegir un horario para videollamada, o prefieres coordinar directamente con el Maestro?
+            </p>
+            <button
+              onClick={() => setEtapa("horario")}
+              className="w-full rounded-lg bg-[#25D366] text-white font-medium text-sm py-2.5"
+            >
+              Elegir horario y pagar
+            </button>
+            <a
+              href={`https://wa.me/${NUMERO}?text=${encodeURIComponent(
+                `Hola Maestro Juan Santiago, soy ${datos.nombre ?? ""}. Quiero una ${SERVICIO_LABELS[datos.servicio ?? ""] ?? "consulta"}, pero prefiero coordinar directamente con usted. Mi situación: ${datos.situacion ?? ""}`
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full text-center text-[13px] text-[#54656f] underline pt-1"
+            >
+              Prefiero hablar con el Maestro
+            </a>
           </div>
         )}
 
