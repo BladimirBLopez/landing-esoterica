@@ -266,7 +266,7 @@ export default function ChatAsistente() {
         minute: "2-digit",
         hour12: true,
       });
-      agregarMensaje("bot", `Quedó reservado para el ${fechaTexto} 🙏 Tienes 40 minutos para confirmar el pago de Bs ${MONTO_CONSULTA}. Escanea el QR y sube tu comprobante.`);
+      agregarMensaje("bot", `Reservado para el ${fechaTexto} 🙏 Confirma con el pago de Bs ${MONTO_CONSULTA}.`);
       setEtapa("pago");
     } catch {
       setErrorHorario("Hubo un problema. Intenta de nuevo.");
