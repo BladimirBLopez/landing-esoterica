@@ -403,17 +403,25 @@ export default function ChatAsistente() {
             >
               Elegir horario y pagar
             </button>
-            <a
-              href={`https://wa.me/${NUMERO}?text=${encodeURIComponent(
-                `Hola Maestro Juan Santiago, soy ${datos.nombre ?? ""}. Quiero una ${SERVICIO_LABELS[datos.servicio ?? ""] ?? "consulta"}, pero prefiero coordinar directamente con usted. Mi situación: ${datos.situacion ?? ""}`
-              )}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => agregarMensaje("usuario", "Prefiero hablar con el Maestro")}
-              className="block w-full text-center text-[#00a884] font-medium text-sm py-3 border-t border-[#e9edef] active:bg-[#f0f2f5]"
+            <button
+              onClick={async () => {
+                agregarMensaje("usuario", "Prefiero hablar con el Maestro");
+                try {
+                  await fetch(`${API_BASE}/api/chat-ia/crear-consulta`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(datos),
+                  });
+                } catch {}
+                const mensaje = encodeURIComponent(
+                  `Hola Maestro Juan Santiago, soy ${datos.nombre ?? ""}. Quiero una ${SERVICIO_LABELS[datos.servicio ?? ""] ?? "consulta"}, pero prefiero coordinar directamente con usted. Mi situación: ${datos.situacion ?? ""}`
+                );
+                window.open(`https://wa.me/${NUMERO}?text=${mensaje}`, "_blank");
+              }}
+              className="w-full text-center text-[#00a884] font-medium text-sm py-3 border-t border-[#e9edef] active:bg-[#f0f2f5]"
             >
               Prefiero hablar con el Maestro
-            </a>
+            </button>
           </div>
         )}
 
