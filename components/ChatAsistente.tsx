@@ -610,7 +610,7 @@ export default function ChatAsistente() {
             placeholder={pidiendoTelefono ? "Tu número de WhatsApp" : "Escribe un mensaje"}
           />
           <button
-            onClick={enviarMensaje}
+            onClick={() => enviarMensaje()}
             disabled={pensando}
             className="flex items-center justify-center h-10 w-10 rounded-full bg-[#00a884] text-white shrink-0 disabled:opacity-60"
           >
