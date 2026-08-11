@@ -70,10 +70,7 @@ export default function ChatAsistente() {
 
   const ultimoMensajeBot = [...mensajes].reverse().find((m) => m.de === "bot")?.texto.toLowerCase() ?? "";
   const pidiendoTelefono = !datos.telefono && (ultimoMensajeBot.includes("whatsapp") || ultimoMensajeBot.includes("número") || ultimoMensajeBot.includes("numero"));
-  const pidiendoTipoConsulta =
-    !datos.servicio &&
-    ultimoMensajeBot.includes("tarot") &&
-    (ultimoMensajeBot.includes("coca") || ultimoMensajeBot.includes("hojas"));
+  const pidiendoTipoConsulta = !datos.servicio && Boolean(datos.nombre) && Boolean(datos.telefono);
 
   const dias = Array.from({ length: 7 }).map((_, i) => {
     const d = new Date();
