@@ -131,16 +131,16 @@ export default function SeccionCitas() {
           Elige tu servicio y el horario que más te acomode
         </p>
 
-        {/* Tarjeta clara con la paleta vino/dorado del sitio */}
+        {/* Tarjeta de cristal oscuro, integrada a la noche estrellada */}
         <div
-          className="rounded-2xl bg-[#fdfaf5] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.6)] overflow-hidden text-left border-t-4 border-[#c9a24b]"
+          className="rounded-2xl bg-[#1a0a10]/70 backdrop-blur-md shadow-[0_20px_60px_-12px_rgba(0,0,0,0.8)] overflow-hidden text-left border border-[#c9a24b]/20 border-t-4 border-t-[#c9a24b]"
           style={{ fontFamily: "var(--font-playfair)" }}
         >
 
           {paso === "servicio" && (
             <div className="p-5">
               <p
-                className="text-xs font-semibold uppercase tracking-widest text-[#8a1f3f] mb-3"
+                className="text-xs font-semibold uppercase tracking-widest text-[#c9a24b] mb-3"
                 style={{ fontFamily: "var(--font-cinzel)" }}
               >
                 Paso 1 · Servicio
@@ -153,13 +153,13 @@ export default function SeccionCitas() {
                       setServicio(s.value);
                       setPaso("horario");
                     }}
-                    className="flex items-center justify-between rounded-xl border border-[#e8dfc8] px-4 py-3.5 text-left transition hover:border-[#8a1f3f] hover:bg-[#8a1f3f]/5"
+                    className="flex items-center justify-between rounded-xl border border-[#f5e6d3]/15 px-4 py-3.5 text-left transition hover:border-[#c9a24b]/50 hover:bg-[#c9a24b]/8"
                   >
                     <div>
-                      <p className="text-[15px] font-semibold text-[#2a0a12]">{s.label}</p>
-                      <p className="text-[13px] text-[#6b5d4f] mt-0.5">{s.desc}</p>
+                      <p className="text-[15px] font-semibold text-[#f5ede0]">{s.label}</p>
+                      <p className="text-[13px] text-[#f5e6d3]/45 mt-0.5">{s.desc}</p>
                     </div>
-                    <span className="text-[#8a1f3f] text-lg">→</span>
+                    <span className="text-[#c9a24b] text-lg">→</span>
                   </button>
                 ))}
               </div>
@@ -171,12 +171,12 @@ export default function SeccionCitas() {
               <div className="flex items-center justify-between px-5 pt-4">
                 <button
                   onClick={() => setPaso("servicio")}
-                  className="text-[13px] text-[#8a1f3f] font-semibold"
+                  className="text-[13px] text-[#c9a24b] font-semibold"
                 >
                   ← Cambiar servicio
                 </button>
                 <p
-                  className="text-xs font-semibold uppercase tracking-widest text-[#8a1f3f]"
+                  className="text-xs font-semibold uppercase tracking-widest text-[#c9a24b]"
                   style={{ fontFamily: "var(--font-cinzel)" }}
                 >
                   Paso 2 · Horario
@@ -195,14 +195,14 @@ export default function SeccionCitas() {
                       onClick={() => setDiaSeleccionado(d)}
                       className={`shrink-0 flex flex-col items-center rounded-xl px-3 py-2 min-w-[60px] transition ${
                         activo
-                          ? "bg-[#4a0916] text-white"
-                          : "bg-[#f3ede0] text-[#2a0a12] hover:bg-[#e8dfc8]"
+                          ? "bg-[#c9a24b] text-[#2a0a12]"
+                          : "bg-[#2a1420] text-[#f5e6d3] hover:bg-[#3a1a2a]"
                       }`}
                     >
-                      <span className={`text-[10px] uppercase ${activo ? "text-[#f0d78c]" : "text-[#6b5d4f]"}`}>{dia}</span>
+                      <span className={`text-[10px] uppercase ${activo ? "text-[#2a0a12]/70" : "text-[#f5e6d3]/40"}`}>{dia}</span>
                       <span className="text-base font-semibold leading-tight">{numero}</span>
-                      <span className={`text-[10px] uppercase ${activo ? "text-[#f0d78c]" : "text-[#6b5d4f]"}`}>{mes}</span>
-                      <span className={`text-[9px] mt-0.5 ${activo ? "text-[#f0d78c]/80" : "text-[#8a1f3f]"}`}>
+                      <span className={`text-[10px] uppercase ${activo ? "text-[#2a0a12]/70" : "text-[#f5e6d3]/40"}`}>{mes}</span>
+                      <span className={`text-[9px] mt-0.5 ${activo ? "text-[#2a0a12]/60" : "text-[#c9a24b]/70"}`}>
                         {libres === undefined ? "..." : `${libres} libres`}
                       </span>
                     </button>
@@ -212,10 +212,10 @@ export default function SeccionCitas() {
 
               <div className="grid grid-cols-3 gap-2 px-5 pb-5 max-h-64 overflow-y-auto">
                 {cargandoSlots && (
-                  <p className="col-span-3 py-8 text-sm text-[#6b5d4f] text-center">Cargando horarios...</p>
+                  <p className="col-span-3 py-8 text-sm text-[#f5e6d3]/40 text-center">Cargando horarios...</p>
                 )}
                 {!cargandoSlots && slots.length === 0 && (
-                  <p className="col-span-3 py-8 text-sm text-[#6b5d4f] text-center">No hay horarios libres este día</p>
+                  <p className="col-span-3 py-8 text-sm text-[#f5e6d3]/40 text-center">No hay horarios libres este día</p>
                 )}
                 {!cargandoSlots &&
                   slots.map((s) => (
@@ -225,7 +225,7 @@ export default function SeccionCitas() {
                         setHorarioElegido(s);
                         setPaso("datos");
                       }}
-                      className="rounded-lg border border-[#e8dfc8] py-2.5 text-[13px] font-semibold text-[#2a0a12] transition hover:border-[#8a1f3f] hover:bg-[#8a1f3f]/5"
+                      className="rounded-lg border border-[#f5e6d3]/15 py-2.5 text-[13px] font-semibold text-[#f5ede0] transition hover:border-[#c9a24b]/50 hover:bg-[#c9a24b]/8"
                     >
                       {formatearHora(s)}
                     </button>
@@ -239,51 +239,51 @@ export default function SeccionCitas() {
               <div className="flex items-center justify-between mb-4">
                 <button
                   onClick={() => setPaso("horario")}
-                  className="text-[13px] text-[#8a1f3f] font-semibold"
+                  className="text-[13px] text-[#c9a24b] font-semibold"
                 >
                   ← Cambiar horario
                 </button>
                 <p
-                  className="text-xs font-semibold uppercase tracking-widest text-[#8a1f3f]"
+                  className="text-xs font-semibold uppercase tracking-widest text-[#c9a24b]"
                   style={{ fontFamily: "var(--font-cinzel)" }}
                 >
                   Paso 3 · Tus datos
                 </p>
               </div>
 
-              <div className="rounded-xl bg-[#4a0916]/8 border border-[#4a0916]/20 px-4 py-3 mb-4 flex items-center gap-3">
+              <div className="rounded-xl bg-[#c9a24b]/8 border border-[#c9a24b]/20 px-4 py-3 mb-4 flex items-center gap-3">
                 <span className="text-2xl">📹</span>
                 <div>
-                  <p className="text-[15px] font-semibold text-[#2a0a12] capitalize">
+                  <p className="text-[15px] font-semibold text-[#f5ede0] capitalize">
                     {formatearFechaLarga(new Date(horarioElegido))}
                   </p>
-                  <p className="text-[13px] text-[#8a1f3f] font-semibold mt-0.5">{formatearHora(horarioElegido)} · 30 min · Videollamada</p>
+                  <p className="text-[13px] text-[#c9a24b] font-semibold mt-0.5">{formatearHora(horarioElegido)} · 30 min · Videollamada</p>
                 </div>
               </div>
 
               <div className="flex flex-col gap-3">
                 <div>
-                  <label className="text-[13px] font-medium text-[#6b5d4f]">Nombre completo</label>
+                  <label className="text-[13px] font-medium text-[#f5e6d3]/45">Nombre completo</label>
                   <input
                     value={nombre}
                     onChange={(e) => setNombre(e.target.value)}
                     placeholder="Ej: María Pérez"
-                    className="w-full mt-1 rounded-lg border border-[#e8dfc8] px-3.5 py-2.5 text-[15px] text-[#2a0a12] outline-none focus:border-[#8a1f3f]"
+                    className="w-full mt-1 rounded-lg border border-[#f5e6d3]/15 bg-white/5 px-3.5 py-2.5 text-[15px] text-[#f5ede0] outline-none placeholder:text-[#f5e6d3]/25 focus:border-[#c9a24b]"
                   />
                 </div>
                 <div>
-                  <label className="text-[13px] font-medium text-[#6b5d4f]">Número de WhatsApp</label>
+                  <label className="text-[13px] font-medium text-[#f5e6d3]/45">Número de WhatsApp</label>
                   <input
                     value={telefono}
                     onChange={(e) => setTelefono(e.target.value)}
                     placeholder="Ej: 70000000"
                     type="tel"
-                    className="w-full mt-1 rounded-lg border border-[#e8dfc8] px-3.5 py-2.5 text-[15px] text-[#2a0a12] outline-none focus:border-[#8a1f3f]"
+                    className="w-full mt-1 rounded-lg border border-[#f5e6d3]/15 bg-white/5 px-3.5 py-2.5 text-[15px] text-[#f5ede0] outline-none placeholder:text-[#f5e6d3]/25 focus:border-[#c9a24b]"
                   />
                 </div>
               </div>
 
-              {error && <p className="mt-3 text-[13px] text-[#c2410c]">{error}</p>}
+              {error && <p className="mt-3 text-[13px] text-[#ff8a70]">{error}</p>}
 
               <button
                 onClick={confirmarReserva}
@@ -299,12 +299,12 @@ export default function SeccionCitas() {
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block mt-2 text-center text-[11px] text-[#6b5d4f] underline"
+                className="block mt-2 text-center text-[11px] text-[#f5e6d3]/35 underline"
               >
                 Prefiero llamar al Maestro
               </a>
 
-              <p className="mt-3 text-center text-[11px] text-[#6b5d4f]">
+              <p className="mt-3 text-center text-[11px] text-[#f5e6d3]/35">
                 Tu horario se guarda por 40 minutos mientras confirmas el pago
               </p>
             </div>
