@@ -202,7 +202,7 @@ export default function ChatAsistente() {
       setTimeout(() => {
         agregarMensaje(
           "bot",
-          `Para tu consulta de ${SERVICIO_LABELS[datosFinales.servicio ?? ""] ?? "consulta"}, ¿quieres elegir un horario para videollamada, o prefieres coordinar directamente con el Maestro?`
+          "¿Cómo prefieres continuar?"
         );
         setEtapa("confirmarCita");
       }, 400);
