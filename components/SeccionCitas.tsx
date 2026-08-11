@@ -122,6 +122,13 @@ export default function SeccionCitas() {
         background: "radial-gradient(circle at 50% 10%, #2a1a4a 0%, #1a0f30 40%, #1a0505 80%)",
       }}
     >
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-32 z-0"
+        style={{
+          background: "linear-gradient(to bottom, #1a0505 0%, rgba(26,5,5,0) 100%)",
+        }}
+      />
       <div className="relative z-10 mx-auto max-w-md text-center">
         <p className="text-xs uppercase tracking-[0.3em] text-[#c9a24b]">Consulta por Videollamada</p>
         <h2 className="mt-2 text-3xl text-[#f0d78c]" style={{ fontFamily: "var(--font-cinzel)" }}>
