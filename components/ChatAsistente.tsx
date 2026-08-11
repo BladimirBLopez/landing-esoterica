@@ -200,6 +200,10 @@ export default function ChatAsistente() {
     if (datosFinales.servicio && SERVICIOS_CON_CITA.includes(datosFinales.servicio)) {
       setDatos(datosFinales);
       setTimeout(() => {
+        agregarMensaje(
+          "bot",
+          `Para tu consulta de ${SERVICIO_LABELS[datosFinales.servicio ?? ""] ?? "consulta"}, ¿quieres elegir un horario para videollamada, o prefieres coordinar directamente con el Maestro?`
+        );
         setEtapa("confirmarCita");
       }, 400);
       return;
@@ -410,15 +414,12 @@ export default function ChatAsistente() {
 
         {etapa === "confirmarCita" && (
           <div className="max-w-[85%] rounded-r-lg rounded-bl-lg bg-white shadow-sm overflow-hidden">
-            <p className="text-sm text-[#111b21] px-4 pt-4 pb-3">
-              Para tu consulta de {SERVICIO_LABELS[datos.servicio ?? ""] ?? ""}, ¿quieres elegir un horario para videollamada, o prefieres coordinar directamente con el Maestro?
-            </p>
             <button
               onClick={() => {
                 agregarMensaje("usuario", "Elegir horario y pagar");
                 setEtapa("horario");
               }}
-              className="w-full text-center text-[#00a884] font-medium text-sm py-3 border-t border-[#e9edef] active:bg-[#f0f2f5]"
+              className="w-full text-center text-[#00a884] font-medium text-sm py-3 active:bg-[#f0f2f5]"
             >
               Elegir horario y pagar
             </button>
