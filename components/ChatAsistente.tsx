@@ -44,9 +44,8 @@ function fechaISOSinHora(date: Date) {
 export default function ChatAsistente() {
   const [abierto, setAbierto] = useState(false);
   const [etapa, setEtapa] = useState<Etapa>("conversando");
-  const [mensajes, setMensajes] = useState<Mensaje[]>([
-    { de: "bot", texto: "Hola, soy Sofía, la asistente del Maestro Juan Santiago 🙏 ¿En qué puedo ayudarte hoy?", hora: horaActual() },
-  ]);
+  const [mensajes, setMensajes] = useState<Mensaje[]>([]);
+  const [cargandoBienvenida, setCargandoBienvenida] = useState(true);
   const [inputTexto, setInputTexto] = useState("");
   const [pensando, setPensando] = useState(false);
   const [datos, setDatos] = useState<Datos>({ nombre: null, telefono: null, servicio: null, situacion: null });
@@ -94,11 +93,13 @@ export default function ChatAsistente() {
       .then((res) => res.json())
       .then((data) => {
         const mensajeConfigurado = data?.config?.mensaje_bienvenida;
-        if (mensajeConfigurado) {
-          setMensajes([{ de: "bot", texto: mensajeConfigurado, hora: horaActual() }]);
-        }
+        const textoFinal = mensajeConfigurado || "Hola, soy Sofía, la asistente del Maestro Juan Santiago 🙏 ¿En qué puedo ayudarte hoy?";
+        setMensajes([{ de: "bot", texto: textoFinal, hora: horaActual() }]);
       })
-      .catch(() => {});
+      .catch(() => {
+        setMensajes([{ de: "bot", texto: "Hola, soy Sofía, la asistente del Maestro Juan Santiago 🙏 ¿En qué puedo ayudarte hoy?", hora: horaActual() }]);
+      })
+      .finally(() => setCargandoBienvenida(false));
   }, []);
 
   useEffect(() => {
