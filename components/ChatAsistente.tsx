@@ -103,7 +103,7 @@ export default function ChatAsistente() {
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
-  }, [mensajes, etapa]);
+  }, [mensajes, etapa, slots, cargandoSlots]);
 
   useEffect(() => {
     if (!archivo) {
