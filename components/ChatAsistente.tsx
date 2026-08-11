@@ -70,6 +70,10 @@ export default function ChatAsistente() {
 
   const ultimoMensajeBot = [...mensajes].reverse().find((m) => m.de === "bot")?.texto.toLowerCase() ?? "";
   const pidiendoTelefono = !datos.telefono && (ultimoMensajeBot.includes("whatsapp") || ultimoMensajeBot.includes("número") || ultimoMensajeBot.includes("numero"));
+  const pidiendoTipoConsulta =
+    !datos.servicio &&
+    ultimoMensajeBot.includes("tarot") &&
+    (ultimoMensajeBot.includes("coca") || ultimoMensajeBot.includes("hojas"));
 
   const dias = Array.from({ length: 7 }).map((_, i) => {
     const d = new Date();
@@ -145,8 +149,8 @@ export default function ChatAsistente() {
     setAbierto(true);
   }
 
-  async function enviarMensaje() {
-    const texto = inputTexto.trim();
+  async function enviarMensaje(textoForzado?: string) {
+    const texto = (textoForzado ?? inputTexto).trim();
     if (!texto || pensando) return;
 
     agregarMensaje("usuario", texto);
@@ -387,6 +391,23 @@ export default function ChatAsistente() {
         {pensando && (
           <div className="bg-white text-[#667781] self-start rounded-r-lg rounded-bl-lg px-3 py-2 text-xs shadow-sm" style={{ width: "fit-content" }}>
             escribiendo...
+          </div>
+        )}
+
+        {etapa === "conversando" && pidiendoTipoConsulta && !pensando && (
+          <div className="max-w-[85%] rounded-r-lg rounded-bl-lg bg-white shadow-sm overflow-hidden">
+            <button
+              onClick={() => enviarMensaje("Consulta de Tarot")}
+              className="w-full text-center text-[#00a884] font-medium text-sm py-3 active:bg-[#f0f2f5]"
+            >
+              🃏 Consulta de Tarot
+            </button>
+            <button
+              onClick={() => enviarMensaje("Hojas de Coca")}
+              className="w-full text-center text-[#00a884] font-medium text-sm py-3 border-t border-[#e9edef] active:bg-[#f0f2f5]"
+            >
+              🌿 Hojas de Coca
+            </button>
           </div>
         )}
 
