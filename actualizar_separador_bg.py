@@ -1,4 +1,5 @@
-export default function SeparadorSeccion({
+path = "components/SeparadorSeccion.tsx"
+content = '''export default function SeparadorSeccion({
   color = "#c9a24b",
   from = "transparent",
   to = "transparent",
@@ -31,3 +32,9 @@ export default function SeparadorSeccion({
     </div>
   );
 }
+'''
+
+with open(path, "w") as f:
+    f.write(content)
+
+print("OK")

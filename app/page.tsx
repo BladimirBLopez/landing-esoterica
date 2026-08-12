@@ -329,11 +329,11 @@ export default function Home() {
 
       <SeccionTarot />
 
-      <SeparadorSeccion />
+      <SeparadorSeccion from="#1a0505" to="#2a1a4a" />
 
       <SeccionCitas />
 
-      <SeparadorSeccion />
+      <SeparadorSeccion from="#1a0505" to="#4a0916" />
 
       {/* Resumen final + CTA (estilo caja con borde) */}
       <section className="relative overflow-hidden bg-gradient-to-b from-[#4a0916] to-[#2e0a1c] px-6 py-16 text-center">
@@ -390,7 +390,7 @@ export default function Home() {
         </div>
       </section>
 
-      <SeparadorSeccion />
+      <SeparadorSeccion from="#2e0a1c" to="#2e0a1c" />
 
       {/* Frase de garantia */}
       <section className="bg-gradient-to-b from-[#2e0a1c] to-[#1a0505] px-6 pb-8 pt-8 text-center">
