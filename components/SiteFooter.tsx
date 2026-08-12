@@ -31,7 +31,7 @@ export default function SiteFooter() {
           rel="noopener noreferrer"
           className="mt-3 block hover:text-[#c9a24b] transition"
         >
-          📍 América 528-538, Villa Imperial de Potosí, Bolivia
+          📍 Villa Imperial de Potosí, Bolivia
         </a>
         <p className="mt-4">© 2026 Altar del Tata Bombori · Maestro Juan Santiago</p>
       </div>
