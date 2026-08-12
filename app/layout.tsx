@@ -61,12 +61,18 @@ const jsonLd = {
   description: "Amarres de amor, unión de parejas, endulzamiento, retorno del ser amado, alejamiento de terceros y consultas de Tarot y Hojas de Coca con el Maestro Juan Santiago, heredero del Tatabombori.",
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Norte de Potosí",
+    streetAddress: "América 528-538",
+    addressLocality: "Villa Imperial de Potosí",
     addressRegion: "Potosí",
     addressCountry: "BO",
   },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: -19.5848229,
+    longitude: -65.7586534,
+  },
   areaServed: "BO",
-  sameAs: [],
+  sameAs: ["https://www.facebook.com/maestrojuansantiagopotosi"],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
