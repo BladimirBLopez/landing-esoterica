@@ -250,10 +250,13 @@ export default function Home() {
         {/* Tarjeta solida superpuesta */}
         <div className="relative z-20 mx-auto -mt-10 max-w-xl rounded-3xl border border-[#c9a24b]/30 bg-[#3d0f1a] px-6 py-10 text-center shadow-2xl">
           <RevealOnScroll>
-          <h2 className="mb-4 text-4xl font-bold text-white" style={{ fontFamily: "var(--font-cinzel)" }}>
-            Bienvenido al Altar del Tata Bombori
+          <h2 className="mb-2 text-4xl font-bold text-white" style={{ fontFamily: "var(--font-cinzel)" }}>
+            Amarres de Amor desde Potosí — Altar del Tata Bombori
           </h2>
         </RevealOnScroll>
+          <p className="mb-4 text-sm uppercase tracking-widest text-[#c9a24b]">
+            Maestro Juan Santiago, heredero de la fuerza sagrada ancestral
+          </p>
           <p className="mx-auto max-w-md text-[#f5e6d3]/90">
             Donde la sabiduría ancestral de las Sagradas Hojas de Coca y la verdad revelada por las Cartas del Tarot se unen para ver tu situación, orientarte y trabajar con justicia y fe verdadera.
           </p>
@@ -269,7 +272,7 @@ export default function Home() {
             </div>
             <div className="relative">
               <span className="absolute -left-[31px] top-1 h-3 w-3 rounded-full bg-[#c9a24b] shadow-[0_0_8px_2px_rgba(201,162,75,0.6)]" />
-              <p className="text-sm text-[#f5e6d3]/90">🕯️ Trabajamos desde el Altar del Tata Bombori</p>
+              <p className="text-sm text-[#f5e6d3]/90">🕯️ Trabajamos desde Potosí, con la fuerza sagrada del Tata Bombori</p>
             </div>
           </div>
         </div>
@@ -289,7 +292,7 @@ export default function Home() {
         <div className="relative z-10">
           <RevealOnScroll>
           <h2 className="mb-2 text-center text-4xl font-bold text-white" style={{ fontFamily: "var(--font-cinzel)" }}>
-            Servicios del Altar del Tata Bombori
+            Servicios de Amarres y Rituales — Altar del Tata Bombori
           </h2>
         </RevealOnScroll>
           <p className="mb-12 text-center text-[#f5e6d3]/70">
