@@ -125,7 +125,7 @@ export default function ScrollVideo({
         autoPlay
         loop={loop}
         playsInline
-        preload="auto"
+        preload="metadata"
         className={className}
       >
         <source src={src} type="video/mp4" />

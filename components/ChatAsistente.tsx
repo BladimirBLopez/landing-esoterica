@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Tesseract from "tesseract.js";
+
 
 import { NUMERO } from "@/lib/constantes";
 const API_BASE = "https://juan-santiago-admin.vercel.app";
@@ -122,6 +122,7 @@ export default function ChatAsistente() {
     setMontoDetectado(null);
     setVerificado(null);
     try {
+      const Tesseract = (await import("tesseract.js")).default;
       const { data } = await Tesseract.recognize(file, "spa");
       const numeros = (data.text.match(/\d{1,4}[.,]?\d{0,2}/g) ?? [])
         .map((n) => n.replace(",", "."))
