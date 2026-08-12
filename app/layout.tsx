@@ -19,7 +19,7 @@ const cinzel = Cinzel({
   subsets: ["latin"],
 });
 
-const SITE_URL = "https://juansantiagoamarres.online";
+const SITE_URL = "https://www.juansantiagoamarres.online";
 const OG_IMAGE = "https://res.cloudinary.com/dkq95jus0/image/upload/og-banner-juansantiago.png";
 
 export const metadata: Metadata = {

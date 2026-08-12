@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: "https://juansantiagoamarres.online",
+  siteUrl: "https://www.juansantiagoamarres.online",
   generateRobotsTxt: true,
   exclude: ["/api/*"],
   robotsTxtOptions: {
