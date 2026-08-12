@@ -4,6 +4,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import ChatAsistente from "@/components/ChatAsistente";
 import MusicaFondo from "@/components/MusicaFondo";
 import SeccionHoroscopo from "@/components/SeccionHoroscopo";
+import SeparadorSeccion from "@/components/SeparadorSeccion";
 import SeccionTarot from "@/components/SeccionTarot";
 import SeccionCitas from "@/components/SeccionCitas";
 import ServicioDetallado from "@/components/ServicioDetallado";
@@ -328,7 +329,11 @@ export default function Home() {
 
       <SeccionTarot />
 
+      <SeparadorSeccion />
+
       <SeccionCitas />
+
+      <SeparadorSeccion />
 
       {/* Resumen final + CTA (estilo caja con borde) */}
       <section className="relative overflow-hidden bg-gradient-to-b from-[#4a0916] to-[#2e0a1c] px-6 py-16 text-center">
@@ -384,6 +389,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <SeparadorSeccion />
 
       {/* Frase de garantia */}
       <section className="bg-gradient-to-b from-[#2e0a1c] to-[#1a0505] px-6 pb-8 pt-8 text-center">
