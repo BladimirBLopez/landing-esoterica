@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display, Sail, Cinzel } from "next/font/google";
 import "./globals.css";
 import MenuNav from "@/components/MenuNav";
+import { Analytics } from "@vercel/analytics/next";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -90,6 +91,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-full flex flex-col">
         <MenuNav />
         {children}
+        <Analytics />
       </body>
     </html>
   );
