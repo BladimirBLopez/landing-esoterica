@@ -207,7 +207,7 @@ export default function Home() {
             </h1>
           </div>
           <p className="relative z-10 mt-2 text-lg font-semibold text-[#f5e6d3]" style={{ textShadow: "0 2px 10px rgba(0,0,0,0.9)", animation: "aparecer-subir 0.8s ease-out 0.3s both" }}>Maestro Curandero · Heredero del Tatabombori</p>
-          <p className="relative z-10 mt-1 text-sm uppercase tracking-widest text-[#c9a24b]" style={{ textShadow: "0 2px 10px rgba(0,0,0,0.9)", animation: "aparecer-subir 0.8s ease-out 0.4s both" }}>Amarres de Amor · Norte de Potosí, Bolivia</p>
+          <p className="relative z-10 mt-1 text-sm uppercase tracking-widest text-[#c9a24b]" style={{ textShadow: "0 2px 10px rgba(0,0,0,0.9)", animation: "aparecer-subir 0.8s ease-out 0.4s both" }}>Amarres de Amor · Endulzamiento · Unión de Parejas</p>
 
           <h2 className="mt-4 max-w-xl text-2xl font-bold text-white sm:text-4xl" style={{ textShadow: "0 4px 16px rgba(0,0,0,0.9)", animation: "aparecer-subir 0.8s ease-out 0.5s both" }}>
             ¿Sientes que tu amor se está escapando?
