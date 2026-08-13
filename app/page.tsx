@@ -219,6 +219,7 @@ export default function Home() {
               mensaje="Hola Maestro Juan Santiago, quiero recuperar a mi pareja."
               texto="Quiero recuperar a mi pareja"
               className="text-base px-8 py-4"
+              servicio="AMARRE"
             />
           </div>
           <a href={`tel:+${NUMERO}`} className="mt-3 text-3xl font-bold tracking-wide text-[#c9a24b] drop-shadow-lg hover:text-[#f0d78c] sm:text-4xl" style={{ fontFamily: "var(--font-cinzel)" }}>
@@ -382,6 +383,7 @@ export default function Home() {
                 mensaje="Hola Maestro Juan Santiago, quiero empezar hoy mismo."
                 texto="Escríbeme ahora y empezamos hoy mismo"
                 className="text-base px-8 py-4"
+                servicio="AMARRE"
               />
             </div>
 
