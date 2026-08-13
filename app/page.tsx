@@ -186,6 +186,8 @@ export default function Home() {
               src="https://res.cloudinary.com/dkq95jus0/image/upload/maestro-juan4"
               alt="Maestro Juan Santiago"
               fill
+              priority
+              fetchPriority="high"
               className="object-contain"
             />
           </div>
