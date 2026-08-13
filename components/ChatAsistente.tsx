@@ -162,11 +162,16 @@ export default function ChatAsistente() {
     }));
 
     try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 20000);
+
       const res = await fetch(`${API_BASE}/api/chat-ia`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ historial, mensaje: texto }),
+        signal: controller.signal,
       });
+      clearTimeout(timeoutId);
       const data = await res.json();
 
       agregarMensaje("bot", data.respuesta ?? "Disculpa, ¿puedes repetirlo?");
