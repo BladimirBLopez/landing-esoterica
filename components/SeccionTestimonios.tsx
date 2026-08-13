@@ -1,7 +1,3 @@
-"use client";
-
-import { useState, useEffect } from "react";
-
 type Testimonio = {
   id: string;
   nombre: string;
@@ -10,16 +6,7 @@ type Testimonio = {
   mediaTipo: string | null;
 };
 
-export default function SeccionTestimonios() {
-  const [testimonios, setTestimonios] = useState<Testimonio[]>([]);
-
-  useEffect(() => {
-    fetch("https://juan-santiago-admin.vercel.app/api/testimonios")
-      .then((res) => res.json())
-      .then((data) => setTestimonios(data.testimonios ?? []))
-      .catch(() => {});
-  }, []);
-
+export default function SeccionTestimonios({ testimonios }: { testimonios: Testimonio[] }) {
   if (testimonios.length === 0) return null;
 
   return (
@@ -33,7 +20,7 @@ export default function SeccionTestimonios() {
         className="mb-10 text-center text-4xl font-bold text-white"
         style={{ fontFamily: "var(--font-cinzel)" }}
       >
-        Testimonios
+        Testimonios de Amarres de Amor
       </h2>
 
       <div className="mx-auto flex max-w-2xl flex-col gap-5">
@@ -46,7 +33,11 @@ export default function SeccionTestimonios() {
             <p className="mt-3 text-sm font-semibold text-[#c9a24b]">— {t.nombre}</p>
 
             {t.mediaUrl && t.mediaTipo === "IMAGEN" && (
-              <img src={t.mediaUrl} alt="" className="mt-3 rounded-lg max-h-64 mx-auto" />
+              <img
+                src={t.mediaUrl}
+                alt={`Testimonio de ${t.nombre} sobre amarre de amor con el Maestro Juan Santiago`}
+                className="mt-3 rounded-lg max-h-64 mx-auto"
+              />
             )}
             {t.mediaUrl && t.mediaTipo === "VIDEO" && (
               <video src={t.mediaUrl} controls className="mt-3 rounded-lg w-full" />

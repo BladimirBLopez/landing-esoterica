@@ -10,10 +10,25 @@ export const metadata: Metadata = {
   description: "Testimonios reales de clientes del Maestro Juan Santiago sobre amarres de amor, retorno del ser amado y trabajos espirituales exitosos en Bolivia.",
 };
 
-export default function TestimoniosPage() {
+async function obtenerTestimonios() {
+  try {
+    const res = await fetch("https://juan-santiago-admin.vercel.app/api/testimonios", {
+      next: { revalidate: 3600 },
+    });
+    if (!res.ok) return [];
+    const data = await res.json();
+    return data.testimonios ?? [];
+  } catch {
+    return [];
+  }
+}
+
+export default async function TestimoniosPage() {
+  const testimonios = await obtenerTestimonios();
+
   return (
     <main className="min-h-screen bg-gradient-to-b from-[#4a0916] to-[#2e0a1c] text-[#f5e6d3]">
-      <SeccionTestimonios />
+      <SeccionTestimonios testimonios={testimonios} />
 
       <SiteFooter />
 
