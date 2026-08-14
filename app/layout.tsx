@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Sail, Cinzel } from "next/font/google";
+import { Playfair_Display, Sail, Cinzel, Inter } from "next/font/google";
 import "./globals.css";
 import MenuNav from "@/components/MenuNav";
 import { Analytics } from "@vercel/analytics/next";
@@ -17,6 +17,11 @@ const alexBrush = Sail({
 
 const cinzel = Cinzel({
   variable: "--font-cinzel",
+  subsets: ["latin"],
+});
+
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
@@ -80,7 +85,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="es"
-      className={`${playfair.variable} ${alexBrush.variable} ${cinzel.variable} h-full antialiased`}
+      className={`${playfair.variable} ${alexBrush.variable} ${cinzel.variable} ${inter.variable} h-full antialiased`}
     >
       <head>
         <script

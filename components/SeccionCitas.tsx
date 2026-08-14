@@ -148,7 +148,7 @@ export default function SeccionCitas() {
         {/* Tarjeta de cristal oscuro, integrada a la noche estrellada */}
         <div
           className="rounded-2xl bg-[#1a0a10]/70 backdrop-blur-md shadow-[0_20px_60px_-12px_rgba(0,0,0,0.8)] overflow-hidden text-left border border-[#c9a24b]/20 border-t-4 border-t-[#c9a24b]"
-          style={{ fontFamily: "var(--font-playfair)" }}
+          style={{ fontFamily: "var(--font-inter)" }}
         >
 
           {paso === "servicio" && (
