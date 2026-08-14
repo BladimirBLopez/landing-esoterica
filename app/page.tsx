@@ -256,7 +256,7 @@ export default function Home() {
         <div className="relative z-20 mx-auto -mt-10 max-w-xl rounded-3xl border border-[#c9a24b]/30 bg-[#3d0f1a] px-6 py-10 text-center shadow-2xl">
           <RevealOnScroll>
           <h2 className="mb-2 text-4xl font-bold text-white" style={{ fontFamily: "var(--font-cinzel)" }}>
-            Amarres de Amor desde Potosí — Altar del Tata Bombori
+            Trabajos Espirituales de Amor desde Potosí — Altar del Tata Bombori
           </h2>
         </RevealOnScroll>
           <p className="mb-4 text-sm uppercase tracking-widest text-[#c9a24b]">
